@@ -97,7 +97,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" th:href="@{/templates/production-plans}">
+                <a class="nav-link " th:href="@{/templates/production-plans}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
@@ -117,7 +117,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " th:href="@{/production-schedule}">
+                <a class="nav-link active" th:href="@{/templates/production-schedule}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
@@ -197,7 +197,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " th:href="@{/supplier}">
+                <a class="nav-link " th:href="@{/templates/suppliers}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
@@ -217,7 +217,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " th:href="@{/energy-consumption}">
+                <a class="nav-link " th:href="@{/templates/energy-consumptions}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
@@ -442,103 +442,127 @@
         </div>
     </nav>
     <!-- End Navbar -->
-    <div class="container mt-5">
-        <a th:href="@{/tasks/add}" class="btn btn-primary mb-3">Add Task</a>
-        <div class="card">
-            <div class="card-header pb-0" style="background-color: #40916c; color: white;">
-                <h6>Tasks</h6>
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
-                <div class="table-responsive p-3">
 
-                    <table class="table align-items-center mb-0">
-                        <thead>
-                        <tr>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task Name</th>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Employee Name</th>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Priority</th>
-                            <th class="text-secondary opacity-7"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="task : ${tasks}">
-                            <td>
-                                <p class="text-xs font-weight-bold mb-0" th:text="${task.taskName}">Task Name</p>
-                            </td>
-                            <td>
-                                <p class="text-xs font-weight-bold mb-0" th:text="${task.description}">Description</p>
-                            </td>
-                            <td>
-                                <p class="text-xs font-weight-bold mb-0" th:text="${task.empName}">Employee Name</p>
-                            </td>
-                            <td>
-                                <p class="text-xs font-weight-bold mb-0" th:text="${task.status}">Status</p>
-                            </td>
-                            <td>
-                                <p class="text-xs font-weight-bold mb-0" th:text="${task.priority}">Priority</p>
-                            </td>
-                            <td class="align-middle">
-                                <a th:href="@{/tasks/edit/{id}(id=${task.taskId})}" class="text-secondary font-weight-bold text-xs me-2" data-toggle="tooltip" data-original-title="Edit task">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a th:href="@{/tasks/delete/{id}(id=${task.taskId})}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete task" th:onclick="'return confirm(\'Are you sure you want to delete this item?\');'">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="footer pt-3  ">
-        <div class="container-fluid">
-            <div class="row align-items-center justify-content-lg-between">
-                <div class="col-lg-6 mb-lg-0 mb-4">
-                    <div class="copyright text-center text-sm text-muted text-lg-start">
-                        © <script>
-                        document.write(new Date().getFullYear())
-                    </script>,
-                        made with <i class="fa fa-heart"></i> by
-                        <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Kayiranga</a>
-                        for a better web.
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <div class="container-fluid py-4">
+            <!-- Overview Section -->
+            <div class="row">
+                <div class="col-lg-12 mb-lg-0 mb-4">
+                    <div class="card z-index-2">
+                        <div class="card-header pb-0 pt-3 bg-transparent">
+                            <h6 class="text-capitalize">Production Scheduling Overview</h6>
+                            <p class="text-sm mb-0">
+                                <i class="fa fa-arrow-up text-success"></i>
+                                <span class="font-weight-bold">Production Schedules</span> for upcoming weeks
+                            </p>
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="chart">
+                                <canvas id="chart-production-scheduling" class="chart-canvas" height="400"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Kayiranga</a>
-                        </li>
-                    </ul>
+            </div>
+        </div>
+    </main>
+
+    <div class="container mt-5">
+        <h1>Production Schedules</h1>
+        <a th:href="@{/production-schedule/add}" class="btn btn-primary mb-3">Add Schedule</a>
+        <div class="table-responsive">
+            <table class="table align-items-center mb-0">
+                <thead>
+                <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Scheduled Start</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Scheduled End</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actual Start</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actual End</th>
+                    <th class="text-secondary opacity-7"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="schedule : ${schedules}">
+                    <td>
+                        <p class="text-xs font-weight-bold mb-0" th:text="${schedule.task.taskName}">Task Name</p>
+                    </td>
+                    <td>
+                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledStart != null}" th:text="${#dates.format(schedule.scheduledStart, 'yyyy-MM-dd HH:mm')}"></p>
+                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledStart == null}">N/A</p>
+                    </td>
+                    <td>
+                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledEnd != null}" th:text="${#dates.format(schedule.scheduledEnd, 'yyyy-MM-dd HH:mm')}"></p>
+                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledEnd == null}">N/A</p>
+                    </td>
+                    <td>
+                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualStart != null}" th:text="${#dates.format(schedule.actualStart, 'yyyy-MM-dd HH:mm')}"></p>
+                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualStart == null}">N/A</p>
+                    </td>
+                    <td>
+                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualEnd != null}" th:text="${#dates.format(schedule.actualEnd, 'yyyy-MM-dd HH:mm')}"></p>
+                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualEnd == null}">N/A</p>
+                    </td>
+                    <td class="align-middle">
+                        <a th:href="@{/production-schedule/edit/{id}(id=${schedule.scheduleId})}" class="text-secondary font-weight-bold text-xs me-2" data-toggle="tooltip" data-original-title="Edit schedule">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a th:href="@{/production-schedule/delete/{id}(id=${schedule.scheduleId})}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete schedule">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <footer class="footer pt-3  ">
+            <div class="container-fluid">
+                <div class="row align-items-center justify-content-lg-between">
+                    <div class="col-lg-6 mb-lg-0 mb-4">
+                        <div class="copyright text-center text-sm text-muted text-lg-start">
+                            © <script>
+                            document.write(new Date().getFullYear())
+                        </script>,
+                            made with <i class="fa fa-heart"></i> by
+                            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Kayiranga</a>
+                            for a better web.
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Kayiranga</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-</main>
-<div class="fixed-plugin">
-    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-        <i class="fa fa-cog py-2"> </i>
-    </a>
-    <div class="card shadow-lg ">
-        <div class="card-header pb-0 pt-3 ">
-            <div class="float-start">
-                <h5 class="mt-3 mb-0">Soft UI Configurator</h5>
-                <p>See our dashboard options.</p>
+        </footer>
+    </main>
+    <div class="fixed-plugin">
+        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+            <i class="fa fa-cog py-2"> </i>
+        </a>
+        <div class="card shadow-lg ">
+            <div class="card-header pb-0 pt-3 ">
+                <div class="float-start">
+                    <h5 class="mt-3 mb-0">Soft UI Configurator</h5>
+                    <p>See our dashboard options.</p>
+                </div>
+                <div class="float-end mt-4">
+                    <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </div>
+                <!-- End Toggle Button -->
             </div>
-            <div class="float-end mt-4">
-                <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
-                    <i class="fa fa-close"></i>
-                </button>
-            </div>
-            <!-- End Toggle Button -->
+            <hr class="horizontal dark my-1">
         </div>
-        <hr class="horizontal dark my-1">
     </div>
-</div>
+</main>
 <!--   Core JS Files   -->
 <script src="/js/core/popper.min.js"></script>
 <script src="/js/core/bootstrap.min.js"></script>
@@ -550,31 +574,39 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlHjW5z2NV/6fiyzCprsk/Rg7ygoOBhbVGd5oVbb73FPpxmCQ9N+BfWI3Fe" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgEPvWB51cAT+6M9E0C6KnN4VBmVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>
-    var ctx = document.getElementById("chart-production-planning").getContext("2d");
+    var ctx = document.getElementById("chart-production-scheduling").getContext("2d");
 
     new Chart(ctx, {
-        type: "bar",
+        type: "line",
         data: {
             labels: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"],
             datasets: [{
                 label: "Product A",
+                borderColor: "#f96332",
                 backgroundColor: "#f96332",
                 data: [1000, 1500, 2000, 2500, 3000],
+                fill: false,
             },
                 {
                     label: "Product B",
+                    borderColor: "#f4c63d",
                     backgroundColor: "#f4c63d",
                     data: [1500, 2000, 2500, 3000, 3500],
+                    fill: false,
                 },
                 {
                     label: "Product C",
+                    borderColor: "#6bd098",
                     backgroundColor: "#6bd098",
                     data: [2000, 2500, 3000, 3500, 4000],
+                    fill: false,
                 },
                 {
                     label: "Product D",
+                    borderColor: "#1f8ef1",
                     backgroundColor: "#1f8ef1",
                     data: [2500, 3000, 3500, 4000, 4500],
+                    fill: false,
                 }]
         },
         options: {
@@ -645,6 +677,6 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
-</body>
 
+</body>
 </html>

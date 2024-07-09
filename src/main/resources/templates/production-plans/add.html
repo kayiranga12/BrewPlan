@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="icon" type="image/png" href="/img/heineken-draught-keg.png">
     <title>
-        Soft UI Dashboard by Creative Tim
+        BrewPlan
     </title>
     <!--     Fonts and icons     -->
     <link href="/https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -332,9 +332,9 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Production Plan</li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+                <h6 class="font-weight-bolder mb-0">Production Plan</h6>
             </nav>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -466,35 +466,44 @@
         </div>
     </main>
     <div class="container mt-5">
-        <h1>Add Production Plan</h1>
-        <form th:action="@{/production-plans/add}" th:object="${productionPlan}" method="post">
-            <div class="form-group">
-                <label for="planName">Plan Name</label>
-                <input type="text" id="planName" th:field="*{planName}" class="form-control"/>
-                <div th:if="${#fields.hasErrors('planName')}" th:errors="*{planName}" class="text-danger"></div>
+        <div class="card">
+            <div class="card-header pb-0" style="background-color: #40916c; color: white;">
+                <h6>Add Production Plan</h6>
             </div>
-            <div class="form-group">
-                <label for="startDate">Start Date</label>
-                <input type="datetime-local" id="startDate" th:field="*{startDate}" class="form-control"/>
-                <div th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="text-danger"></div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <!-- Form to add production plan data -->
+                <form th:action="@{/production-plans/add}" th:object="${productionPlan}" method="post" class="p-3">
+                    <div class="form-group mb-3">
+                        <label for="planName" class="form-label">Plan Name</label>
+                        <input type="text" id="planName" th:field="*{planName}" class="form-control form-control-sm"/>
+                        <div th:if="${#fields.hasErrors('planName')}" th:errors="*{planName}" class="text-danger"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="startDate" class="form-label">Start Date</label>
+                        <input type="datetime-local" id="startDate" th:field="*{startDate}" class="form-control form-control-sm"/>
+                        <div th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="text-danger"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="endDate" class="form-label">End Date</label>
+                        <input type="datetime-local" id="endDate" th:field="*{endDate}" class="form-control form-control-sm"/>
+                        <div th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}" class="text-danger"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select id="status" th:field="*{status}" class="form-control form-control-sm">
+                            <option th:value="PENDING">Pending</option>
+                            <option th:value="COMPLETE">Complete</option>
+                            <option th:value="ONGOING">Ongoing</option>
+                        </select>
+                        <div th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="text-danger"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Add Production Plan</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="endDate">End Date</label>
-                <input type="datetime-local" id="endDate" th:field="*{endDate}" class="form-control"/>
-                <div th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}" class="text-danger"></div>
-            </div>
-            <div class="form-group">
-                <label for="status">Status</label>
-                <select id="status" th:field="*{status}" class="form-control">
-                    <option th:value="PENDING">Pending</option>
-                    <option th:value="COMPLETE">Complete</option>
-                    <option th:value="ONGOING">Ongoing</option>
-                </select>
-                <div th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="text-danger"></div>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Production Plan</button>
-        </form>
+        </div>
     </div>
+
+
     <footer class="footer pt-3  ">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">
@@ -539,12 +548,15 @@
         <hr class="horizontal dark my-1">
     </div>
 </div>
-<!--   Core JS Files   -->
 <script src="/js/core/popper.min.js"></script>
 <script src="/js/core/bootstrap.min.js"></script>
 <script src="/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="/js/plugins/chartjs.min.js"></script>
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlHjW5z2NV/6fiyzCprsk/Rg7ygoOBhbVGd5oVbb73FPpxmCQ9N+BfWI3Fe" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgEPvWB51cAT+6M9E0C6KnN4VBmVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>
     var ctx = document.getElementById("chart-production-planning").getContext("2d");
 

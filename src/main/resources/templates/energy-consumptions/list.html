@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="icon" type="image/png" href="/img/heineken-draught-keg.png">
     <title>
-        Soft UI Dashboard by Creative Tim
+        BrewPlan
     </title>
     <!--     Fonts and icons     -->
     <link href="/https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -465,85 +465,60 @@
             </div>
         </div>
     </main>
-    <div class="container mt-4">
-        <h1>Energy Consumptions Management</h1>
-
-        <!-- Form to add energy consumption data -->
-        <div class="card">
-            <div class="card-header">
-                <h5>Add Energy Consumption</h5>
-            </div>
-            <div class="card-body">
-                <form action="/energy-consumptions/add" method="post">
-                    <div class="form-group">
-                        <label for="taskId">Task</label>
-                        <select class="form-control" id="taskId" name="task.taskId" required>
-                            <option th:each="task : ${tasks}" th:value="${task.taskId}" th:text="${task.taskName}">Task Name</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="energyType">Energy Type</label>
-                        <select class="form-control" id="energyType" name="energyType" required>
-                            <option value="ELECTRICITY">Electricity</option>
-                            <option value="GAS">Gas</option>
-                            <option value="WATER">Water</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="quantity">Quantity</label>
-                        <input type="number" step="0.01" class="form-control" id="quantity" name="quantity" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="unitOfMeasure">Unit of Measure</label>
-                        <select class="form-control" id="unitOfMeasure" name="unitOfMeasure" required>
-                            <option value="KWH">kWh</option>
-                            <option value="LITERS">Liters</option>
-                            <option value="CUBIC_METERS">Cubic Meters</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add Energy Consumption</button>
-                </form>
-            </div>
-        </div>
-
         <!-- Display the list of energy consumptions -->
-        <div class="card mt-4">
-            <div class="card-header">
-                <h5>Energy Consumptions</h5>
+    <div class="container mt-5">
+        <a th:href="@{/energy-consumptions/add}" class="btn btn-primary mb-3">Add Energy Consumptions</a>
+        <div class="card">
+            <div class="card-header pb-0" style="background-color: #40916c; color: white;">
+                <h6>Energy Consumptions</h6>
             </div>
-            <div class="card-body">
-                <table class="table table-striped table-hover">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>Task</th>
-                        <th>Energy Type</th>
-                        <th>Quantity</th>
-                        <th>Unit of Measure</th>
-                        <th>Created At</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="energyConsumption : ${energyConsumptions}">
-                        <td th:text="${energyConsumption.task.taskName}">Task Name</td>
-                        <td th:text="${energyConsumption.energyType}">Energy Type</td>
-                        <td th:text="${energyConsumption.quantity}">Quantity</td>
-                        <td th:text="${energyConsumption.unitOfMeasure}">Unit of Measure</td>
-                        <td th:text="${#dates.format(energyConsumption.createdAt, 'yyyy-MM-dd HH:mm')}">Created At</td>
-                        <td>
-                            <a th:href="@{/energy-consumptions/edit/{id}(id=${energyConsumption.energyConsumptionId})}" class="btn btn-sm btn-primary">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <a th:href="@{/energy-consumptions/delete/{id}(id=${energyConsumption.energyConsumptionId})}" class="btn btn-sm btn-danger" th:onclick="'return confirm(\'Are you sure you want to delete this item?\');'">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-3">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Energy Type</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Unit of Measure</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Created At</th>
+                            <th class="text-secondary opacity-7"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="energyConsumption : ${energyConsumptions}">
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0" th:text="${energyConsumption.task.taskName}">Task Name</p>
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0" th:text="${energyConsumption.energyType}">Energy Type</p>
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0" th:text="${energyConsumption.quantity}">Quantity</p>
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0" th:text="${energyConsumption.unitOfMeasure}">Unit of Measure</p>
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0" th:text="${#dates.format(energyConsumption.createdAt, 'yyyy-MM-dd HH:mm')}">Created At</p>
+                            </td>
+                            <td class="align-middle">
+                                <a th:href="@{/energy-consumptions/edit/{id}(id=${energyConsumption.energyConsumptionId})}" class="text-secondary font-weight-bold text-xs me-2" data-toggle="tooltip" data-original-title="Edit consumption">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a th:href="@{/energy-consumptions/delete/{id}(id=${energyConsumption.energyConsumptionId})}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete consumption" th:onclick="'return confirm(\'Are you sure you want to delete this item?\');'">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+
+
     <footer class="footer pt-3  ">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">
@@ -594,6 +569,10 @@
 <script src="/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="/js/plugins/chartjs.min.js"></script>
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlHjW5z2NV/6fiyzCprsk/Rg7ygoOBhbVGd5oVbb73FPpxmCQ9N+BfWI3Fe" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgEPvWB51cAT+6M9E0C6KnN4VBmVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>
     var ctx = document.getElementById("chart-energy-consumption").getContext("2d");
 

@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="icon" type="image/png" href="/img/heineken-draught-keg.png">
     <title>
-        Soft UI Dashboard by Creative Tim
+        BrewPlan
     </title>
     <!--     Fonts and icons     -->
     <link href="/https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -467,41 +467,48 @@
     </main>
 
     <div class="container mt-5">
-        <h1>Add Energy Consumption</h1>
-        <form th:action="@{/energy-consumptions/add}" th:object="${energyConsumption}" method="post">
-            <div class="form-group">
-                <label for="taskId">Task</label>
-                <select id="taskId" th:field="*{task}" class="form-control" required>
-                    <option th:each="task : ${tasks}" th:value="${task}" th:text="${task.taskName}">Task</option>
-                </select>
-                <div th:if="${#fields.hasErrors('task')}" th:errors="*{task}" class="text-danger"></div>
+        <div class="card">
+            <div class="card-header pb-0" style="background-color: #40916c; color: white;">
+                <h6>Add Energy Consumption</h6>
             </div>
-            <div class="form-group">
-                <label for="energyType">Energy Type</label>
-                <select id="energyType" th:field="*{energyType}" class="form-control" required>
-                    <option th:value="ELECTRICITY">Electricity</option>
-                    <option th:value="GAS">Gas</option>
-                    <option th:value="DIESEL">Diesel</option>
-                </select>
-                <div th:if="${#fields.hasErrors('energyType')}" th:errors="*{energyType}" class="text-danger"></div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <form th:action="@{/energy-consumptions/add}" th:object="${energyConsumption}" method="post" class="p-3">
+                    <div class="form-group mb-3">
+                        <label for="taskId" class="form-label">Task</label>
+                        <select id="taskId" th:field="*{task.taskId}" class="form-control form-control-sm" required>
+                            <option th:each="task : ${tasks}" th:value="${task.taskId}" th:text="${task.taskName}">Task</option>
+                        </select>
+                        <div th:if="${#fields.hasErrors('task.taskId')}" th:errors="*{task.taskId}" class="text-danger"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="energyType" class="form-label">Energy Type</label>
+                        <select id="energyType" th:field="*{energyType}" class="form-control form-control-sm" required>
+                            <option th:value="ELECTRICITY">Electricity</option>
+                            <option th:value="GAS">Gas</option>
+                            <option th:value="DIESEL">Diesel</option>
+                        </select>
+                        <div th:if="${#fields.hasErrors('energyType')}" th:errors="*{energyType}" class="text-danger"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" id="quantity" th:field="*{quantity}" class="form-control form-control-sm" required/>
+                        <div th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="text-danger"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="unitOfMeasure" class="form-label">Unit of Measure</label>
+                        <select id="unitOfMeasure" th:field="*{unitOfMeasure}" class="form-control form-control-sm" required>
+                            <option th:value="KWH">kWh</option>
+                            <option th:value="M3">m³</option>
+                            <option th:value="LITERS">Liters</option>
+                        </select>
+                        <div th:if="${#fields.hasErrors('unitOfMeasure')}" th:errors="*{unitOfMeasure}" class="text-danger"></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Add Energy Consumption</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="quantity">Quantity</label>
-                <input type="number" id="quantity" th:field="*{quantity}" class="form-control" required/>
-                <div th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="text-danger"></div>
-            </div>
-            <div class="form-group">
-                <label for="unitOfMeasure">Unit of Measure</label>
-                <select id="unitOfMeasure" th:field="*{unitOfMeasure}" class="form-control" required>
-                    <option th:value="KWH">kWh</option>
-                    <option th:value="M3">m³</option>
-                    <option th:value="LITERS">Liters</option>
-                </select>
-                <div th:if="${#fields.hasErrors('unitOfMeasure')}" th:errors="*{unitOfMeasure}" class="text-danger"></div>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Energy Consumption</button>
-        </form>
+        </div>
     </div>
+
     <footer class="footer pt-3  ">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">
@@ -552,6 +559,10 @@
 <script src="/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="/js/plugins/chartjs.min.js"></script>
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlHjW5z2NV/6fiyzCprsk/Rg7ygoOBhbVGd5oVbb73FPpxmCQ9N+BfWI3Fe" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgEPvWB51cAT+6M9E0C6KnN4VBmVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>
     var ctx = document.getElementById("chart-energy-consumption").getContext("2d");
 
