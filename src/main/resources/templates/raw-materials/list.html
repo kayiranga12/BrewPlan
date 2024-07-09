@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="icon" type="image/png" href="/img/bralog (Custom).png">
     <title>
-        Soft UI Dashboard by Creative Tim
+        BrewPlan
     </title>
     <!--     Fonts and icons     -->
     <link href="/https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -466,37 +466,54 @@
         </div>
     </main>
     <div class="container mt-5">
-        <h2>Raw Materials</h2>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Current Stock</th>
-                    <th>Minimum Stock Level</th>
-                    <th>Supplier</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="rawMaterials : ${rawMaterialsList}">
-                    <td th:text="${rawMaterials.materialId}"></td>
-                    <td th:text="${rawMaterials.materialName}"></td>
-                    <td th:text="${rawMaterials.category}"></td>
-                    <td th:text="${rawMaterials.currentStock}"></td>
-                    <td th:text="${rawMaterials.minimumStockLevel}"></td>
-                    <td th:text="${rawMaterials.supplier.supplierName}"></td>
-                    <td>
-                        <a th:href="@{/rawmaterials/edit/{id}(id=${rawMaterials.materialId})}" class="btn btn-primary btn-sm">Edit</a>
-                        <a th:href="@{/rawmaterials/delete/{id}(id=${rawMaterials.materialId})}" class="btn btn-danger btn-sm">Delete</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <a href="/raw-materials/add" class="btn btn-success">Add Raw Material</a>
+        <h1>Raw Materials</h1>
+        <a th:href="@{/raw-materials/add}" class="btn btn-primary mb-3">Add Raw Materials</a>
+        <div class="table-responsive">
+            <table class="table align-items-center mb-0">
+                <thead>
+                    <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Current Stock</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Minimum Stock Level</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Supplier</th>
+                        <th class="text-secondary opacity-7"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="rawMaterials : ${rawMaterialsList}">
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.materialId}"></p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.materialName}"></p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.category}"></p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.currentStock}"></p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.minimumStockLevel}"></p>
+                        </td>
+                        <td>
+                            <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.supplier.supplierName}"></p>
+                        </td>
+                        <td class="align-middle">
+                            <a th:href="@{/rawmaterials/edit/{id}(id=${rawMaterials.materialId})}" class="text-secondary font-weight-bold text-xs me-2" data-toggle="tooltip" data-original-title="Edit raw material">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a th:href="@{/rawmaterials/delete/{id}(id=${rawMaterials.materialId})}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete raw material">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <script src="/js/bootstrap.bundle.min.js"></script>
     <footer class="footer pt-3  ">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">
@@ -547,7 +564,7 @@
 <script src="/js/core/bootstrap.min.js"></script>
 <script src="/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="/js/plugins/smooth-scrollbar.min.js"></script>
-<script src="/js/plugins/chartjs.min.js"></script>
+<script src="/js/plugins/chartjs.min.js"></script><script src="/js/bootstrap.bundle.min.js"></script>
 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlHjW5z2NV/6fiyzCprsk/Rg7ygoOBhbVGd5oVbb73FPpxmCQ9N+BfWI3Fe" crossorigin="anonymous"></script>
