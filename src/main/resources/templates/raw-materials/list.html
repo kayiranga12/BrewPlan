@@ -467,53 +467,61 @@
     </main>
     <div class="container mt-5">
         <h1>Raw Materials</h1>
-        <a th:href="@{/raw-materials/add}" class="btn btn-primary mb-3">Add Raw Materials</a>
-        <div class="table-responsive">
-            <table class="table align-items-center mb-0">
-                <thead>
-                    <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Current Stock</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Minimum Stock Level</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Supplier</th>
-                        <th class="text-secondary opacity-7"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="rawMaterials : ${rawMaterialsList}">
-                        <td>
-                            <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.materialId}"></p>
-                        </td>
-                        <td>
-                            <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.materialName}"></p>
-                        </td>
-                        <td>
-                            <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.category}"></p>
-                        </td>
-                        <td>
-                            <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.currentStock}"></p>
-                        </td>
-                        <td>
-                            <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.minimumStockLevel}"></p>
-                        </td>
-                        <td>
-                            <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.supplier.supplierName}"></p>
-                        </td>
-                        <td class="align-middle">
-                            <a th:href="@{/rawmaterials/edit/{id}(id=${rawMaterials.materialId})}" class="text-secondary font-weight-bold text-xs me-2" data-toggle="tooltip" data-original-title="Edit raw material">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <a th:href="@{/rawmaterials/delete/{id}(id=${rawMaterials.materialId})}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete raw material">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <a th:href="@{/raw-materials/add}" class="btn btn-primary mb-3">Add Raw Material</a>
+        <div class="card">
+            <div class="card-header pb-0">
+                <h6>Raw Materials Overview</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Current Stock</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Minimum Stock Level</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Supplier</th>
+                                <th class="text-secondary opacity-7"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="rawMaterials : ${rawMaterialsList}">
+                                <td>
+                                    <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.materialId}">1</p>
+                                </td>
+                                <td>
+                                    <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.materialName}">Material Name</p>
+                                </td>
+                                <td>
+                                    <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.category}">Category</p>
+                                </td>
+                                <td>
+                                    <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.currentStock}">Current Stock</p>
+                                </td>
+                                <td>
+                                    <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.minimumStockLevel}">Minimum Stock Level</p>
+                                </td>
+                                <td>
+                                    <p class="text-xs font-weight-bold mb-0" th:text="${rawMaterials.supplier.supplierName}">Supplier Name</p>
+                                </td>
+                                <td class="align-middle">
+                                    <a th:href="@{/rawmaterials/edit/{id}(id=${rawMaterials.materialId})}" class="text-secondary font-weight-bold text-xs me-2" data-toggle="tooltip" data-original-title="Edit material">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a th:href="@{/rawmaterials/delete/{id}(id=${rawMaterials.materialId})}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete material">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+
     <footer class="footer pt-3  ">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">

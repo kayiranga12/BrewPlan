@@ -465,36 +465,44 @@
             </div>
         </div>
     </main>
-    <!-- Form to add supplier data -->
-    <h1>Add Supplier</h1>
-    <form th:action="@{/suppliers/add}" th:object="${supplier}" method="post">
-        <div class="form-group">
-            <label for="supplierName">Supplier Name</label>
-            <input type="text" id="supplierName" th:field="*{supplierName}" class="form-control"/>
-            <div th:if="${#fields.hasErrors('supplierName')}" th:errors="*{supplierName}" class="text-danger"></div>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header pb-0" style="background-color: #40916c; color: white;">
+                <h6>Add Supplier</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <!-- Form to add supplier data -->
+                <form th:action="@{/suppliers/add}" th:object="${supplier}" method="post" class="p-3">
+                    <div class="form-group mb-3">
+                        <label for="supplierName" class="form-label">Supplier Name</label>
+                        <input type="text" id="supplierName" th:field="*{supplierName}" class="form-control form-control-sm"/>
+                        <div th:if="${#fields.hasErrors('supplierName')}" th:errors="*{supplierName}" class="text-danger"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="contactName" class="form-label">Contact Name</label>
+                        <input type="text" id="contactName" th:field="*{contactName}" class="form-control form-control-sm"/>
+                        <div th:if="${#fields.hasErrors('contactName')}" th:errors="*{contactName}" class="text-danger"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="contactEmail" class="form-label">Contact Email</label>
+                        <input type="email" id="contactEmail" th:field="*{contactEmail}" class="form-control form-control-sm"/>
+                        <div th:if="${#fields.hasErrors('contactEmail')}" th:errors="*{contactEmail}" class="text-danger"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="contactPhone" class="form-label">Contact Phone</label>
+                        <input type="text" id="contactPhone" th:field="*{contactPhone}" class="form-control form-control-sm"/>
+                        <div th:if="${#fields.hasErrors('contactPhone')}" th:errors="*{contactPhone}" class="text-danger"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" id="address" th:field="*{address}" class="form-control form-control-sm"/>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Add Supplier</button>
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="contactName">Contact Name</label>
-            <input type="text" id="contactName" th:field="*{contactName}" class="form-control"/>
-            <div th:if="${#fields.hasErrors('contactName')}" th:errors="*{contactName}" class="text-danger"></div>
-        </div>
-        <div class="form-group">
-            <label for="contactEmail">Contact Email</label>
-            <input type="email" id="contactEmail" th:field="*{contactEmail}" class="form-control"/>
-            <div th:if="${#fields.hasErrors('contactEmail')}" th:errors="*{contactEmail}" class="text-danger"></div>
-        </div>
-        <div class="form-group">
-            <label for="contactPhone">Contact Phone</label>
-            <input type="text" id="contactPhone" th:field="*{contactPhone}" class="form-control"/>
-            <div th:if="${#fields.hasErrors('contactPhone')}" th:errors="*{contactPhone}" class="text-danger"></div>
-        </div>
-        <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text" id="address" th:field="*{address}" class="form-control"/>
-        </div>
-        <button type="submit" class="btn btn-primary">Add Supplier</button>
-    </form>
     </div>
+
     <footer class="footer pt-3  ">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">
