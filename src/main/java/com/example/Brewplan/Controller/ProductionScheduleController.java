@@ -24,14 +24,14 @@ public class ProductionScheduleController {
         model.addAttribute("schedules", productionScheduleService.getAllSchedules());
         model.addAttribute("tasks", taskService.getAllTasks());
         model.addAttribute("schedule", new ProductionSchedule());
-        return "production-schedule/list";  // Name of the Thymeleaf template
+        return "production-schedule/list";
     }
 
     @GetMapping("/add")
     public String showAddForm(Model model) {
         model.addAttribute("schedule", new ProductionSchedule());
         model.addAttribute("tasks", taskService.getAllTasks());
-        return "production-schedule/add";  // Name of the Thymeleaf template for adding
+        return "production-schedule/add";
     }
 
     @PostMapping("/add")
@@ -45,10 +45,10 @@ public class ProductionScheduleController {
     @GetMapping("/edit/{id}")
     public String editSchedule(@PathVariable("id") Long id, Model model) {
         ProductionSchedule schedule = productionScheduleService.getScheduleById(id).orElseThrow(() -> new IllegalArgumentException("Invalid schedule Id:" + id));
-        schedule.setTaskId(schedule.getTask().getTaskId());  // Set taskId for form binding
+        schedule.setTaskId(schedule.getTask().getTaskId());
         model.addAttribute("schedule", schedule);
         model.addAttribute("tasks", taskService.getAllTasks());
-        return "production-schedule/edit";  // Name of the Thymeleaf template for editing
+        return "production-schedule/edit";
     }
 
     @PostMapping("/update/{id}")

@@ -123,10 +123,11 @@ public class RawMaterialsController {
         return "raw-materials/alerts";
     }
 
-    @GetMapping("/statistics")
-    public String getResourceUtilizationStatistics(Model model) {
-        Map<String, Integer> statistics = rawMaterialsService.getResourceUtilizationStatistics();
-        model.addAttribute("statistics", statistics);
-        return "raw-materials/statistics";
+    @GetMapping("/search")
+    @ResponseBody
+    public List<RawMaterials> searchRawMaterials(@RequestParam("query") String query) {
+        return rawMaterialsService.searchRawMaterials(query);
     }
+
+
 }

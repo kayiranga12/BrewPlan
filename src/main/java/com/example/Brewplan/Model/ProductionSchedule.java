@@ -11,25 +11,24 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "schedule")
+@Table(name = "production_schedule")
 public class ProductionSchedule {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long scheduleId;
 
+    private LocalDateTime scheduledStart;
+    private LocalDateTime scheduledEnd;
+    private LocalDateTime actualStart;
+    private LocalDateTime actualEnd;
+
     @ManyToOne
-    @JoinColumn(name = "task_id", nullable = false)
+    @JoinColumn(name = "task_id")
     private Task task;
 
     @Transient
-    private Long taskId;  // Add this field for form binding
+    private Long taskId; // For form binding
 
-    private LocalDateTime scheduledStart;
-
-    private LocalDateTime scheduledEnd;
-
-    private LocalDateTime actualStart;
-
-    private LocalDateTime actualEnd;
+    // Getters and Setters...
 }
+

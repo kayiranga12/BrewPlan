@@ -1,3 +1,4 @@
+// ProductionPlan.java
 package com.example.Brewplan.Model;
 
 import jakarta.persistence.*;
@@ -20,15 +21,27 @@ public class ProductionPlan {
     private String planName;
     private LocalDateTime startDate = LocalDateTime.now();
     private LocalDateTime endDate = LocalDateTime.now();
+    private String approvalComments;
+    private String approvalStatus;
 
     @Enumerated(EnumType.STRING)
     private Status status;
-    private LocalDateTime  createDate = LocalDateTime.now();
+    private LocalDateTime createDate = LocalDateTime.now();
+
+    private int plannedProduction;
+    private int actualProduction;
+    private int downtimeMinutes;
+    private int totalAvailableMinutes;
+
+    private int materialUsed;
+    private int laborHours;
+    private int machineUtilization;
+
     public enum Status {
         PENDING,
         COMPLETE,
-        ONGOING
+        ONGOING,
+        APPROVED,
+        REJECTED
     }
 }
-
-

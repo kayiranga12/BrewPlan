@@ -489,10 +489,11 @@
             </div>
         </div>
     </main>
+
     <div class="container mt-5">
         <div class="card shadow">
             <div class="card-header pb-0 bg-primary text-white">
-                <h1 class="text-uppercase">Raw Materials</h1>
+                <h2 class="text">Raw Materials</h2>
             </div>
             <div class="card-body">
                 <div class="d-flex justify-content-between mb-3">
@@ -505,7 +506,10 @@
                         </select>
                     </div>
                     <div>
+                        <div class="input-group">
+                        <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                         <input type="text" id="searchBar" class="form-control" placeholder="Search by Name">
+                        </div>
                     </div>
                     <div>
                         <a th:href="@{/raw-materials/add}" class="btn btn-success">Add Raw Material</a>
@@ -557,7 +561,6 @@
             </div>
         </div>
     </div>
-
 
 
     <footer class="footer pt-3  ">
@@ -622,8 +625,8 @@
 </script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const searchBar = document.getElementById('searchBar');
             const categoryFilter = document.getElementById('categoryFilter');
+            const searchBar = document.getElementById('searchBar');
             const table = document.getElementById('rawMaterialsTable');
             const rows = table.querySelectorAll('tbody tr');
             const paginationControls = document.getElementById('paginationControls');
@@ -669,16 +672,13 @@
                 });
             }
 
-            searchBar.addEventListener('keyup', filterTable);
-            categoryFilter.addEventListener('change', filterTable);
-
             function filterTable() {
-                const searchText = searchBar.value.toLowerCase();
-                const category = categoryFilter.value;
+                const category = categoryFilter.value.toLowerCase();
+                const searchQuery = searchBar.value.toLowerCase();
                 rows.forEach(row => {
                     const name = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-                    const rowCategory = row.querySelector('td:nth-child(3)').textContent;
-                    if ((name.includes(searchText) || !searchText) && (rowCategory === category || !category)) {
+                    const rowCategory = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                    if ((category === '' || rowCategory === category) && name.includes(searchQuery)) {
                         row.style.display = '';
                     } else {
                         row.style.display = 'none';
@@ -687,6 +687,9 @@
                 setupPagination();
                 displayRows(currentPage);
             }
+
+            categoryFilter.addEventListener('change', filterTable);
+            searchBar.addEventListener('input', filterTable);
 
             function exportTableToCSV(filename) {
                 const csv = [];
@@ -760,6 +763,7 @@
                 });
             });
         });
+
     </script>
 
     <script>

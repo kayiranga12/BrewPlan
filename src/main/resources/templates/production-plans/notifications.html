@@ -77,7 +77,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" th:href="@{/raw-materials}">
+                <a class="nav-link " th:href="@{/raw-materials}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
@@ -97,7 +97,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " th:href="@{/production-plans}">
+                <a class="nav-link active" th:href="@{/production-plans}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
@@ -332,9 +332,9 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Production Resources</li>
+                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Production Plan</li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Production Resources</h6>
+                <h6 class="font-weight-bolder mb-0">Production Plan</h6>
             </nav>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -442,53 +442,26 @@
         </div>
     </nav>
     <!-- End Navbar -->
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <div class="container mt-5">
-            <div class="card shadow">
-                <div class="card-header pb-0 bg-primary text-white">
-                    <h2 class="text-uppercase">Add Raw Material</h2>
-                </div>
-                <div class="card-body">
-                    <form th:action="@{/raw-materials/add}" th:object="${rawMaterials}" method="post">
-                        <div class="form-group mb-3">
-                            <label for="materialName">Material Name</label>
-                            <input type="text" id="materialName" th:field="*{materialName}" class="form-control"/>
-                            <div th:if="${#fields.hasErrors('materialName')}" th:errors="*{materialName}" class="text-danger"></div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="category">Category</label>
-                            <select id="category" th:field="*{category}" class="form-control">
-                                <option th:value="PACKAGE">PACKAGE</option>
-                                <option th:value="INGREDIENTS" >INGREDIENTS</option>
-                                <option th:value="MACHINE">MACHINE</option>
-                            </select>
-                            <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="text-danger"></div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="currentStock">Current Stock</label>
-                            <input type="number" id="currentStock" th:field="*{currentStock}" class="form-control"/>
-                            <div th:if="${#fields.hasErrors('currentStock')}" th:errors="*{currentStock}" class="text-danger"></div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="minimumStockLevel">Minimum Stock Level</label>
-                            <input type="number" id="minimumStockLevel" th:field="*{minimumStockLevel}" class="form-control"/>
-                            <div th:if="${#fields.hasErrors('minimumStockLevel')}" th:errors="*{minimumStockLevel}" class="text-danger"></div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="supplier">Supplier</label>
-                            <select id="supplier" th:field="*{supplier.supplierId}" class="form-control">
-                                <option th:each="supplier : ${suppliers}" th:value="${supplier.supplierId}" th:text="${supplier.supplierName}"></option>
-                            </select>
-                            <div th:if="${#fields.hasErrors('supplier')}" th:errors="*{supplier.supplierId}" class="text-danger"></div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add Raw Material</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </main>
 
+    <div class="container mt-5">
+        <h2>Notifications</h2>
 
+        <h3>Pending Approvals</h3>
+        <ul>
+            <li th:each="plan : ${pendingApprovals}">
+                <span th:text="${plan.planName}">Plan Name</span>
+            </li>
+        </ul>
+
+        <h3>Resource Shortages</h3>
+        <ul>
+            <li th:each="plan : ${resourceShortages}">
+                <span th:text="${plan.planName}">Plan Name</span>
+            </li>
+        </ul>
+
+        <!-- Add other notifications as necessary -->
+    </div>
 
     <footer class="footer pt-3  ">
         <div class="container-fluid">
@@ -513,6 +486,7 @@
             </div>
         </div>
     </footer>
+</main>
 <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
         <i class="fa fa-cog py-2"> </i>
@@ -520,7 +494,7 @@
     <div class="card shadow-lg ">
         <div class="card-header pb-0 pt-3 ">
             <div class="float-start">
-                <h5 class="mt-3 mb-0">BrewPlan Configurator</h5>
+                <h5 class="mt-3 mb-0">Soft UI Configurator</h5>
                 <p>See our dashboard options.</p>
             </div>
             <div class="float-end mt-4">
@@ -533,8 +507,6 @@
         <hr class="horizontal dark my-1">
     </div>
 </div>
-</main>
-<!--   Core JS Files   -->
 <script src="/js/core/popper.min.js"></script>
 <script src="/js/core/bootstrap.min.js"></script>
 <script src="/js/plugins/perfect-scrollbar.min.js"></script>
@@ -545,27 +517,32 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlHjW5z2NV/6fiyzCprsk/Rg7ygoOBhbVGd5oVbb73FPpxmCQ9N+BfWI3Fe" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgEPvWB51cAT+6M9E0C6KnN4VBmVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script>
-    var ctx = document.getElementById("chart-resources").getContext("2d");
+    var ctx = document.getElementById("chart-production-planning").getContext("2d");
 
     new Chart(ctx, {
-        type: "doughnut",
+        type: "bar",
         data: {
-            labels: ["Raw Materials", "Machinery", "Labor"],
+            labels: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"],
             datasets: [{
-                label: "Resources",
-                data: [50, 30, 20],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(75, 192, 192, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(75, 192, 192, 1)'
-                ],
-                borderWidth: 1
-            }]
+                label: "Product A",
+                backgroundColor: "#f96332",
+                data: [1000, 1500, 2000, 2500, 3000],
+            },
+                {
+                    label: "Product B",
+                    backgroundColor: "#f4c63d",
+                    data: [1500, 2000, 2500, 3000, 3500],
+                },
+                {
+                    label: "Product C",
+                    backgroundColor: "#6bd098",
+                    data: [2000, 2500, 3000, 3500, 4000],
+                },
+                {
+                    label: "Product D",
+                    backgroundColor: "#1f8ef1",
+                    data: [2500, 3000, 3500, 4000, 4500],
+                }]
         },
         options: {
             responsive: true,
@@ -574,6 +551,50 @@
                 legend: {
                     display: true,
                 }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index',
+            },
+            scales: {
+                y: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                    },
+                    ticks: {
+                        display: true,
+                        padding: 10,
+                        color: '#b2b9bf',
+                        font: {
+                            size: 12,
+                            family: "Open Sans",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+                x: {
+                    grid: {
+                        drawBorder: false,
+                        display: false,
+                        drawOnChartArea: false,
+                        drawTicks: false,
+                    },
+                    ticks: {
+                        display: true,
+                        padding: 20,
+                        color: '#b2b9bf',
+                        font: {
+                            size: 12,
+                            family: "Open Sans",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
             },
         },
     });

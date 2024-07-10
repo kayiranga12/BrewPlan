@@ -60,4 +60,11 @@ public class RawMaterialsService {
 
         return utilizationStats;
     }
+
+    public List<RawMaterials> searchRawMaterials(String query) {
+        return rawMaterialsRepository.findAll().stream()
+                .filter(material -> material.getMaterialName().toLowerCase().contains(query.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
 }
