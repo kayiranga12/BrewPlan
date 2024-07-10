@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class SupplierService {
 
@@ -46,6 +45,7 @@ public class SupplierService {
         supplierRepository.save(existingSupplier);
     }
 
+    public Supplier findBySupplierName(String supplierName) {
+        return supplierRepository.findBySupplierName(supplierName).orElseThrow(() -> new IllegalArgumentException("Supplier not found"));
+    }
 }
-
-

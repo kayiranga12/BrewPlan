@@ -34,4 +34,8 @@ public class RawMaterials {
         INGREDIENTS,
         MACHINE
     }
+
+    public boolean needsReplenishment() {
+        return currentStock < minimumStockLevel;
+    }
 }
