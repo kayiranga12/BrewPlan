@@ -444,63 +444,42 @@
     <!-- End Navbar -->
 
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <div class="container-fluid py-4">
-            <!-- Overview Section -->
-            <div class="row">
-                <div class="col-lg-12 mb-lg-0 mb-4">
-                    <div class="card z-index-2">
-                        <div class="card-header pb-0 pt-3 bg-transparent">
-                            <h6 class="text-capitalize">Production Scheduling Overview</h6>
-                            <p class="text-sm mb-0">
-                                <i class="fa fa-arrow-up text-success"></i>
-                                <span class="font-weight-bold">Production Schedules</span> for upcoming weeks
-                            </p>
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-header pb-0" style="background-color: #40916c; color: white;">
+                    <h6>Add Schedule</h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <form th:action="@{/production-schedule/add}" th:object="${schedule}" method="post" class="p-3">
+                        <div class="form-group mb-3">
+                            <label for="taskId" class="form-label">Task</label>
+                            <select id="taskId" th:field="*{task.taskId}" class="form-control form-control-sm" required>
+                                <option th:each="task : ${tasks}" th:value="${task.taskId}" th:text="${task.taskName}">Task</option>
+                            </select>
+                            <div th:if="${#fields.hasErrors('task.taskId')}" th:errors="*{task.taskId}" class="text-danger"></div>
                         </div>
-                        <div class="card-body p-3">
-                            <div class="chart">
-                                <canvas id="chart-production-scheduling" class="chart-canvas" height="400"></canvas>
-                            </div>
+                        <div class="form-group mb-3">
+                            <label for="scheduledStart" class="form-label">Scheduled Start</label>
+                            <input type="datetime-local" id="scheduledStart" th:field="*{scheduledStart}" class="form-control form-control-sm" required/>
                         </div>
-                    </div>
+                        <div class="form-group mb-3">
+                            <label for="scheduledEnd" class="form-label">Scheduled End</label>
+                            <input type="datetime-local" id="scheduledEnd" th:field="*{scheduledEnd}" class="form-control form-control-sm" required/>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="actualStart" class="form-label">Actual Start</label>
+                            <input type="datetime-local" id="actualStart" th:field="*{actualStart}" class="form-control form-control-sm"/>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="actualEnd" class="form-label">Actual End</label>
+                            <input type="datetime-local" id="actualEnd" th:field="*{actualEnd}" class="form-control form-control-sm"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Add Schedule</button>
+                    </form>
                 </div>
             </div>
         </div>
     </main>
-    <div class="container mt-5">
-        <div class="card">
-            <div class="card-header pb-0" style="background-color: #40916c; color: white;">
-                <h6>Add Schedule</h6>
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
-                <form th:action="@{/production-schedule/add}" th:object="${schedule}" method="post" class="p-3">
-                    <div class="form-group mb-3">
-                        <label for="taskId" class="form-label">Task</label>
-                        <select id="taskId" th:field="*{task.taskId}" class="form-control form-control-sm" required>
-                            <option th:each="task : ${tasks}" th:value="${task.taskId}" th:text="${task.taskName}">Task</option>
-                        </select>
-                        <div th:if="${#fields.hasErrors('task.taskId')}" th:errors="*{task.taskId}" class="text-danger"></div>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="scheduledStart" class="form-label">Scheduled Start</label>
-                        <input type="datetime-local" id="scheduledStart" th:field="*{scheduledStart}" class="form-control form-control-sm" required/>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="scheduledEnd" class="form-label">Scheduled End</label>
-                        <input type="datetime-local" id="scheduledEnd" th:field="*{scheduledEnd}" class="form-control form-control-sm" required/>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="actualStart" class="form-label">Actual Start</label>
-                        <input type="datetime-local" id="actualStart" th:field="*{actualStart}" class="form-control form-control-sm"/>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="actualEnd" class="form-label">Actual End</label>
-                        <input type="datetime-local" id="actualEnd" th:field="*{actualEnd}" class="form-control form-control-sm"/>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Add Schedule</button>
-                </form>
-            </div>
-        </div>
-    </div>
 
 
     <footer class="footer pt-3  ">

@@ -443,58 +443,38 @@
     </nav>
     <!-- End Navbar -->
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <div class="container-fluid py-4">
-            <!-- Overview Section -->
-            <div class="row">
-                <div class="col-lg-12 mb-lg-0 mb-4">
-                    <div class="card z-index-2">
-                        <div class="card-header pb-0 pt-3 bg-transparent">
-                            <h6 class="text-capitalize">Suppliers Overview</h6>
-                            <p class="text-sm mb-0">
-                                <i class="fa fa-arrow-up text-success"></i>
-                                <span class="font-weight-bold">Suppliers</span> information and management
-                            </p>
-                        </div>
-                        <div class="card-body p-3">
-                            <div class="chart">
-                                <canvas id="chart-suppliers" class="chart-canvas" height="400"></canvas>
-                            </div>
-                        </div>
-                    </div>
+        <div class="container mt-5">
+            <h1>Edit Supplier</h1>
+            <form th:action="@{/suppliers/edit/{id}(id=${supplier.supplierId})}" th:object="${supplier}" method="post">
+                <div class="form-group">
+                    <label for="supplierName">Supplier Name</label>
+                    <input type="text" id="supplierName" th:field="*{supplierName}" class="form-control"/>
+                    <div th:if="${#fields.hasErrors('supplierName')}" th:errors="*{supplierName}" class="text-danger"></div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="contactName">Contact Name</label>
+                    <input type="text" id="contactName" th:field="*{contactName}" class="form-control"/>
+                    <div th:if="${#fields.hasErrors('contactName')}" th:errors="*{contactName}" class="text-danger"></div>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Contact Email</label>
+                    <input type="email" id="contactEmail" th:field="*{contactEmail}" class="form-control"/>
+                    <div th:if="${#fields.hasErrors('contactEmail')}" th:errors="*{contactEmail}" class="text-danger"></div>
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Contact Phone</label>
+                    <input type="text" id="contactPhone" th:field="*{contactPhone}" class="form-control"/>
+                    <div th:if="${#fields.hasErrors('contactPhone')}" th:errors="*{contactPhone}" class="text-danger"></div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" th:field="*{address}" class="form-control"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Supplier</button>
+            </form>
         </div>
     </main>
-    <div class="container mt-5">
-        <h1>Edit Supplier</h1>
-        <form th:action="@{/suppliers/edit/{id}(id=${supplier.supplierId})}" th:object="${supplier}" method="post">
-            <div class="form-group">
-                <label for="supplierName">Supplier Name</label>
-                <input type="text" id="supplierName" th:field="*{supplierName}" class="form-control"/>
-                <div th:if="${#fields.hasErrors('supplierName')}" th:errors="*{supplierName}" class="text-danger"></div>
-            </div>
-            <div class="form-group">
-                <label for="contactName">Contact Name</label>
-                <input type="text" id="contactName" th:field="*{contactName}" class="form-control"/>
-                <div th:if="${#fields.hasErrors('contactName')}" th:errors="*{contactName}" class="text-danger"></div>
-            </div>
-            <div class="form-group">
-                <label for="contactEmail">Contact Email</label>
-                <input type="email" id="contactEmail" th:field="*{contactEmail}" class="form-control"/>
-                <div th:if="${#fields.hasErrors('contactEmail')}" th:errors="*{contactEmail}" class="text-danger"></div>
-            </div>
-            <div class="form-group">
-                <label for="contactPhone">Contact Phone</label>
-                <input type="text" id="contactPhone" th:field="*{contactPhone}" class="form-control"/>
-                <div th:if="${#fields.hasErrors('contactPhone')}" th:errors="*{contactPhone}" class="text-danger"></div>
-            </div>
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" id="address" th:field="*{address}" class="form-control"/>
-            </div>
-            <button type="submit" class="btn btn-primary">Update Supplier</button>
-        </form>
-    </div>
+
     <footer class="footer pt-3  ">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">

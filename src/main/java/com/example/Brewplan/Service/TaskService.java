@@ -1,4 +1,5 @@
 package com.example.Brewplan.Service;
+import com.example.Brewplan.Model.Supplier;
 import com.example.Brewplan.Model.Task;
 import com.example.Brewplan.Repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;

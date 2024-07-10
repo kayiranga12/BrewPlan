@@ -500,7 +500,7 @@
                                 <p class="text-xs font-weight-bold mb-0" th:text="${energyConsumption.unitOfMeasure}">Unit of Measure</p>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0" th:text="${#dates.format(energyConsumption.createdAt, 'yyyy-MM-dd HH:mm')}">Created At</p>
+                                <p class="text-xs font-weight-bold mb-0" th:text="${energyConsumption.createdAt}">Created At</p>
                             </td>
                             <td class="align-middle">
                                 <a th:href="@{/energy-consumptions/edit/{id}(id=${energyConsumption.energyConsumptionId})}" class="text-secondary font-weight-bold text-xs me-2" data-toggle="tooltip" data-original-title="Edit consumption">

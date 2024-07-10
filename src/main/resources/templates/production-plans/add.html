@@ -443,65 +443,45 @@
     </nav>
     <!-- End Navbar -->
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <div class="container-fluid py-4">
-            <!-- Overview Section -->
-            <div class="row">
-                <div class="col-lg-12 mb-lg-0 mb-4">
-                    <div class="card z-index-2">
-                        <div class="card-header pb-0 pt-3 bg-transparent">
-                            <h6 class="text-capitalize">Production Planning Overview</h6>
-                            <p class="text-sm mb-0">
-                                <i class="fa fa-arrow-up text-success"></i>
-                                <span class="font-weight-bold">Production Plans</span> for upcoming weeks
-                            </p>
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-header pb-0" style="background-color: #40916c; color: white;">
+                    <h6>Add Production Plan</h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <!-- Form to add production plan data -->
+                    <form th:action="@{/production-plans/add}" th:object="${productionPlan}" method="post" class="p-3">
+                        <div class="form-group mb-3">
+                            <label for="planName" class="form-label">Plan Name</label>
+                            <input type="text" id="planName" th:field="*{planName}" class="form-control form-control-sm"/>
+                            <div th:if="${#fields.hasErrors('planName')}" th:errors="*{planName}" class="text-danger"></div>
                         </div>
-                        <div class="card-body p-3">
-                            <div class="chart">
-                                <canvas id="chart-production-planning" class="chart-canvas" height="400"></canvas>
-                            </div>
+                        <div class="form-group mb-3">
+                            <label for="startDate" class="form-label">Start Date</label>
+                            <input type="datetime-local" id="startDate" th:field="*{startDate}" class="form-control form-control-sm"/>
+                            <div th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="text-danger"></div>
                         </div>
-                    </div>
+                        <div class="form-group mb-3">
+                            <label for="endDate" class="form-label">End Date</label>
+                            <input type="datetime-local" id="endDate" th:field="*{endDate}" class="form-control form-control-sm"/>
+                            <div th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}" class="text-danger"></div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="status" class="form-label">Status</label>
+                            <select id="status" th:field="*{status}" class="form-control form-control-sm">
+                                <option th:value="PENDING">Pending</option>
+                                <option th:value="COMPLETE">Complete</option>
+                                <option th:value="ONGOING">Ongoing</option>
+                            </select>
+                            <div th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="text-danger"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Add Production Plan</button>
+                    </form>
                 </div>
             </div>
         </div>
     </main>
-    <div class="container mt-5">
-        <div class="card">
-            <div class="card-header pb-0" style="background-color: #40916c; color: white;">
-                <h6>Add Production Plan</h6>
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
-                <!-- Form to add production plan data -->
-                <form th:action="@{/production-plans/add}" th:object="${productionPlan}" method="post" class="p-3">
-                    <div class="form-group mb-3">
-                        <label for="planName" class="form-label">Plan Name</label>
-                        <input type="text" id="planName" th:field="*{planName}" class="form-control form-control-sm"/>
-                        <div th:if="${#fields.hasErrors('planName')}" th:errors="*{planName}" class="text-danger"></div>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="startDate" class="form-label">Start Date</label>
-                        <input type="datetime-local" id="startDate" th:field="*{startDate}" class="form-control form-control-sm"/>
-                        <div th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="text-danger"></div>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="endDate" class="form-label">End Date</label>
-                        <input type="datetime-local" id="endDate" th:field="*{endDate}" class="form-control form-control-sm"/>
-                        <div th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}" class="text-danger"></div>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="status" class="form-label">Status</label>
-                        <select id="status" th:field="*{status}" class="form-control form-control-sm">
-                            <option th:value="PENDING">Pending</option>
-                            <option th:value="COMPLETE">Complete</option>
-                            <option th:value="ONGOING">Ongoing</option>
-                        </select>
-                        <div th:if="${#fields.hasErrors('status')}" th:errors="*{status}" class="text-danger"></div>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Add Production Plan</button>
-                </form>
-            </div>
-        </div>
-    </div>
+
 
 
     <footer class="footer pt-3  ">

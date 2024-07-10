@@ -443,65 +443,45 @@
     </nav>
     <!-- End Navbar -->
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <div class="container-fluid py-4">
-            <!-- Overview Section -->
-            <div class="row">
-                <div class="col-lg-12 mb-lg-0 mb-4">
-                    <div class="card z-index-2">
-                        <div class="card-header pb-0 pt-3 bg-transparent">
-                            <h6 class="text-capitalize">Suppliers Overview</h6>
-                            <p class="text-sm mb-0">
-                                <i class="fa fa-arrow-up text-success"></i>
-                                <span class="font-weight-bold">Suppliers</span> information and management
-                            </p>
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-header pb-0" style="background-color: #40916c; color: white;">
+                    <h6>Add Supplier</h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <!-- Form to add supplier data -->
+                    <form th:action="@{/suppliers/add}" th:object="${supplier}" method="post" class="p-3">
+                        <div class="form-group mb-3">
+                            <label for="supplierName" class="form-label">Supplier Name</label>
+                            <input type="text" id="supplierName" th:field="*{supplierName}" class="form-control form-control-sm"/>
+                            <div th:if="${#fields.hasErrors('supplierName')}" th:errors="*{supplierName}" class="text-danger"></div>
                         </div>
-                        <div class="card-body p-3">
-                            <div class="chart">
-                                <canvas id="chart-suppliers" class="chart-canvas" height="400"></canvas>
-                            </div>
+                        <div class="form-group mb-3">
+                            <label for="contactName" class="form-label">Contact Name</label>
+                            <input type="text" id="contactName" th:field="*{contactName}" class="form-control form-control-sm"/>
+                            <div th:if="${#fields.hasErrors('contactName')}" th:errors="*{contactName}" class="text-danger"></div>
                         </div>
-                    </div>
+                        <div class="form-group mb-3">
+                            <label for="contactEmail" class="form-label">Contact Email</label>
+                            <input type="email" id="contactEmail" th:field="*{contactEmail}" class="form-control form-control-sm"/>
+                            <div th:if="${#fields.hasErrors('contactEmail')}" th:errors="*{contactEmail}" class="text-danger"></div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="contactPhone" class="form-label">Contact Phone</label>
+                            <input type="text" id="contactPhone" th:field="*{contactPhone}" class="form-control form-control-sm"/>
+                            <div th:if="${#fields.hasErrors('contactPhone')}" th:errors="*{contactPhone}" class="text-danger"></div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" id="address" th:field="*{address}" class="form-control form-control-sm"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Add Supplier</button>
+                    </form>
                 </div>
             </div>
         </div>
     </main>
-    <div class="container mt-5">
-        <div class="card">
-            <div class="card-header pb-0" style="background-color: #40916c; color: white;">
-                <h6>Add Supplier</h6>
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
-                <!-- Form to add supplier data -->
-                <form th:action="@{/suppliers/add}" th:object="${supplier}" method="post" class="p-3">
-                    <div class="form-group mb-3">
-                        <label for="supplierName" class="form-label">Supplier Name</label>
-                        <input type="text" id="supplierName" th:field="*{supplierName}" class="form-control form-control-sm"/>
-                        <div th:if="${#fields.hasErrors('supplierName')}" th:errors="*{supplierName}" class="text-danger"></div>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="contactName" class="form-label">Contact Name</label>
-                        <input type="text" id="contactName" th:field="*{contactName}" class="form-control form-control-sm"/>
-                        <div th:if="${#fields.hasErrors('contactName')}" th:errors="*{contactName}" class="text-danger"></div>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="contactEmail" class="form-label">Contact Email</label>
-                        <input type="email" id="contactEmail" th:field="*{contactEmail}" class="form-control form-control-sm"/>
-                        <div th:if="${#fields.hasErrors('contactEmail')}" th:errors="*{contactEmail}" class="text-danger"></div>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="contactPhone" class="form-label">Contact Phone</label>
-                        <input type="text" id="contactPhone" th:field="*{contactPhone}" class="form-control form-control-sm"/>
-                        <div th:if="${#fields.hasErrors('contactPhone')}" th:errors="*{contactPhone}" class="text-danger"></div>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="address" class="form-label">Address</label>
-                        <input type="text" id="address" th:field="*{address}" class="form-control form-control-sm"/>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Add Supplier</button>
-                </form>
-            </div>
-        </div>
-    </div>
+
 
     <footer class="footer pt-3  ">
         <div class="container-fluid">

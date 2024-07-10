@@ -59,6 +59,7 @@ public class TaskController {
             model.addAttribute("productionPlans", productionPlanService.getAllProductionPlans());
             return "tasks/edit";
         }
+        service.deleteTask(id);
         service.saveTask(task);
         return "redirect:/tasks";
     }
