@@ -26,7 +26,7 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                 <div class="container-fluid pe-0">
-                    <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " th:href="@{/welcome}">
+                    <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " th:href="@{/}">
                         BrewPlan
                     </a>
                     <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,27 +39,21 @@
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav mx-auto ms-xl-auto me-xl-7">
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" href="../pages/dashboard.html">
+                                <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" th:href="@{/login}">
                                     <i class="fa fa-chart-pie opacity-6 text-dark me-1"></i>
                                     Dashboard
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link me-2" href="../pages/profile.html">
-                                    <i class="fa fa-user opacity-6 text-dark me-1"></i>
-                                    Profile
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link me-2" th:href="@{/login.html}">
+                                <a class="nav-link me-2" th:href="@{/login}">
                                     <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
-                                    Sign Up
+                                    Sign In
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link me-2" th:href="@{/signup}">
                                     <i class="fas fa-key opacity-6 text-dark me-1"></i>
-                                    Sign In
+                                    Sign Up
                                 </a>
                             </li>
                         </ul>
@@ -84,29 +78,26 @@
                                 <p class="mb-0">Enter your details to sign up</p>
                             </div>
                             <div class="card-body">
-                                <form action="/signup" method="post">
-                                    <label>Name</label>
+                                <form th:action="@{/signup}" th:object="${user}" method="post">
+                                    <label>Username</label>
                                     <div class="mb-3">
-                                        <input type="text" name="name" class="form-control" placeholder="Name" required>
+                                        <input type="text" th:field="*{username}" class="form-control" placeholder="Username" required>
+                                        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
                                     </div>
                                     <label>Email</label>
                                     <div class="mb-3">
-                                        <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                        <input type="email" th:field="*{email}" class="form-control" placeholder="Email" required>
+                                        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
                                     </div>
                                     <label>Password</label>
                                     <div class="mb-3">
-                                        <input type="password" name="password" class="form-control" placeholder="Password" required>
-                                    </div>
-                                    <label>Role</label>
-                                    <div class="mb-3">
-                                        <select name="role" class="form-control" required>
-                                            <option value="USER">User</option>
-                                            <option value="ADMIN">Admin</option>
-                                        </select>
+                                        <input type="password" th:field="*{password}" class="form-control" placeholder="Password" required>
+                                        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign Up</button>
                                     </div>
+                                    <div th:if="${userExists}" class="alert alert-danger">User already exists</div>
                                 </form>
                             </div>
                             <div class="card-footer text-center pt-0 px-lg-2 px-1">
