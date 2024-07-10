@@ -5,12 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "rawmaterials")
+@Table(name = "raw_materials")
 public class RawMaterials {
 
     @Id
@@ -36,8 +35,3 @@ public class RawMaterials {
         MACHINE
     }
 }
-
-
-
-
-

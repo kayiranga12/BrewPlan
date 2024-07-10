@@ -21,9 +21,15 @@ public class ProductionSchedule {
     @ManyToOne
     @JoinColumn(name = "task_id", nullable = false)
     private Task task;
-    private LocalDateTime scheduledStart = LocalDateTime.now();
-    private LocalDateTime scheduledEnd = LocalDateTime.now();
-    private LocalDateTime actualStart = LocalDateTime.now();
-    private LocalDateTime actualEnd = LocalDateTime.now();
 
+    @Transient
+    private Long taskId;  // Add this field for form binding
+
+    private LocalDateTime scheduledStart;
+
+    private LocalDateTime scheduledEnd;
+
+    private LocalDateTime actualStart;
+
+    private LocalDateTime actualEnd;
 }

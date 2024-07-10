@@ -11,12 +11,8 @@ import java.util.Optional;
 @Service
 public class RawMaterialsService {
 
-    private final RawMaterialsRepository rawMaterialsRepository;
-
     @Autowired
-    public RawMaterialsService(RawMaterialsRepository rawMaterialsRepository) {
-        this.rawMaterialsRepository = rawMaterialsRepository;
-    }
+    private RawMaterialsRepository rawMaterialsRepository;
 
     public List<RawMaterials> getAllRawMaterials() {
         return rawMaterialsRepository.findAll();
@@ -28,6 +24,11 @@ public class RawMaterialsService {
 
     public Optional<RawMaterials> getRawMaterialsById(Long id) {
         return rawMaterialsRepository.findById(id);
+    }
+
+    public void updateRawMaterial(Long id, RawMaterials updatedRawMaterials) {
+        updatedRawMaterials.setMaterialId(id);
+        rawMaterialsRepository.save(updatedRawMaterials);
     }
 
     public void deleteRawMaterials(Long id) {

@@ -466,7 +466,6 @@
             </div>
         </div>
     </main>
-
     <div class="container mt-5">
         <div class="card">
             <div class="card-header pb-0" style="background-color: #40916c; color: white;">
@@ -476,10 +475,10 @@
                 <form th:action="@{/production-schedule/update/{id}(id=${schedule.scheduleId})}" th:object="${schedule}" method="post" class="p-3">
                     <div class="form-group mb-3">
                         <label for="taskId" class="form-label">Task</label>
-                        <select id="taskId" th:field="*{task}" class="form-control form-control-sm" required>
-                            <option th:each="task : ${tasks}" th:value="${task}" th:text="${task.taskName}">Task</option>
+                        <select id="taskId" th:field="*{taskId}" class="form-control form-control-sm" required>
+                            <option th:each="task : ${tasks}" th:value="${task.taskId}" th:text="${task.taskName}">Task</option>
                         </select>
-                        <div th:if="${#fields.hasErrors('task')}" th:errors="*{task}" class="text-danger"></div>
+                        <div th:if="${#fields.hasErrors('taskId')}" th:errors="*{taskId}" class="text-danger"></div>
                     </div>
                     <div class="form-group mb-3">
                         <label for="scheduledStart" class="form-label">Scheduled Start</label>
@@ -503,7 +502,8 @@
         </div>
     </div>
 
-        <footer class="footer pt-3  ">
+
+    <footer class="footer pt-3  ">
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-lg-between">
                     <div class="col-lg-6 mb-lg-0 mb-4">

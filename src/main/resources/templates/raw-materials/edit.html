@@ -494,14 +494,16 @@
       </div>
       <div class="form-group">
         <label for="supplier">Supplier</label>
-        <select id="supplier" th:field="*{supplier}" class="form-control">
-          <option th:each="supplier : ${suppliers}" th:value="${supplier}" th:text="${supplier.supplierName}"></option>
+        <select id="supplier" th:field="*{supplier.supplierId}" class="form-control">
+          <option th:each="supplier : ${suppliers}" th:value="${supplier.supplierId}" th:text="${supplier.supplierName}"></option>
         </select>
         <div th:if="${#fields.hasErrors('supplier')}" th:errors="*{supplier}" class="text-danger"></div>
       </div>
       <button type="submit" class="btn btn-primary">Update Raw Material</button>
     </form>
   </div>
+
+
   <script src="/js/bootstrap.bundle.min.js"></script>
   <footer class="footer pt-3  ">
     <div class="container-fluid">

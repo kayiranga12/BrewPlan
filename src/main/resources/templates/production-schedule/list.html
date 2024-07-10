@@ -467,52 +467,59 @@
     </main>
 
     <div class="container mt-5">
-        <h1>Production Schedules</h1>
         <a th:href="@{/production-schedule/add}" class="btn btn-primary mb-3">Add Schedule</a>
-        <div class="table-responsive">
-            <table class="table align-items-center mb-0">
-                <thead>
-                <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Scheduled Start</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Scheduled End</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actual Start</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actual End</th>
-                    <th class="text-secondary opacity-7"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="schedule : ${schedules}">
-                    <td>
-                        <p class="text-xs font-weight-bold mb-0" th:text="${schedule.task.taskName}">Task Name</p>
-                    </td>
-                    <td>
-                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledStart != null}" th:text="${schedule.scheduledStart}"></p>
-                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledStart == null}">N/A</p>
-                    </td>
-                    <td>
-                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledEnd != null}" th:text="${schedule.scheduledEnd}"></p>
-                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledEnd == null}">N/A</p>
-                    </td>
-                    <td>
-                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualStart != null}" th:text="${schedule.actualStart}"></p>
-                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualStart == null}">N/A</p>
-                    </td>
-                    <td>
-                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualEnd != null}" th:text="${schedule.actualEnd}"></p>
-                        <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualEnd == null}">N/A</p>
-                    </td>
-                    <td class="align-middle">
-                        <a th:href="@{/production-schedule/edit/{id}(id=${schedule.scheduleId})}" class="text-secondary font-weight-bold text-xs me-2" data-toggle="tooltip" data-original-title="Edit schedule">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <a th:href="@{/production-schedule/delete/{id}(id=${schedule.scheduleId})}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete schedule">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="card">
+            <div class="card-header pb-0" style="background-color: #40916c; color: white;">
+                <h6>Production Schedules</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-3">
+
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Scheduled Start</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Scheduled End</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actual Start</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actual End</th>
+                            <th class="text-secondary opacity-7"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="schedule : ${schedules}">
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0" th:text="${schedule.task.taskName}">Task Name</p>
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledStart != null}" th:text="${#dates.format(schedule.scheduledStart, 'yyyy-MM-dd HH:mm')}"></p>
+                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledStart == null}">N/A</p>
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledEnd != null}" th:text="${#dates.format(schedule.scheduledEnd, 'yyyy-MM-dd HH:mm')}"></p>
+                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledEnd == null}">N/A</p>
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualStart != null}" th:text="${#dates.format(schedule.actualStart, 'yyyy-MM-dd HH:mm')}"></p>
+                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualStart == null}">N/A</p>
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualEnd != null}" th:text="${#dates.format(schedule.actualEnd, 'yyyy-MM-dd HH:mm')}"></p>
+                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualEnd == null}">N/A</p>
+                            </td>
+                            <td class="align-middle">
+                                <a th:href="@{/production-schedule/edit/{id}(id=${schedule.scheduleId})}" class="text-secondary font-weight-bold text-xs me-2" data-toggle="tooltip" data-original-title="Edit schedule">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a th:href="@{/production-schedule/delete/{id}(id=${schedule.scheduleId})}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete schedule">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 

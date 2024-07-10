@@ -16,15 +16,11 @@ import java.util.List;
 @RequestMapping("/raw-materials")
 public class RawMaterialsController {
 
-      private final RawMaterialsService rawMaterialsService;
-
-        @Autowired
-        private SupplierService supplierService;
+    @Autowired
+    private RawMaterialsService rawMaterialsService;
 
     @Autowired
-    public RawMaterialsController(RawMaterialsService rawMaterialsService) {
-        this.rawMaterialsService = rawMaterialsService;
-    }
+    private SupplierService supplierService;
 
     @GetMapping
     public String getAllRawMaterials(Model model) {
@@ -40,7 +36,6 @@ public class RawMaterialsController {
         return "raw-materials/add";
     }
 
-
     @PostMapping("/add")
     public String addRawMaterial(@Valid @ModelAttribute("rawMaterials") RawMaterials rawMaterial, BindingResult result, Model model) {
         if (result.hasErrors()) {
@@ -51,28 +46,29 @@ public class RawMaterialsController {
         return "redirect:/raw-materials";
     }
 
-
-    @GetMapping("/delete/{id}")
-    public String deleteRawMaterials(@PathVariable("id") Long id) {
-        rawMaterialsService.deleteRawMaterials(id);
-        return "redirect:/raw-materials";
-    }
-
     @GetMapping("/edit/{id}")
     public String showUpdateForm(@PathVariable("id") Long id, Model model) {
         RawMaterials rawMaterials = rawMaterialsService.getRawMaterialsById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid material Id:" + id));
         model.addAttribute("rawMaterials", rawMaterials);
+        model.addAttribute("suppliers", supplierService.getAllSuppliers());
         return "raw-materials/edit";
     }
 
     @PostMapping("/edit/{id}")
-    public String updateRawMaterials(@PathVariable("id") Long id, @Valid @ModelAttribute("rawMaterials") RawMaterials rawMaterials, BindingResult result) {
+    public String updateRawMaterials(@PathVariable("id") Long id, @Valid @ModelAttribute("rawMaterials") RawMaterials rawMaterials, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("suppliers", supplierService.getAllSuppliers());
             rawMaterials.setMaterialId(id);
             return "raw-materials/edit";
         }
-        rawMaterialsService.addRawMaterial(rawMaterials);
+        rawMaterialsService.updateRawMaterial(id, rawMaterials);
+        return "redirect:/raw-materials";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteRawMaterials(@PathVariable("id") Long id) {
+        rawMaterialsService.deleteRawMaterials(id);
         return "redirect:/raw-materials";
     }
 }
