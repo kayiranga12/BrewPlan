@@ -123,11 +123,6 @@ public class RawMaterialsController {
         return "raw-materials/alerts";
     }
 
-    @GetMapping("/search")
-    @ResponseBody
-    public List<RawMaterials> searchRawMaterials(@RequestParam("query") String query) {
-        return rawMaterialsService.searchRawMaterials(query);
-    }
 
 
 }

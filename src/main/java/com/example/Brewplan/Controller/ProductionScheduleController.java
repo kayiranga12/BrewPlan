@@ -1,13 +1,17 @@
 package com.example.Brewplan.Controller;
 
+import com.example.Brewplan.Model.ProductionPlan;
 import com.example.Brewplan.Model.ProductionSchedule;
 import com.example.Brewplan.Model.Task;
+import com.example.Brewplan.Service.ProductionPlanService;
 import com.example.Brewplan.Service.ProductionScheduleService;
 import com.example.Brewplan.Service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/production-schedule")
@@ -18,6 +22,9 @@ public class ProductionScheduleController {
 
     @Autowired
     private TaskService taskService;
+
+    @Autowired
+    private ProductionPlanService productionPlanService;
 
     @GetMapping
     public String getAllSchedules(Model model) {
@@ -64,5 +71,16 @@ public class ProductionScheduleController {
     public String deleteSchedule(@PathVariable("id") Long id) {
         productionScheduleService.deleteSchedule(id);
         return "redirect:/production-schedule";
+    }
+
+    @GetMapping("/notifications")
+    public String getNotifications(Model model) {
+        List<ProductionPlan> pendingApprovals = productionPlanService.getPendingApprovals();
+        List<ProductionPlan> resourceShortages = productionPlanService.getResourceShortages();
+        // Add other notifications as necessary
+
+        model.addAttribute("pendingApprovals", pendingApprovals);
+        model.addAttribute("resourceShortages", resourceShortages);
+        return "production-plans/notifications";
     }
 }

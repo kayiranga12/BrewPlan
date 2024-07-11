@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -26,6 +27,20 @@ public class SupplierController {
     public String getAllSuppliers(Model model) {
         List<Supplier> suppliers = supplierService.getAllSuppliers();
         model.addAttribute("suppliers", suppliers);
+
+        // Add dummy data for the graphs
+        List<String> months = Arrays.asList("January", "February", "March", "April", "May", "June");
+        List<Integer> onTimeDeliveries = Arrays.asList(80, 85, 90, 88, 92, 95);
+        List<Integer> delayedDeliveries = Arrays.asList(20, 15, 10, 12, 8, 5);
+        List<Integer> defectRates = Arrays.asList(5, 4, 6, 3, 5, 2);
+        List<Integer> orderFulfillmentAccuracies = Arrays.asList(95, 96, 94, 97, 95, 98);
+
+        model.addAttribute("months", months);
+        model.addAttribute("onTimeDeliveries", onTimeDeliveries);
+        model.addAttribute("delayedDeliveries", delayedDeliveries);
+        model.addAttribute("defectRates", defectRates);
+        model.addAttribute("orderFulfillmentAccuracies", orderFulfillmentAccuracies);
+
         return "suppliers/list";
     }
 
@@ -68,4 +83,3 @@ public class SupplierController {
         return "redirect:/suppliers";
     }
 }
-
