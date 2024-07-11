@@ -1,8 +1,10 @@
 package com.example.Brewplan.Controller;
 
 import com.example.Brewplan.Model.EnergyConsumption;
+import com.example.Brewplan.Model.ProductionSchedule;
 import com.example.Brewplan.Model.Task;
 import com.example.Brewplan.Service.EnergyConsumptionService;
+import com.example.Brewplan.Service.ProductionScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,8 @@ import java.util.stream.Collectors;
 public class WebController {
     @Autowired
     private EnergyConsumptionService energyConsumptionService;
+    @Autowired
+    private ProductionScheduleService productionScheduleService;
     @GetMapping
     public String index() {
         return "welcome";
@@ -49,10 +53,12 @@ public class WebController {
                         )
                 ));
 
+        List<ProductionSchedule> schedules = productionScheduleService.getAllSchedules();
+
         model.addAttribute("energyTypeCounts", energyTypeCounts);
         model.addAttribute("energyConsumptionData", energyConsumptionData);
         model.addAttribute("energyConsumptionByTask", energyConsumptionByTask);
+        model.addAttribute("schedules", schedules);
         return "dashboard";
     }
-
 }
