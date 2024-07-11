@@ -491,19 +491,19 @@
                                 <p class="text-xs font-weight-bold mb-0" th:text="${schedule.task.taskName}">Task Name</p>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledStart != null}" th:text="${#dates.format(schedule.scheduledStart, 'yyyy-MM-dd HH:mm')}"></p>
+                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledStart != null}" th:text="${schedule.scheduledStart}"></p>
                                 <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledStart == null}">N/A</p>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledEnd != null}" th:text="${#dates.format(schedule.scheduledEnd, 'yyyy-MM-dd HH:mm')}"></p>
+                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledEnd != null}" th:text="${schedule.scheduledEnd}"></p>
                                 <p class="text-xs font-weight-bold mb-0" th:if="${schedule.scheduledEnd == null}">N/A</p>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualStart != null}" th:text="${#dates.format(schedule.actualStart, 'yyyy-MM-dd HH:mm')}"></p>
+                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualStart != null}" th:text="${schedule.actualStart}"></p>
                                 <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualStart == null}">N/A</p>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualEnd != null}" th:text="${#dates.format(schedule.actualEnd, 'yyyy-MM-dd HH:mm')}"></p>
+                                <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualEnd != null}" th:text="${schedule.actualEnd}"></p>
                                 <p class="text-xs font-weight-bold mb-0" th:if="${schedule.actualEnd == null}">N/A</p>
                             </td>
                             <td class="align-middle">

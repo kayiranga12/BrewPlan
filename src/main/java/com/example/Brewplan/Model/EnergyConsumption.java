@@ -35,13 +35,13 @@ public class EnergyConsumption {
     public enum EnergyType {
         ELECTRICITY,
         GAS,
-        WATER
+        DIESEL,
     }
 
     public enum UnitOfMeasure {
         KWH,
         LITERS,
-        CUBIC_METERS
+        M3,
     }
 }
 
