@@ -266,7 +266,8 @@
 </aside>
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <nav class="navbar
+    navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -384,129 +385,27 @@
 
     <!-- Overview Section -->
     <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Production</p>
-                                    <h5 class="font-weight-bolder">
-                                        2,300
-                                    </h5>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                        since yesterday
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Daily Sales</p>
-                                    <h5 class="font-weight-bolder">
-                                        3,200
-                                    </h5>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                        since last week
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Stock Level</p>
-                                    <h5 class="font-weight-bolder">
-                                        1,200
-                                    </h5>
-                                    <p class="mb-0">
-                                        <span class="text-danger text-sm font-weight-bolder">-5%</span>
-                                        since yesterday
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Warehouse Occupation</p>
-                                    <h5 class="font-weight-bolder">
-                                        57%
-                                    </h5>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+7%</span>
-                                        since last month
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
-                <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Energy Consumption by Type Overview</h6>
-                    </div>
-                    <div class="card-body p-3">
-                        <div class="chart">
-                            <canvas id="energyTypeChart" class="chart-canvas" height="100"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5">
-                <div class="card z-index-2 h-100">
+                <div class="card z-index-2 h-95">
                     <div class="card-header pb-0 pt-3 bg-transparent">
                         <h6 class="text-capitalize">Energy Consumption by Task Overview</h6>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
                             <canvas id="energyConsumptionByTaskChart" class="chart-canvas" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 mb-lg-0 mb-4">
+                <div class="card z-index-2 h-95">
+                    <div class="card-header pb-0 pt-3 bg-transparent">
+                        <h6 class="text-capitalize">Energy Consumption by Type Overview</h6>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="chart">
+                            <canvas id="energyTypeChart" class="chart-canvas" height="100"></canvas>
                         </div>
                     </div>
                 </div>
@@ -531,7 +430,7 @@
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Gantt Chart</h6>
+                        <h6 class="text-capitalize">Project Timeline Overview</h6>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -543,7 +442,7 @@
             <div class="col-lg-5">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Schedule Adherence Chart</h6>
+                        <h6 class="text-capitalize">Task Timeliness Analysis Chart</h6>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -557,11 +456,66 @@
             <div class="col-lg-12">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Resource Utilization Chart</h6>
+                        <h6 class="text-capitalize">Resource Allocation Efficiency Chart</h6>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
                             <canvas id="resourceUtilizationChart" class="chart-canvas" height="100"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <div class="card z-index-2 h-100">
+                    <div class="card-header pb-0 pt-3 bg-transparent">
+                        <h6 class="text-capitalize">Raw Materials Stock Levels</h6>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="chart">
+                            <canvas id="rawMaterialsChart" class="chart-canvas" height="100"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-6">
+                <div class="card z-index-2 h-100">
+                    <div class="card-header pb-0 pt-3 bg-transparent">
+                        <h6 class="text-capitalize">Task Status Distribution Chart</h6>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="chart">
+                            <canvas id="taskStatusChart" class="chart-canvas" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card z-index-2 h-100">
+                    <div class="card-header pb-0 pt-3 bg-transparent">
+                        <h6 class="text-capitalize">Task Priority Distribution Chart</h6>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="chart">
+                            <canvas id="taskPriorityChart" class="chart-canvas" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <div class="card z-index-2 h-100">
+                    <div class="card-header pb-0 pt-3 bg-transparent">
+                        <h6 class="text-capitalize">Task Status by Priority</h6>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="chart">
+                            <canvas id="taskStatusByPriorityChart" class="chart-canvas" height="100"></canvas>
                         </div>
                     </div>
                 </div>
@@ -926,6 +880,217 @@ new Chart(ctx, {
     }
 });
 </script>
+
+<script th:inline="javascript">
+    var rawMaterials = /*[[${rawMaterials}]]*/ [];
+    console.log("Raw Materials:", rawMaterials); // Debugging line to verify data
+
+    var materialNames = rawMaterials.map(material => material.materialName);
+    var currentStocks = rawMaterials.map(material => material.currentStock);
+    var minimumStockLevels = rawMaterials.map(material => material.minimumStockLevel);
+
+    // Assign colors based on stock levels
+    var colors = currentStocks.map((stock, index) =>
+        stock < minimumStockLevels[index] ? 'rgba(255, 99, 132, 0.7)' : 'rgba(75, 192, 192, 0.7)'
+    );
+    var borderColors = currentStocks.map((stock, index) =>
+        stock < minimumStockLevels[index] ? 'rgba(255, 99, 132, 1)' : 'rgba(75, 192, 192, 1)'
+    );
+
+    var ctx = document.getElementById('rawMaterialsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: materialNames,
+            datasets: [
+                {
+                    label: 'Current Stock',
+                    data: currentStocks,
+                    backgroundColor: colors,
+                    borderColor: borderColors,
+                    borderWidth: 1
+                },
+                {
+                    label: 'Minimum Stock Level',
+                    data: minimumStockLevels,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    type: 'line' // Adding a line chart to visualize minimum stock level
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    stacked: false,
+                    title: {
+                        display: true,
+                        text: 'Raw Materials'
+                    }
+                },
+                y: {
+                    stacked: false,
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Stock Levels'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+<script th:inline="javascript">
+    var tasks = /*[[${tasks}]]*/ [];
+    var statusCounts = {
+        PENDING: 0,
+        COMPLETE: 0,
+        ONGOING: 0
+    };
+
+    tasks.forEach(task => {
+        statusCounts[task.status]++;
+    });
+
+    var ctxStatus = document.getElementById('taskStatusChart').getContext('2d');
+    new Chart(ctxStatus, {
+        type: 'pie',
+        data: {
+            labels: Object.keys(statusCounts),
+            datasets: [{
+                data: Object.values(statusCounts),
+                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                }
+            }
+        }
+    });
+</script>
+
+<script th:inline="javascript">
+    var priorityCounts = {
+        LOW: 0,
+        MEDIUM: 0,
+        HIGH: 0
+    };
+
+    tasks.forEach(task => {
+        priorityCounts[task.priority]++;
+    });
+
+    var ctxPriority = document.getElementById('taskPriorityChart').getContext('2d');
+    new Chart(ctxPriority, {
+        type: 'pie',
+        data: {
+            labels: Object.keys(priorityCounts),
+            datasets: [{
+                data: Object.values(priorityCounts),
+                backgroundColor: ['rgba(255, 206, 86, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+                borderColor: ['rgba(255, 206, 86, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                }
+            }
+        }
+    });
+</script>
+
+<script th:inline="javascript">
+    var priorityStatusCounts = {
+        LOW: { PENDING: 0, COMPLETE: 0, ONGOING: 0 },
+        MEDIUM: { PENDING: 0, COMPLETE: 0, ONGOING: 0 },
+        HIGH: { PENDING: 0, COMPLETE: 0, ONGOING: 0 }
+    };
+
+    tasks.forEach(task => {
+        priorityStatusCounts[task.priority][task.status]++;
+    });
+
+    var ctxStatusByPriority = document.getElementById('taskStatusByPriorityChart').getContext('2d');
+    new Chart(ctxStatusByPriority, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(priorityStatusCounts),
+            datasets: [{
+                label: 'Pending',
+                data: Object.values(priorityStatusCounts).map(status => status.PENDING),
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }, {
+                label: 'Complete',
+                data: Object.values(priorityStatusCounts).map(status => status.COMPLETE),
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }, {
+                label: 'Ongoing',
+                data: Object.values(priorityStatusCounts).map(status => status.ONGOING),
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    stacked: true,
+                    title: {
+                        display: true,
+                        text: 'Priority Levels'
+                    }
+                },
+                y: {
+                    stacked: true,
+                    title: {
+                        display: true,
+                        text: 'Number of Tasks'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                }
+            }
+        }
+    });
+</script>
+
 
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>

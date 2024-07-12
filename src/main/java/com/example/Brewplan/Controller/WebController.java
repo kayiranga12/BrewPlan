@@ -2,9 +2,12 @@ package com.example.Brewplan.Controller;
 
 import com.example.Brewplan.Model.EnergyConsumption;
 import com.example.Brewplan.Model.ProductionSchedule;
+import com.example.Brewplan.Model.RawMaterials;
 import com.example.Brewplan.Model.Task;
 import com.example.Brewplan.Service.EnergyConsumptionService;
 import com.example.Brewplan.Service.ProductionScheduleService;
+import com.example.Brewplan.Service.RawMaterialsService;
+import com.example.Brewplan.Service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +26,10 @@ public class WebController {
     private EnergyConsumptionService energyConsumptionService;
     @Autowired
     private ProductionScheduleService productionScheduleService;
+    @Autowired
+    private RawMaterialsService rawMaterialsService;
+    @Autowired
+    private TaskService taskService;
     @GetMapping
     public String index() {
         return "welcome";
@@ -54,11 +61,15 @@ public class WebController {
                 ));
 
         List<ProductionSchedule> schedules = productionScheduleService.getAllSchedules();
+        List<RawMaterials> rawMaterials = rawMaterialsService.getAllRawMaterials();
+        List<Task> tasks = taskService.getAllTasks();
 
         model.addAttribute("energyTypeCounts", energyTypeCounts);
         model.addAttribute("energyConsumptionData", energyConsumptionData);
         model.addAttribute("energyConsumptionByTask", energyConsumptionByTask);
         model.addAttribute("schedules", schedules);
+        model.addAttribute("rawMaterials", rawMaterials);
+        model.addAttribute("tasks", tasks);
         return "dashboard";
     }
 }
