@@ -1,13 +1,7 @@
 package com.example.Brewplan.Controller;
 
-import com.example.Brewplan.Model.EnergyConsumption;
-import com.example.Brewplan.Model.ProductionSchedule;
-import com.example.Brewplan.Model.RawMaterials;
-import com.example.Brewplan.Model.Task;
-import com.example.Brewplan.Service.EnergyConsumptionService;
-import com.example.Brewplan.Service.ProductionScheduleService;
-import com.example.Brewplan.Service.RawMaterialsService;
-import com.example.Brewplan.Service.TaskService;
+import com.example.Brewplan.Model.*;
+import com.example.Brewplan.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +24,8 @@ public class WebController {
     private RawMaterialsService rawMaterialsService;
     @Autowired
     private TaskService taskService;
+    @Autowired
+    private ResourceAllocationService resourceAllocationService;
     @GetMapping
     public String index() {
         return "welcome";
@@ -38,10 +34,8 @@ public class WebController {
     @GetMapping("/dashboard")
     public String dashboardPage(Model model) {
         List<EnergyConsumption> energyConsumptions = energyConsumptionService.getAllEnergyConsumptions();
-
         Map<String, Long> energyTypeCounts = energyConsumptions.stream()
                 .collect(Collectors.groupingBy(ec -> ec.getEnergyType().name(), Collectors.counting()));
-
         List<Map<String, Object>> energyConsumptionData = energyConsumptions.stream()
                 .map(ec -> {
                     Map<String, Object> map = new HashMap<>();
@@ -50,7 +44,6 @@ public class WebController {
                     return map;
                 })
                 .collect(Collectors.toList());
-
         Map<String, Map<String, Double>> energyConsumptionByTask = energyConsumptions.stream()
                 .collect(Collectors.groupingBy(
                         ec -> ec.getTask().getTaskName(),
@@ -59,10 +52,10 @@ public class WebController {
                                 Collectors.summingDouble(EnergyConsumption::getQuantity)
                         )
                 ));
-
         List<ProductionSchedule> schedules = productionScheduleService.getAllSchedules();
         List<RawMaterials> rawMaterials = rawMaterialsService.getAllRawMaterials();
         List<Task> tasks = taskService.getAllTasks();
+        List<ResourceAllocation> resourceAllocations = resourceAllocationService.getAllResourceAllocations();
 
         model.addAttribute("energyTypeCounts", energyTypeCounts);
         model.addAttribute("energyConsumptionData", energyConsumptionData);
@@ -70,6 +63,8 @@ public class WebController {
         model.addAttribute("schedules", schedules);
         model.addAttribute("rawMaterials", rawMaterials);
         model.addAttribute("tasks", tasks);
+        model.addAttribute("resourceAllocations", resourceAllocations);
         return "dashboard";
     }
+
 }
