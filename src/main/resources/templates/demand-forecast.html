@@ -450,115 +450,18 @@
                 <div class="col-lg-12 mb-lg-0 mb-4">
                     <div class="card z-index-2">
                         <div class="card-header pb-0 pt-3 bg-transparent">
-                            <h6 class="text-capitalize">Demand Forecasting Overview</h6>
-                            <p class="text-sm mb-0">
-                                <i class="fa fa-arrow-up text-success"></i>
-                                <span class="font-weight-bold">5% increase</span> in demand forecasting accuracy this year
-                            </p>
+                            <h6 class="text-capitalize">Demand Forecast</h6>
                         </div>
                         <div class="card-body p-3">
                             <div class="chart">
-                                <canvas id="chart-demand-forecast" class="chart-canvas" height="400"></canvas>
+                                <canvas id="chart-demand-forecast" class="chart-canvas" height="100"></canvas>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Forecast Details Section -->
-            <div class="row mt-4">
-                <div class="col-lg-6 mb-lg-0 mb-4">
-                    <div class="card z-index-2 h-100">
-                        <div class="card-header pb-0 pt-3 bg-transparent">
-                            <h6 class="text-capitalize">Weekly Forecast</h6>
-                            <p class="text-sm mb-0">
-                                <i class="fa fa-calendar text-info"></i>
-                                <span class="font-weight-bold">Week 1</span>
-                            </p>
-                        </div>
-                        <div class="card-body p-3">
-                            <ul class="list-group">
-                                <li class="list-group-item">Product A: 1000 units</li>
-                                <li class="list-group-item">Product B: 1500 units</li>
-                                <li class="list-group-item">Product C: 2000 units</li>
-                                <li class="list-group-item">Product D: 2500 units</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card z-index-2 h-100">
-                        <div class="card-header pb-0 pt-3 bg-transparent">
-                            <h6 class="text-capitalize">Monthly Forecast</h6>
-                            <p class="text-sm mb-0">
-                                <i class="fa fa-calendar text-info"></i>
-                                <span class="font-weight-bold">June 2024</span>
-                            </p>
-                        </div>
-                        <div class="card-body p-3">
-                            <ul class="list-group">
-                                <li class="list-group-item">Product A: 4000 units</li>
-                                <li class="list-group-item">Product B: 6000 units</li>
-                                <li class="list-group-item">Product C: 8000 units</li>
-                                <li class="list-group-item">Product D: 10000 units</li>
-                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <div class="container">
-        <h1>Demand Forecast</h1>
-        <!-- Form to add demand forecast data -->
-        <div class="card">
-            <div class="card-header">
-                <h5>Add Demand Forecast</h5>
-            </div>
-            <div class="card-body">
-                <form action="/add-demand-forecast" method="post">
-                    <div class="form-group">
-                        <label for="productName">Product Name</label>
-                        <input type="text" class="form-control" id="productName" name="productName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="forecastQuantity">Forecast Quantity</label>
-                        <input type="number" class="form-control" id="forecastQuantity" name="forecastQuantity" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="forecastPeriod">Forecast Period</label>
-                        <input type="text" class="form-control" id="forecastPeriod" name="forecastPeriod" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add Forecast</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Display the list of demand forecasts -->
-        <div class="card mt-4">
-            <div class="card-header">
-                <h5>Demand Forecasts</h5>
-            </div>
-            <div class="card-body">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Forecast Quantity</th>
-                        <th>Forecast Period</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="forecast : ${demandForecasts}">
-                        <td th:text="${forecast.productName}">Product Name</td>
-                        <td th:text="${forecast.forecastQuantity}">Forecast Quantity</td>
-                        <td th:text="${forecast.forecastPeriod}">Forecast Period</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
     <footer class="footer pt-3  ">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">
@@ -609,106 +512,50 @@
 <script src="/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="/js/plugins/chartjs.min.js"></script>
-<script>
+<script th:inline="javascript">
+    /* Retrieve demand forecast data from Thymeleaf model */
+    var demandForecasts = /*[[${demandForecasts}]]*/ [];
+    console.log('Forecast Data:', demandForecasts);
+
     var ctx = document.getElementById("chart-demand-forecast").getContext("2d");
 
+    /* Transform the forecast data for chart.js */
+    var productNames = demandForecasts.map(df => df.productName);
+    var forecastQuantities = demandForecasts.map(df => df.forecastQuantity);
+
+    /* Initialize chart.js bar chart */
     new Chart(ctx, {
-        type: "line",
+        type: "bar",
         data: {
-            labels: ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"],
+            labels: productNames,
             datasets: [{
-                label: "Product A",
-                borderColor: "#f96332",
-                backgroundColor: "#f96332",
-                data: [200, 300, 400, 500, 600],
-                fill: false,
-            },
-                {
-                    label: "Product B",
-                    borderColor: "#f4c63d",
-                    backgroundColor: "#f4c63d",
-                    data: [150, 250, 350, 450, 550],
-                    fill: false,
-                },
-                {
-                    label: "Product C",
-                    borderColor: "#6bd098",
-                    backgroundColor: "#6bd098",
-                    data: [100, 200, 300, 400, 500],
-                    fill: false,
-                },
-                {
-                    label: "Product D",
-                    borderColor: "#1f8ef1",
-                    backgroundColor: "#1f8ef1",
-                    data: [50, 150, 250, 350, 450],
-                    fill: false,
-                }]
+                label: "Forecast Quantity",
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+                data: forecastQuantities,
+            }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: true,
-                }
-            },
-            interaction: {
-                intersect: false,
-                mode: 'index',
-            },
             scales: {
-                y: {
-                    grid: {
-                        drawBorder: false,
-                        display: true,
-                        drawOnChartArea: true,
-                        drawTicks: false,
-                    },
-                    ticks: {
-                        display: true,
-                        padding: 10,
-                        color: '#b2b9bf',
-                        font: {
-                            size: 12,
-                            family: "Open Sans",
-                            style: 'normal',
-                            lineHeight: 2
-                        },
-                    }
-                },
                 x: {
-                    grid: {
-                        drawBorder: false,
-                        display: false,
-                        drawOnChartArea: false,
-                        drawTicks: false,
-                    },
-                    ticks: {
+                    title: {
                         display: true,
-                        padding: 20,
-                        color: '#b2b9bf',
-                        font: {
-                            size: 12,
-                            family: "Open Sans",
-                            style: 'normal',
-                            lineHeight: 2
-                        },
+                        text: 'Product Name'
                     }
                 },
-            },
-        },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Forecast Quantity'
+                    }
+                }
+            }
+        }
     });
 </script>
-<script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-            damping: '0.5'
-        }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-</script>
+
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

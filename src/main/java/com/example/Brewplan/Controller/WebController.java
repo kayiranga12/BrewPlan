@@ -26,9 +26,19 @@ public class WebController {
     private TaskService taskService;
     @Autowired
     private ResourceAllocationService resourceAllocationService;
+    @Autowired
+    private DemandForecastService demandForecastService;
     @GetMapping
     public String index() {
         return "welcome";
+    }
+    @GetMapping("/demand-forecast")
+    public String demand(Model model) {
+        List<DemandForecast> demandForecasts = demandForecastService.getAllForecasts();
+        model.addAttribute("demandForecasts", demandForecasts);
+        // Add print statements to debug
+        System.out.println("Forecast Data Sent to Frontend: " + demandForecasts);
+        return "demand-forecast";
     }
 
     @GetMapping("/dashboard")
