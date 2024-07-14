@@ -15,8 +15,8 @@ public class DemandForecastController {
     private DemandForecastService demandForecastService;
 
     @PostMapping
-    public DemandForecast addForecast(@RequestBody DemandForecast demandForecast) {
-        return demandForecastService.saveForecast(demandForecast);
+    public List<DemandForecast> addForecasts(@RequestBody List<DemandForecast> demandForecasts) {
+        return demandForecastService.saveAllForecasts(demandForecasts);
     }
 
     @GetMapping

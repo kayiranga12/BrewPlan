@@ -454,7 +454,7 @@
                         </div>
                         <div class="card-body p-3">
                             <div class="chart">
-                                <canvas id="chart-demand-forecast" class="chart-canvas" height="100"></canvas>
+                                <canvas id="chart-demand-forecast" class="chart-canvas" height="200"></canvas>
                             </div>
                         </div>
                     </div>
@@ -512,6 +512,7 @@
 <script src="/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="/js/plugins/chartjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 <script th:inline="javascript">
     /* Retrieve demand forecast data from Thymeleaf model */
     var demandForecasts = /*[[${demandForecasts}]]*/ [];
@@ -523,8 +524,47 @@
     var productNames = demandForecasts.map(df => df.productName);
     var forecastQuantities = demandForecasts.map(df => df.forecastQuantity);
 
+    /* Load product images (assuming you have a way to map product names to image URLs) */
+    var productImages = productNames.map(productName => {
+        var img = new Image();
+        img.src = `/img/${productName}.png`; // Adjust the path as needed
+        img.onerror = function() {
+            console.error('Failed to load image:', img.src);
+        };
+        return img;
+    });
+
+    /* Custom plugin to draw images */
+    const imagePlugin = {
+        id: 'imagePlugin',
+        beforeDraw(chart, args, options) {
+            const { ctx, chartArea: { top, bottom, left, right, width, height } } = chart;
+            chart.data.labels.forEach((label, index) => {
+                const image = productImages[index];
+                const meta = chart.getDatasetMeta(0);
+                const dataPoint = meta.data[index];
+
+                if (image.complete && image.naturalWidth !== 0) {
+                    const imageWidth = 50;  // Set the desired width
+                    const imageHeight = 50; // Set the desired height
+                    const x = dataPoint.x - (imageWidth / 2);
+                    const y = dataPoint.y - imageHeight - 5; // Position the image above the bar
+                    ctx.drawImage(image, x, y, imageWidth, imageHeight);
+                } else {
+                    image.onload = function() {
+                        if (image.complete && image.naturalWidth !== 0) {
+                            const x = dataPoint.x - (image.width / 2);
+                            const y = dataPoint.y - image.height - 5;
+                            ctx.drawImage(image, x, y, 30, 30); // Use fixed width and height
+                        }
+                    };
+                }
+            });
+        }
+    };
+
     /* Initialize chart.js bar chart */
-    new Chart(ctx, {
+    var chart = new Chart(ctx, {
         type: "bar",
         data: {
             labels: productNames,
@@ -551,8 +591,14 @@
                         text: 'Forecast Quantity'
                     }
                 }
+            },
+            plugins: {
+                datalabels: {
+                    display: false
+                }
             }
-        }
+        },
+        plugins: [imagePlugin]
     });
 </script>
 

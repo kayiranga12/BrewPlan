@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DemandForecastRepository extends JpaRepository<DemandForecast, Long> {
+    void deleteAll();
 }

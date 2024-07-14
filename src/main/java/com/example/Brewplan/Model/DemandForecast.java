@@ -22,12 +22,4 @@ public class DemandForecast {
     private int forecastQuantity;
     private String forecastPeriod;
 
-    @ElementCollection
-    private List<Integer> actualSales;
-
-    @ElementCollection
-    private List<Integer> forecastValues;
-
-    @ElementCollection
-    private List<String> dates;
 }

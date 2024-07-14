@@ -20,4 +20,13 @@ public class DemandForecastService {
     public List<DemandForecast> getAllForecasts() {
         return demandForecastRepository.findAll();
     }
+
+    public void deleteAllForecasts() {
+        demandForecastRepository.deleteAll();
+    }
+
+    public List<DemandForecast> saveAllForecasts(List<DemandForecast> demandForecasts) {
+        deleteAllForecasts();
+        return demandForecastRepository.saveAll(demandForecasts);
+    }
 }
