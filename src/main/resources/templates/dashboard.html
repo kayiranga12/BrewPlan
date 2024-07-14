@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
     <link rel="icon" type="image/png" href="/img/favicon.png">
     <title>
-        Soft UI Dashboard by Creative Tim
+        Dashboard
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -221,27 +221,6 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link " th:href="@{/dashboard}">
-                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>customer-support</title>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                    <g transform="translate(1716.000000, 291.000000)">
-                                        <g transform="translate(1.000000, 0.000000)">
-                                            <path class="color-background opacity-6" d="M45,0 L26,0 C25.447,0 25,0.447 25,1 L25,20 C25,20.379 25.214,20.725 25.553,20.895 C25.694,20.965 25.848,21 26,21 C26.212,21 26.424,20.933 26.6,20.8 L34.333,15 L45,15 C45.553,15 46,14.553 46,14 L46,1 C46,0.447 45.553,0 45,0 Z"></path>
-                                            <path class="color-background" d="M22.883,32.86 C20.761,32.012 17.324,31 13,31 C8.676,31 5.239,32.012 3.116,32.86 C1.224,33.619 0,35.438 0,37.494 L0,41 C0,41.553 0.447,42 1,42 L25,42 C25.553,42 26,41.553 26,41 L26,37.494 C26,35.438 24.776,33.619 22.883,32.86 Z"></path>
-                                            <path class="color-background" d="M13,28 C17.432,28 21,22.529 21,18 C21,13.589 17.411,10 13,10 C8.589,10 5,13.589 5,18 C5,22.529 8.568,28 13,28 Z"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                    <span class="nav-link-text ms-1">Profile</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link " th:href="@{/logout}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/1999/xlink">
@@ -388,8 +367,18 @@
         <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-95">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
+                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
                         <h6 class="text-capitalize">Energy Consumption by Task Overview</h6>
+                        <div class="btn-group">
+                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-download"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionByTaskChart', 'png')">PNG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionByTaskChart', 'jpeg')">JPEG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionByTaskChart', 'webp')">WEBP</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -400,8 +389,18 @@
             </div>
             <div class="col-lg-5 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-95">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
+                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
                         <h6 class="text-capitalize">Energy Consumption by Type Overview</h6>
+                        <div class="btn-group">
+                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-download"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('energyTypeChart', 'png')">PNG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('energyTypeChart', 'jpeg')">JPEG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('energyTypeChart', 'webp')">WEBP</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -414,8 +413,18 @@
         <div class="row mt-4">
             <div class="col-lg-12">
                 <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
+                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
                         <h6 class="text-capitalize">Energy Consumption Over Time</h6>
+                        <div class="btn-group">
+                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-download"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionLineChart', 'png')">PNG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionLineChart', 'jpeg')">JPEG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionLineChart', 'webp')">WEBP</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -425,12 +434,21 @@
                 </div>
             </div>
         </div>
-
         <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
+                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
                         <h6 class="text-capitalize">Project Timeline Overview</h6>
+                        <div class="btn-group">
+                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-download"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('ganttChart', 'png')">PNG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('ganttChart', 'jpeg')">JPEG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('ganttChart', 'webp')">WEBP</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -441,8 +459,18 @@
             </div>
             <div class="col-lg-5">
                 <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
+                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
                         <h6 class="text-capitalize">Task Timeliness Analysis Chart</h6>
+                        <div class="btn-group">
+                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-download"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('scheduleAdherenceChart', 'png')">PNG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('scheduleAdherenceChart', 'jpeg')">JPEG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('scheduleAdherenceChart', 'webp')">WEBP</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -455,8 +483,18 @@
         <div class="row mt-4">
             <div class="col-lg-12">
                 <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
+                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
                         <h6 class="text-capitalize">Resource Allocation Efficiency Chart</h6>
+                        <div class="btn-group">
+                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-download"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceUtilizationChart', 'png')">PNG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceUtilizationChart', 'jpeg')">JPEG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceUtilizationChart', 'webp')">WEBP</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -466,12 +504,21 @@
                 </div>
             </div>
         </div>
-
         <div class="row mt-4">
             <div class="col-lg-12">
                 <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
+                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
                         <h6 class="text-capitalize">Raw Materials Stock Levels</h6>
+                        <div class="btn-group">
+                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-download"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('rawMaterialsChart', 'png')">PNG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('rawMaterialsChart', 'jpeg')">JPEG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('rawMaterialsChart', 'webp')">WEBP</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -484,8 +531,18 @@
         <div class="row mt-4">
             <div class="col-lg-6">
                 <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
+                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
                         <h6 class="text-capitalize">Task Status Distribution Chart</h6>
+                        <div class="btn-group">
+                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-download"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('taskStatusChart', 'png')">PNG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('taskStatusChart', 'jpeg')">JPEG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('taskStatusChart', 'webp')">WEBP</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -496,8 +553,18 @@
             </div>
             <div class="col-lg-6">
                 <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
+                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
                         <h6 class="text-capitalize">Task Priority Distribution Chart</h6>
+                        <div class="btn-group">
+                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-download"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('taskPriorityChart', 'png')">PNG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('taskPriorityChart', 'jpeg')">JPEG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('taskPriorityChart', 'webp')">WEBP</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -510,8 +577,18 @@
         <div class="row mt-4">
             <div class="col-lg-12">
                 <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
+                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
                         <h6 class="text-capitalize">Task Status by Priority</h6>
+                        <div class="btn-group">
+                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-download"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('taskStatusByPriorityChart', 'png')">PNG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('taskStatusByPriorityChart', 'jpeg')">JPEG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('taskStatusByPriorityChart', 'webp')">WEBP</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -521,12 +598,21 @@
                 </div>
             </div>
         </div>
-
         <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-95">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
+                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
                         <h6 class="text-capitalize">Resource Allocation by Task Overview</h6>
+                        <div class="btn-group">
+                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-download"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationByTaskChart', 'png')">PNG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationByTaskChart', 'jpeg')">JPEG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationByTaskChart', 'webp')">WEBP</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -537,8 +623,18 @@
             </div>
             <div class="col-lg-5 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-95">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
+                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
                         <h6 class="text-capitalize">Resource Usage Overview</h6>
+                        <div class="btn-group">
+                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-download"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceUsageOverviewChart', 'png')">PNG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceUsageOverviewChart', 'jpeg')">JPEG</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceUsageOverviewChart', 'webp')">WEBP</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card-body p-3">
                         <div class="chart">
@@ -548,10 +644,8 @@
                 </div>
             </div>
         </div>
-
     </div>
     <!-- End Overview Section -->
-
 
     <footer class="footer pt-3  ">
         <div class="container-fluid">
@@ -604,6 +698,8 @@
 <script src="/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="/js/plugins/chartjs.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/frappe-gantt@0.5.0/dist/frappe-gantt.css">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.7/dist/html2canvas.min.js"></script>
+
 
 <script th:inline="javascript">
     var energyTypeCounts = /*[[${energyTypeCounts}]]*/ {};
@@ -1255,6 +1351,47 @@ new Chart(ctx, {
             }
         }
     });
+</script>
+
+<script th:inline="javascript">
+    function downloadChart(chartId, format) {
+        const chart = document.getElementById(chartId);
+        const link = document.createElement('a');
+
+        if (chartId === 'ganttChart') {
+            html2canvas(chart).then(canvas => {
+                if (format === 'jpeg' || format === 'webp') {
+                    const tempCanvas = document.createElement('canvas');
+                    const context = tempCanvas.getContext('2d');
+                    tempCanvas.width = canvas.width;
+                    tempCanvas.height = canvas.height;
+                    context.fillStyle = '#fff'; // Set the background to white
+                    context.fillRect(0, 0, canvas.width, canvas.height);
+                    context.drawImage(canvas, 0, 0);
+                    link.href = tempCanvas.toDataURL(`image/${format}`);
+                } else {
+                    link.href = canvas.toDataURL(`image/${format}`);
+                }
+                link.download = `${chartId}.${format}`;
+                link.click();
+            });
+        } else {
+            if (format === 'jpeg' || format === 'webp') {
+                const tempCanvas = document.createElement('canvas');
+                const context = tempCanvas.getContext('2d');
+                tempCanvas.width = chart.width;
+                tempCanvas.height = chart.height;
+                context.fillStyle = '#fff'; // Set the background to white
+                context.fillRect(0, 0, chart.width, chart.height);
+                context.drawImage(chart, 0, 0);
+                link.href = tempCanvas.toDataURL(`image/${format}`);
+            } else {
+                link.href = chart.toDataURL(`image/${format}`);
+            }
+            link.download = `${chartId}.${format}`;
+            link.click();
+        }
+    }
 </script>
 
 <!-- Github buttons -->
