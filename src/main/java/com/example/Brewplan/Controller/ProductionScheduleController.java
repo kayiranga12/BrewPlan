@@ -1,14 +1,13 @@
 package com.example.Brewplan.Controller;
 
-import com.example.Brewplan.Model.ProductionPlan;
 import com.example.Brewplan.Model.ProductionSchedule;
-import com.example.Brewplan.Model.Task;
 import com.example.Brewplan.Service.ProductionPlanService;
 import com.example.Brewplan.Service.ProductionScheduleService;
-import com.example.Brewplan.Service.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,66 +20,57 @@ public class ProductionScheduleController {
     private ProductionScheduleService productionScheduleService;
 
     @Autowired
-    private TaskService taskService;
-
-    @Autowired
     private ProductionPlanService productionPlanService;
 
     @GetMapping
-    public String getAllSchedules(Model model) {
-        model.addAttribute("schedules", productionScheduleService.getAllSchedules());
-        model.addAttribute("tasks", taskService.getAllTasks());
-        model.addAttribute("schedule", new ProductionSchedule());
+    public String listAll(Model model) {
+        List<ProductionSchedule> productionSchedules = productionScheduleService.getAllProductionSchedules();
+        model.addAttribute("productionSchedules", productionSchedules);
         return "production-schedule/list";
     }
 
     @GetMapping("/add")
     public String showAddForm(Model model) {
-        model.addAttribute("schedule", new ProductionSchedule());
-        model.addAttribute("tasks", taskService.getAllTasks());
+        model.addAttribute("productionSchedule", new ProductionSchedule());
+        model.addAttribute("productionPlans", productionPlanService.getAllProductionPlans());
         return "production-schedule/add";
     }
 
     @PostMapping("/add")
-    public String addSchedule(@ModelAttribute ProductionSchedule schedule) {
-        Task task = taskService.getTaskById(schedule.getTaskId()).orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + schedule.getTaskId()));
-        schedule.setTask(task);
-        productionScheduleService.saveSchedule(schedule);
+    public String addSchedule(@Valid @ModelAttribute("productionSchedule") ProductionSchedule productionSchedule, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("productionPlans", productionPlanService.getAllProductionPlans());
+            return "production-schedule/add";
+        }
+        productionScheduleService.saveProductionSchedule(productionSchedule);
         return "redirect:/production-schedule";
     }
 
     @GetMapping("/edit/{id}")
-    public String editSchedule(@PathVariable("id") Long id, Model model) {
-        ProductionSchedule schedule = productionScheduleService.getScheduleById(id).orElseThrow(() -> new IllegalArgumentException("Invalid schedule Id:" + id));
-        schedule.setTaskId(schedule.getTask().getTaskId());
-        model.addAttribute("schedule", schedule);
-        model.addAttribute("tasks", taskService.getAllTasks());
+    public String showEditForm(@PathVariable("id") Long id, Model model) {
+        ProductionSchedule productionSchedule = productionScheduleService.getProductionScheduleById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid production schedule Id:" + id));
+        model.addAttribute("productionSchedule", productionSchedule);
+        model.addAttribute("productionPlans", productionPlanService.getAllProductionPlans());
         return "production-schedule/edit";
     }
 
-    @PostMapping("/update/{id}")
-    public String updateSchedule(@PathVariable("id") Long id, @ModelAttribute ProductionSchedule schedule) {
-        Task task = taskService.getTaskById(schedule.getTaskId()).orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + schedule.getTaskId()));
-        schedule.setTask(task);
-        schedule.setScheduleId(id);
-        productionScheduleService.saveSchedule(schedule);
+    @PostMapping("/edit/{id}")
+    public String updateProductionSchedule(@PathVariable("id") Long id, @Valid @ModelAttribute("productionSchedule") ProductionSchedule productionSchedule, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            productionSchedule.setScheduleId(id);
+            model.addAttribute("productionPlans", productionPlanService.getAllProductionPlans());
+            return "production-schedule/edit";
+        }
+        productionScheduleService.saveProductionSchedule(productionSchedule);
         return "redirect:/production-schedule";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteSchedule(@PathVariable("id") Long id) {
-        productionScheduleService.deleteSchedule(id);
+    public String deleteProductionSchedule(@PathVariable("id") Long id, Model model) {
+        ProductionSchedule productionSchedule = productionScheduleService.getProductionScheduleById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid production schedule Id:" + id));
+        productionScheduleService.deleteProductionSchedule(id);
         return "redirect:/production-schedule";
-    }
-
-    @GetMapping("/notifications")
-    public String getNotifications(Model model) {
-        List<ProductionPlan> pendingApprovals = productionPlanService.getPendingApprovals();
-        List<ProductionPlan> resourceShortages = productionPlanService.getResourceShortages();
-        // Add other notifications as necessary
-
-        model.addAttribute("pendingApprovals", pendingApprovals);
-        model.addAttribute("resourceShortages", resourceShortages);
-        return "production-plans/notifications";
     }
 }

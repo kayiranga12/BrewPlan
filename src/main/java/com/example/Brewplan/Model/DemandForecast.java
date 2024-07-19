@@ -17,7 +17,6 @@ public class DemandForecast {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String productName;
     private int forecastQuantity;
     private String forecastPeriod;

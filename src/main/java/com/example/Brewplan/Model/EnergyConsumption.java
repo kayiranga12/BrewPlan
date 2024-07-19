@@ -16,33 +16,13 @@ public class EnergyConsumption {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long energyConsumptionId;
+    private Long id;
+
+    private String productName;
+    private LocalDateTime recordDate;
+    private double energyUsed; // Energy used in kWh
 
     @ManyToOne
-    @JoinColumn(name = "task_id", nullable = false)
-    private Task task;
-
-    @Enumerated(EnumType.STRING)
-    private EnergyType energyType;
-
-    private Double quantity;
-
-    @Enumerated(EnumType.STRING)
-    private UnitOfMeasure unitOfMeasure;
-
-    private LocalDateTime createdAt = LocalDateTime.now();
-
-    public enum EnergyType {
-        ELECTRICITY,
-        GAS,
-        DIESEL,
-    }
-
-    public enum UnitOfMeasure {
-        KWH,
-        LITERS,
-        M3,
-    }
+    @JoinColumn(name = "production_plan_id", nullable = false)
+    private ProductionPlan productionPlan;
 }
-
-

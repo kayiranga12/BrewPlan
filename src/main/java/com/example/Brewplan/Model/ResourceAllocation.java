@@ -17,10 +17,11 @@ public class ResourceAllocation {
     private Long allocationId;
 
     @ManyToOne
-    @JoinColumn(name = "task_id", nullable = false)
-    private Task task;
+    @JoinColumn(name = "production_plan_id", nullable = false)
+    private ProductionPlan productionPlan;
 
-    @ManyToOne
-    @JoinColumn(name = "material_id", nullable = false)
-    private RawMaterials rawMaterials;  // Changed field name to match the form field
+    private String resourceName;
+    private int allocatedQuantity;
+    private String resourceType; // New field for resource type
+    private String resourceStatus; // New field for resource status
 }

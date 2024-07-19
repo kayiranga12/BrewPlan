@@ -21,10 +21,6 @@ public class WebController {
     @Autowired
     private ProductionScheduleService productionScheduleService;
     @Autowired
-    private RawMaterialsService rawMaterialsService;
-    @Autowired
-    private TaskService taskService;
-    @Autowired
     private ResourceAllocationService resourceAllocationService;
     @Autowired
     private DemandForecastService demandForecastService;
@@ -39,42 +35,6 @@ public class WebController {
         // Add print statements to debug
         System.out.println("Forecast Data Sent to Frontend: " + demandForecasts);
         return "demand-forecast";
-    }
-
-    @GetMapping("/dashboard")
-    public String dashboardPage(Model model) {
-        List<EnergyConsumption> energyConsumptions = energyConsumptionService.getAllEnergyConsumptions();
-        Map<String, Long> energyTypeCounts = energyConsumptions.stream()
-                .collect(Collectors.groupingBy(ec -> ec.getEnergyType().name(), Collectors.counting()));
-        List<Map<String, Object>> energyConsumptionData = energyConsumptions.stream()
-                .map(ec -> {
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("date", ec.getCreatedAt().toString());
-                    map.put("value", ec.getQuantity());
-                    return map;
-                })
-                .collect(Collectors.toList());
-        Map<String, Map<String, Double>> energyConsumptionByTask = energyConsumptions.stream()
-                .collect(Collectors.groupingBy(
-                        ec -> ec.getTask().getTaskName(),
-                        Collectors.groupingBy(
-                                ec -> ec.getEnergyType().name(),
-                                Collectors.summingDouble(EnergyConsumption::getQuantity)
-                        )
-                ));
-        List<ProductionSchedule> schedules = productionScheduleService.getAllSchedules();
-        List<RawMaterials> rawMaterials = rawMaterialsService.getAllRawMaterials();
-        List<Task> tasks = taskService.getAllTasks();
-        List<ResourceAllocation> resourceAllocations = resourceAllocationService.getAllResourceAllocations();
-
-        model.addAttribute("energyTypeCounts", energyTypeCounts);
-        model.addAttribute("energyConsumptionData", energyConsumptionData);
-        model.addAttribute("energyConsumptionByTask", energyConsumptionByTask);
-        model.addAttribute("schedules", schedules);
-        model.addAttribute("rawMaterials", rawMaterials);
-        model.addAttribute("tasks", tasks);
-        model.addAttribute("resourceAllocations", resourceAllocations);
-        return "dashboard";
     }
 
 }

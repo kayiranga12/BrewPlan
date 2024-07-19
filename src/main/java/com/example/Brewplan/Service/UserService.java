@@ -2,38 +2,62 @@ package com.example.Brewplan.Service;
 
 import com.example.Brewplan.Model.User;
 import com.example.Brewplan.Repository.UserRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
-
     @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    private UserRepository userRepository;
+
+    @PostConstruct
+    public void init() {
+        if (!userRepository.findByUsername("admin").isPresent()) {
+            User admin = new User();
+            admin.setUsername("kayiranga");
+            admin.setEmail("kayiranga420@gmail.com");
+            admin.setPassword("1234");
+            admin.setRole("ADMIN");
+            userRepository.save(admin);
+        }
     }
 
-    public User registerUser(User user) {
-        return userRepository.save(user);
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
-    public Optional<User> findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public Optional<User> getUserById(Long id) {
+        return userRepository.findById(id);
     }
 
-    public Optional<User> findByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public void saveUser(User user) {
+        userRepository.save(user);
     }
 
-    public boolean checkIfUserExists(String username, String email) {
-        return userRepository.findByUsername(username).isPresent() || userRepository.findByEmail(email).isPresent();
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 
-    public Optional<User> validateUser(String email, String password) {
-        return userRepository.findByEmail(email).filter(user -> user.getPassword().equals(password));
+    public boolean userExists(String username) {
+        return userRepository.findByUsername(username).isPresent();
+    }
+
+    public User authenticate(String email, String password) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user.isPresent() && user.get().getPassword().equals(password)) {
+            return user.get();
+        }
+        return null;
+    }
+
+    public void updateUserRole(Long id, String role) {
+        User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        user.setRole(role);
+        userRepository.save(user);
     }
 }

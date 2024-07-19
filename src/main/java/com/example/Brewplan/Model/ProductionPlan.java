@@ -1,4 +1,3 @@
-// ProductionPlan.java
 package com.example.Brewplan.Model;
 
 import jakarta.persistence.*;
@@ -18,30 +17,21 @@ public class ProductionPlan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long planId;
-    private String planName;
-    private LocalDateTime startDate = LocalDateTime.now();
-    private LocalDateTime endDate = LocalDateTime.now();
-    private String approvalComments;
-    private String approvalStatus;
+    private String productName;
+    private int plannedQuantity;
+    private int actualQuantity;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+    private String shiftTiming; // New field for shift timing
+    private int dailyTarget; // New field for daily targets
+    private String plannedDowntime; // New field for planned downtime
 
     @Enumerated(EnumType.STRING)
     private Status status;
-    private LocalDateTime createDate = LocalDateTime.now();
-
-    private int plannedProduction;
-    private int actualProduction;
-    private int downtimeMinutes;
-    private int totalAvailableMinutes;
-
-    private int materialUsed;
-    private int laborHours;
-    private int machineUtilization;
 
     public enum Status {
-        PENDING,
-        COMPLETE,
-        ONGOING,
-        APPROVED,
-        REJECTED
+        PLANNED,
+        IN_PROGRESS,
+        COMPLETED
     }
 }

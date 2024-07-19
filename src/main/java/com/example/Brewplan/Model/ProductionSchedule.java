@@ -23,12 +23,6 @@ public class ProductionSchedule {
     private LocalDateTime actualEnd;
 
     @ManyToOne
-    @JoinColumn(name = "task_id")
-    private Task task;
-
-    @Transient
-    private Long taskId; // For form binding
-
-    // Getters and Setters...
+    @JoinColumn(name = "plan_id", nullable = false)
+    private ProductionPlan productionPlan;
 }
-

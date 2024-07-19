@@ -8,26 +8,25 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class EnergyConsumptionService {
 
     @Autowired
-    private EnergyConsumptionRepository repository;
+    private EnergyConsumptionRepository energyConsumptionRepository;
 
     public List<EnergyConsumption> getAllEnergyConsumptions() {
-        return repository.findAll();
+        return energyConsumptionRepository.findAll();
     }
 
     public Optional<EnergyConsumption> getEnergyConsumptionById(Long id) {
-        return repository.findById(id);
+        return energyConsumptionRepository.findById(id);
     }
 
-    public EnergyConsumption saveEnergyConsumption(EnergyConsumption energyConsumption) {
-        return repository.save(energyConsumption);
+    public void saveEnergyConsumption(EnergyConsumption energyConsumption) {
+        energyConsumptionRepository.save(energyConsumption);
     }
 
     public void deleteEnergyConsumption(Long id) {
-        repository.deleteById(id);
+        energyConsumptionRepository.deleteById(id);
     }
 }

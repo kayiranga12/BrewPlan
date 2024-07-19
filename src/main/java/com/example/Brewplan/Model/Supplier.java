@@ -19,21 +19,4 @@ public class Supplier {
     private String contactName;
     private String contactEmail;
     private String contactPhone;
-    private String address;
-    private int onTimeDeliveryRate;
-    private int defectRate;
-    private int orderFulfillmentAccuracy;
-    private int rating;
-
-    // Getters and setters omitted for brevity
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    // Other getters and setters
 }

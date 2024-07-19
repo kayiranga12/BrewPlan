@@ -10672,7 +10672,7 @@ fieldset:disabled .btn {
 }
 
 .bg-gray-100 {
-  background-color: #e0f8ed  !important;
+  background-color: #f1f6f3 !important;
 }
 
 .bg-gray-200 {
@@ -21022,7 +21022,7 @@ fieldset:disabled .btn {
 }
 
 .card.card-background.card-background-mask-info:after {
-  background-image: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%);
+  background-image: linear-gradient(310deg, #358506 0%, #044604 100%);
   opacity: .85;
 }
 
@@ -21726,7 +21726,7 @@ label,
 }
 
 .bg-gradient-info {
-  background-image: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%);
+  background-image: linear-gradient(310deg, rgba(11, 87, 43, 0.8) 0%, rgba(43, 97, 42, 0.8) 100%);
 }
 
 .bg-gradient-warning {
@@ -23806,7 +23806,7 @@ html {
 .pagination.pagination-info .page-item.active>.page-link,
 .pagination.pagination-info .page-item.active>.page-link:focus,
 .pagination.pagination-info .page-item.active>.page-link:hover {
-  background-image: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%);
+  background-image: linear-gradient(310deg, #0b4f04 0%, #3a8c06 100%);
   border: none;
   color: #fff;
 }
@@ -24974,7 +24974,7 @@ p {
 }
 
 .text-gradient.text-info {
-  background-image: linear-gradient(310deg, #2152FF, #21D4FD);
+  background-image: linear-gradient(310deg, #0e5203, #358506);
 }
 
 .text-gradient.text-success {

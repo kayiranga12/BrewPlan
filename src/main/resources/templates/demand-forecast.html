@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <link rel="icon" type="image/png" href="/img/heineken-draught-keg.png">
     <title>
-        Soft UI Dashboard by Creative Tim
+        BrewPlan
     </title>
     <!--     Fonts and icons     -->
     <link href="/https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -28,9 +28,9 @@
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html " target="_blank">
+        <a class="navbar-brand m-0" th:href="@{/dashboard} " target="_blank">
             <img src="/img/bralirwa-plc-logo-11B0913D9B-seeklogo.com.png" class="navbar-brand-img h-100" alt="main_logo">
-<!--            <span class="ms-1 font-weight-bold">BrewPlan</span>-->
+            <!--            <span class="ms-1 font-weight-bold">BrewPlan</span>-->
         </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -66,34 +66,14 @@
                                     <g transform="translate(1716.000000, 291.000000)">
                                         <g id="office" transform="translate(153.000000, 2.000000)">
                                             <path class="color-background opacity-6" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
-                                            <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
+                                            <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
                                         </g>
                                     </g>
                                 </g>
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Demand Forecasting</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " th:href="@{/raw-materials}">
-                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>office</title>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                    <g transform="translate(1716.000000, 291.000000)">
-                                        <g id="office" transform="translate(153.000000, 2.000000)">
-                                            <path class="color-background opacity-6" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
-                                            <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                    <span class="nav-link-text ms-1">Production Resources</span>
+                    <span class="nav-link-text ms-1">Demand Forecast</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -106,7 +86,7 @@
                                     <g transform="translate(1716.000000, 291.000000)">
                                         <g id="office" transform="translate(153.000000, 2.000000)">
                                             <path class="color-background opacity-6" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
-                                            <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
+                                            <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
                                         </g>
                                     </g>
                                 </g>
@@ -126,7 +106,7 @@
                                     <g transform="translate(1716.000000, 291.000000)">
                                         <g id="office" transform="translate(153.000000, 2.000000)">
                                             <path class="color-background opacity-6" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
-                                            <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
+                                            <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
                                         </g>
                                     </g>
                                 </g>
@@ -137,7 +117,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " th:href="@{/resource-allocation}">
+                <a class="nav-link " th:href="@{/resource-allocations}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
@@ -156,9 +136,8 @@
                     <span class="nav-link-text ms-1">Resource Allocation</span>
                 </a>
             </li>
-
             <li class="nav-item">
-                <a class="nav-link " th:href="@{/suppliers}">
+                <a class="nav-link " th:href="@{/batches}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
@@ -174,13 +153,73 @@
                             </g>
                         </svg>
                     </div>
+                    <span class="nav-link-text ms-1">Batch Tracking</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " th:href="@{/inventory}">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/1999/xlink">
+                            <title>office</title>
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                    <g transform="translate(1716.000000, 291.000000)">
+                                        <g id="office" transform="translate(153.000000, 2.000000)">
+                                            <path class="color-background opacity-6" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
+                                            <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <span class="nav-link-text ms-1">Inventory</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " th:href="@{/quality-control}">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/1999/xlink">
+                            <title>office</title>
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                    <g transform="translate(1716.000000, 291.000000)">
+                                        <g id="office" transform="translate(153.000000, 2.000000)">
+                                            <path class="color-background opacity-6" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
+                                            <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <span class="nav-link-text ms-1">Quality Control</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " th:href="@{/suppliers}">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>office</title>
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                    <g transform="translate(1716.000000, 291.000000)">
+                                        <g id="office" transform="translate(153.000000, 2.000000)">
+                                            <path class="color-background opacity-6" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
+                                            <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
                     <span class="nav-link-text ms-1">Suppliers</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " th:href="@{/energy-consumptions}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/1999/xlink">
                             <title>office</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -197,12 +236,11 @@
                     <span class="nav-link-text ms-1">Energy Consumption</span>
                 </a>
             </li>
-
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link " th:href="@{/logout}">
+                <a class="nav-link " th:href="@{/profile}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>customer-support</title>
@@ -219,11 +257,11 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Sign Out</span>
+                    <span class="nav-link-text ms-1">Profile</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " th:href="@{/dashboard}">
+                <a class="nav-link " th:href="@{/login}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>document</title>
@@ -243,7 +281,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " th:href="@{/dashboard}">
+                <a class="nav-link " th:href="@{/signup}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>spaceship</title>
@@ -267,6 +305,7 @@
         </ul>
     </div>
 </aside>
+
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -274,9 +313,9 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Demand Forecast</li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+                <h6 class="font-weight-bolder mb-0">Demand Forecast</h6>
             </nav>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -385,14 +424,40 @@
     </nav>
     <!-- End Navbar -->
 
+<!--    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">-->
+<!--        <div class="container-fluid py-4">-->
+<!--            &lt;!&ndash; Overview Section &ndash;&gt;-->
+<!--            <div class="row">-->
+<!--                <div class="col-lg-12 mb-lg-0 mb-4">-->
+<!--                    <div class="card z-index-2">-->
+<!--                        <div class="card-header pb-0 pt-3 bg-transparent">-->
+<!--                            <h6 class="text-capitalize">Demand Forecast</h6>-->
+<!--                        </div>-->
+<!--                        <div class="card-body p-3">-->
+<!--                            <div class="chart">-->
+<!--                                <canvas id="chart-demand-forecast" class="chart-canvas" height="200"></canvas>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </main>-->
+
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <div class="container-fluid py-4">
             <!-- Overview Section -->
             <div class="row">
-                <div class="col-lg-12 mb-lg-0 mb-4">
+                <!-- Demand Forecast Chart -->
+                <div class="col-lg-8 mb-lg-0 mb-4">
                     <div class="card z-index-2">
                         <div class="card-header pb-0 pt-3 bg-transparent">
                             <h6 class="text-capitalize">Demand Forecast</h6>
+                            <div class="d-flex justify-content-between">
+                                <input type="date" id="start-date" class="form-control" style="width: 150px;" />
+                                <input type="date" id="end-date" class="form-control" style="width: 150px;" />
+                                <button class="btn btn-primary" onclick="filterData()">Filter</button>
+                            </div>
                         </div>
                         <div class="card-body p-3">
                             <div class="chart">
@@ -401,9 +466,62 @@
                         </div>
                     </div>
                 </div>
+                <!-- Demand Forecast Table -->
+                <div class="col-lg-4 mb-lg-0 mb-4">
+                    <div class="card z-index-2">
+                        <div class="card-header pb-0 pt-3 bg-transparent">
+                            <h6 class="text-capitalize">Forecast Data</h6>
+                            <button class="btn btn-success" onclick="exportTableToCSV('forecast-data.csv')">Export to CSV</button>
+                        </div>
+                        <div class="card-body p-3">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Forecast Quantity</th>
+                                </tr>
+                                </thead>
+                                <tbody id="forecast-data">
+                                <!-- Data will be dynamically inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Additional Charts Section -->
+            <div class="row mt-4">
+                <!-- Line Chart for Trends -->
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                    <div class="card z-index-2">
+                        <div class="card-header pb-0 pt-3 bg-transparent">
+                            <h6 class="text-capitalize">Trends Over Time</h6>
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="chart">
+                                <canvas id="chart-trends" class="chart-canvas" height="200"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pie Chart for Product Distribution -->
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                    <div class="card z-index-2">
+                        <div class="card-header pb-0 pt-3 bg-transparent">
+                            <h6 class="text-capitalize">Product Distribution</h6>
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="chart">
+                                <canvas id="chart-distribution" class="chart-canvas" height="200"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
+
+
     <footer class="footer pt-3  ">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">
@@ -432,10 +550,10 @@
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
         <i class="fa fa-cog py-2"> </i>
     </a>
-    <div class="card shadow-lg ">
-        <div class="card-header pb-0 pt-3 ">
+    <div class="card shadow-lg">
+        <div class="card-header pb-0 pt-3">
             <div class="float-start">
-                <h5 class="mt-3 mb-0">Soft UI Configurator</h5>
+                <h5 class="mt-3 mb-0">Brew Plan</h5>
                 <p>See our dashboard options.</p>
             </div>
             <div class="float-end mt-4">
@@ -446,8 +564,49 @@
             <!-- End Toggle Button -->
         </div>
         <hr class="horizontal dark my-1">
+        <div class="card-body pt-sm-3 pt-0">
+            <!-- Sidebar Color -->
+            <div>
+                <h6 class="mb-0">Sidebar Color</h6>
+            </div>
+            <a href="javascript:void(0)" class="switch-trigger background-color">
+                <div class="badge-colors my-2 text-start">
+                    <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
+                    <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+                    <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+                    <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+                    <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+                    <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
+                </div>
+            </a>
+            <!-- Sidebar Backgrounds -->
+            <div class="mt-3">
+                <h6 class="mb-0">Sidenav Type</h6>
+                <p class="text-sm">Choose between 2 different sidenav types.</p>
+            </div>
+            <div class="d-flex">
+                <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
+                <button class="btn bg-gradient-light px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
+            </div>
+            <!-- Navbar Fixed -->
+            <div class="mt-3 d-flex">
+                <h6 class="mb-0">Navbar Fixed</h6>
+                <div class="form-check form-switch ps-0 ms-auto my-auto">
+                    <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
+                </div>
+            </div>
+            <hr class="horizontal dark my-sm-4">
+            <div class="mt-2 d-flex">
+                <h6 class="mb-0">Light / Dark Mode</h6>
+                <div class="form-check form-switch ps-0 ms-auto my-auto">
+                    <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-mode-toggle" onclick="toggleDarkMode(this)">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
 <!--   Core JS Files   -->
 <script src="/js/core/popper.min.js"></script>
 <script src="/js/core/bootstrap.min.js"></script>
@@ -455,6 +614,10 @@
 <script src="/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="/js/plugins/chartjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlHjW5z2NV/6fiyzCprsk/Rg7ygoOBhbVGd5oVbb73FPpxmCQ9N+BfWI3Fe" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgEPvWB51cAT+6M9E0C6KnN4VBmVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script th:inline="javascript">
     /* Retrieve demand forecast data from Thymeleaf model */
     var demandForecasts = /*[[${demandForecasts}]]*/ [];
@@ -542,6 +705,176 @@
         },
         plugins: [imagePlugin]
     });
+</script>
+<script>
+    // Change Sidebar Color
+    function sidebarColor(element) {
+        var color = element.getAttribute("data-color");
+        document.querySelector(".sidenav").setAttribute("data-color", color);
+        document.querySelectorAll(".badge.filter").forEach(function(el) {
+            el.classList.remove("active");
+        });
+        element.classList.add("active");
+    }
+
+    // Change Sidebar Type
+    function sidebarType(element) {
+        var type = element.getAttribute("data-class");
+        var body = document.querySelector("body");
+        var classes = ["bg-gradient-dark", "bg-transparent"];
+        body.classList.remove(...classes);
+        body.classList.add(type);
+        document.querySelectorAll(".btn.bg-gradient-dark, .btn.bg-gradient-light").forEach(function(el) {
+            el.classList.remove("active");
+        });
+        element.classList.add("active");
+    }
+
+    // Toggle Navbar Fixed
+    function navbarFixed(element) {
+        if (element.checked) {
+            document.querySelector("nav.navbar").classList.add("fixed-top");
+        } else {
+            document.querySelector("nav.navbar").classList.remove("fixed-top");
+        }
+    }
+
+    // Toggle Dark Mode
+    function toggleDarkMode(element) {
+        if (element.checked) {
+            document.body.classList.add("dark-mode");
+        } else {
+            document.body.classList.remove("dark-mode");
+        }
+    }
+</script>
+
+<script th:inline="javascript">
+    var demandForecasts = /*[[${demandForecasts}]]*/ [];
+    console.log('Forecast Data:', demandForecasts);
+
+    var ctxDemand = document.getElementById("chart-demand-forecast").getContext("2d");
+    var ctxTrends = document.getElementById("chart-trends").getContext("2d");
+    var ctxDistribution = document.getElementById("chart-distribution").getContext("2d");
+
+    // Transform the forecast data for chart.js
+    var productNames = demandForecasts.map(df => df.productName);
+    var forecastQuantities = demandForecasts.map(df => df.forecastQuantity);
+
+    // Populate the forecast table
+    var forecastDataElement = document.getElementById('forecast-data');
+    demandForecasts.forEach(df => {
+        var row = `<tr><td>${df.productName}</td><td>${df.forecastQuantity}</td></tr>`;
+        forecastDataElement.insertAdjacentHTML('beforeend', row);
+    });
+
+    // Demand Forecast Bar Chart
+    var chartDemand = new Chart(ctxDemand, {
+        type: "bar",
+        data: {
+            labels: productNames,
+            datasets: [{
+                label: "Forecast Quantity",
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+                data: forecastQuantities,
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Product Name'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Forecast Quantity'
+                    }
+                }
+            }
+        }
+    });
+
+    // Line Chart for Trends Over Time
+    var chartTrends = new Chart(ctxTrends, {
+        type: "line",
+        data: {
+            labels: productNames,
+            datasets: [{
+                label: "Trend",
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+                data: forecastQuantities,
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Product Name'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Forecast Quantity'
+                    }
+                }
+            }
+        }
+    });
+
+    // Pie Chart for Product Distribution
+    var chartDistribution = new Chart(ctxDistribution, {
+        type: "pie",
+        data: {
+            labels: productNames,
+            datasets: [{
+                label: "Distribution",
+                backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40"],
+                data: forecastQuantities,
+            }]
+        },
+        options: {
+            responsive: true,
+        }
+    });
+
+    function filterData() {
+        var startDate = document.getElementById('start-date').value;
+        var endDate = document.getElementById('end-date').value;
+        console.log('Filter Data:', { startDate, endDate });
+        // Add your filtering logic here
+    }
+
+    function exportTableToCSV(filename) {
+        var csv = [];
+        var rows = document.querySelectorAll("table tr");
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = [], cols = rows[i].querySelectorAll("td, th");
+            for (var j = 0; j < cols.length; j++) {
+                row.push(cols[j].innerText);
+            }
+            csv.push(row.join(","));
+        }
+
+        var csvFile = new Blob([csv.join("\n")], { type: "text/csv" });
+        var downloadLink = document.createElement("a");
+        downloadLink.download = filename;
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+    }
 </script>
 
 <!-- Github buttons -->

@@ -1,34 +1,32 @@
 package com.example.Brewplan.Service;
 
-
 import com.example.Brewplan.Model.ProductionSchedule;
-import com.example.Brewplan.Repository.ScheduleRepository;
+import com.example.Brewplan.Repository.ProductionScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class ProductionScheduleService {
+
     @Autowired
-    private ScheduleRepository scheduleRepository;
+    private ProductionScheduleRepository productionScheduleRepository;
 
-    public List<ProductionSchedule> getAllSchedules() {
-        return scheduleRepository.findAll();
+    public List<ProductionSchedule> getAllProductionSchedules() {
+        return productionScheduleRepository.findAll();
     }
 
-    public Optional<ProductionSchedule> getScheduleById(Long id) {
-        return scheduleRepository.findById(id);
+    public Optional<ProductionSchedule> getProductionScheduleById(Long id) {
+        return productionScheduleRepository.findById(id);
     }
 
-    public ProductionSchedule saveSchedule(ProductionSchedule schedule) {
-        return scheduleRepository.save(schedule);
+    public ProductionSchedule saveProductionSchedule(ProductionSchedule productionSchedule) {
+        return productionScheduleRepository.save(productionSchedule);
     }
 
-    public void deleteSchedule(Long id) {
-        scheduleRepository.deleteById(id);
+    public void deleteProductionSchedule(Long id) {
+        productionScheduleRepository.deleteById(id);
     }
 }
-
