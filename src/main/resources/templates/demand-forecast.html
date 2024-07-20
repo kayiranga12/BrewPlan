@@ -650,8 +650,8 @@
                 const dataPoint = meta.data[index];
 
                 if (image.complete && image.naturalWidth !== 0) {
-                    const imageWidth = 50;  // Set the desired width
-                    const imageHeight = 50; // Set the desired height
+                    const imageWidth = 43;  // Set the desired width
+                    const imageHeight = 43; // Set the desired height
                     const x = dataPoint.x - (imageWidth / 2);
                     const y = dataPoint.y - imageHeight - 5; // Position the image above the bar
                     ctx.drawImage(image, x, y, imageWidth, imageHeight);
