@@ -404,7 +404,7 @@
         </div>
     </nav>
     <!-- End Navbar -->
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
         <div class="container-fluid py-4">
             <!-- Overview Section -->
             <div class="row mb-4">
@@ -479,8 +479,18 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Daily Stocks</h6>
-                            <a th:href="@{/daily-stocks/add}" class="btn btn-primary">Add Daily Stock</a>
+                            <div class="d-flex justify-content-between">
+                                <h6>Daily Stocks</h6>
+                                <div>
+                                    <a th:href="@{/daily-stocks/add}" class="btn btn-primary">Add Daily Stock</a>
+                                    <button id="exportCSV" class="btn btn-secondary">Export CSV</button>
+                                    <button id="exportPDF" class="btn btn-secondary">Export PDF</button>
+                                </div>
+                            </div>
+                            <form th:action="@{/daily-stocks/search}" method="get" class="d-flex align-items-center mt-3">
+                                <input type="text" name="query" class="form-control me-2" placeholder="Search by product name">
+                                <button type="submit" class="btn btn-outline-primary">Search</button>
+                            </form>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -490,7 +500,6 @@
                                         <th>Product Name</th>
                                         <th>Stock Level</th>
                                         <th>Record Date</th>
-                                        <th>Warehouse</th>
                                         <th>Production Plan</th>
                                         <th>Actions</th>
                                     </tr>
@@ -499,16 +508,34 @@
                                     <tr th:each="stock : ${dailyStocks}">
                                         <td th:text="${stock.productName}">Product Name</td>
                                         <td th:text="${stock.stockLevel}">Stock Level</td>
-                                        <td th:text="${#temporals.format(stock.recordDate, 'yyyy-MM-dd HH:mm')}">Record Date</td>
-                                        <td th:text="${stock.warehouse}">Warehouse</td>
+                                        <td th:text="${#temporals.format(stock.date, 'yyyy-MM-dd')}">Record Date</td>
                                         <td th:text="${stock.productionPlan.productName}">Production Plan</td>
                                         <td>
-                                            <a th:href="@{/daily-stocks/edit/{id}(id=${stock.id})}" class="btn btn-sm btn-warning">Edit</a>
-                                            <a th:href="@{/daily-stocks/delete/{id}(id=${stock.id})}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this stock?');">Delete</a>
+                                            <a th:href="@{/daily-stocks/edit/{id}(id=${stock.id})}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a th:href="@{/daily-stocks/delete/{id}(id=${stock.id})}" class="text-secondary font-weight-bold text-xs ms-3" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this stock?');">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="pagination-wrapper">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
@@ -610,6 +637,41 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlHjW5z2NV/6fiyzCprsk/Rg7ygoOBhbVGd5oVbb73FPpxmCQ9N+BfWI3Fe" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgEPvWB51cAT+6M9E0C6KnN4VBmVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('/daily-stocks/data')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(item => item.productName);
+                const stockLevels = data.map(item => item.stockLevel);
+
+                var ctx = document.getElementById('dailyStockChart').getContext('2d');
+                var dailyStockChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Stock Level',
+                            data: stockLevels,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+    });
+</script>
+
 <script>
     // Change Sidebar Color
     function sidebarColor(element) {

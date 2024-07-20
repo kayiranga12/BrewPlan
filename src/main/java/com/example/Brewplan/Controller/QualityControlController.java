@@ -20,8 +20,13 @@ public class QualityControlController {
     private QualityControlService qualityControlService;
 
     @GetMapping
-    public String listAll(Model model) {
-        List<QualityControl> qualityControls = qualityControlService.getAllQualityControls();
+    public String listAll(@RequestParam(required = false) String query, Model model) {
+        List<QualityControl> qualityControls;
+        if (query != null) {
+            qualityControls = qualityControlService.searchByProductName(query);
+        } else {
+            qualityControls = qualityControlService.getAllQualityControls();
+        }
         model.addAttribute("qualityControls", qualityControls);
         return "quality-control/list";
     }
@@ -64,5 +69,11 @@ public class QualityControlController {
     public String deleteQualityControl(@PathVariable("id") Long id) {
         qualityControlService.deleteQualityControl(id);
         return "redirect:/quality-control";
+    }
+
+    @GetMapping("/data")
+    @ResponseBody
+    public List<QualityControl> getQualityControlData() {
+        return qualityControlService.getAllQualityControls();
     }
 }

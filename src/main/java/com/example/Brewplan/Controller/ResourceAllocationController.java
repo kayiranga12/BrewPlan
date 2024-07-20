@@ -71,4 +71,10 @@ public class ResourceAllocationController {
         resourceAllocationService.deleteResourceAllocation(id);
         return "redirect:/resource-allocations";
     }
+    @GetMapping("/data")
+    @ResponseBody
+    public List<ResourceAllocation> getResourceAllocationData() {
+        return resourceAllocationService.getAllResourceAllocations();
+    }
+
 }

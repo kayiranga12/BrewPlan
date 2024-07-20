@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class InventoryService {
@@ -28,5 +29,12 @@ public class InventoryService {
 
     public void deleteInventory(Long id) {
         inventoryRepository.deleteById(id);
+    }
+
+    public List<Inventory> searchByProductName(String query) {
+        return inventoryRepository.findAll()
+                .stream()
+                .filter(inventory -> inventory.getProductName().toLowerCase().contains(query.toLowerCase()))
+                .collect(Collectors.toList());
     }
 }

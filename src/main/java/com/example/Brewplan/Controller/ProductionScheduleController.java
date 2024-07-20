@@ -73,4 +73,11 @@ public class ProductionScheduleController {
         productionScheduleService.deleteProductionSchedule(id);
         return "redirect:/production-schedule";
     }
+
+    @GetMapping("/data")
+    @ResponseBody
+    public List<ProductionSchedule> getProductionScheduleData() {
+        return productionScheduleService.getAllProductionSchedules();
+    }
+
 }

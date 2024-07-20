@@ -22,6 +22,17 @@ public class ProductionPlanController {
     public String listAll(Model model) {
         List<ProductionPlan> productionPlans = productionPlanService.getAllProductionPlans();
         model.addAttribute("productionPlans", productionPlans);
+
+        int totalPlans = productionPlans.size();
+        int totalPlannedQuantity = productionPlans.stream().mapToInt(ProductionPlan::getPlannedQuantity).sum();
+        int totalActualQuantity = productionPlans.stream().mapToInt(ProductionPlan::getActualQuantity).sum();
+        long completedPlans = productionPlans.stream().filter(plan -> plan.getStatus() == ProductionPlan.Status.COMPLETED).count();
+
+        model.addAttribute("totalPlans", totalPlans);
+        model.addAttribute("totalPlannedQuantity", totalPlannedQuantity);
+        model.addAttribute("totalActualQuantity", totalActualQuantity);
+        model.addAttribute("completedPlans", completedPlans);
+
         return "production-plans/list";
     }
 
@@ -65,4 +76,11 @@ public class ProductionPlanController {
         productionPlanService.deleteProductionPlan(id);
         return "redirect:/production-plans";
     }
+
+    @GetMapping("/data")
+    @ResponseBody
+    public List<ProductionPlan> getProductionPlanData() {
+        return productionPlanService.getAllProductionPlans();
+    }
+
 }

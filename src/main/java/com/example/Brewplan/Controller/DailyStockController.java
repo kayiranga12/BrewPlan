@@ -23,8 +23,13 @@ public class DailyStockController {
     private ProductionPlanService productionPlanService;
 
     @GetMapping
-    public String listAll(Model model) {
-        List<DailyStock> dailyStocks = dailyStockService.getAllDailyStocks();
+    public String listAll(@RequestParam(required = false) String query, Model model) {
+        List<DailyStock> dailyStocks;
+        if (query != null && !query.isEmpty()) {
+            dailyStocks = dailyStockService.searchByProductName(query);
+        } else {
+            dailyStocks = dailyStockService.getAllDailyStocks();
+        }
         model.addAttribute("dailyStocks", dailyStocks);
         return "daily-stocks/list";
     }
@@ -70,5 +75,11 @@ public class DailyStockController {
     public String deleteDailyStock(@PathVariable("id") Long id) {
         dailyStockService.deleteDailyStock(id);
         return "redirect:/daily-stocks";
+    }
+
+    @GetMapping("/data")
+    @ResponseBody
+    public List<DailyStock> getDailyStockData() {
+        return dailyStockService.getAllDailyStocks();
     }
 }

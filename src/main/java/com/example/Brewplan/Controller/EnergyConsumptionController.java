@@ -1,7 +1,6 @@
 package com.example.Brewplan.Controller;
 
 import com.example.Brewplan.Model.EnergyConsumption;
-import com.example.Brewplan.Model.ProductionPlan;
 import com.example.Brewplan.Service.EnergyConsumptionService;
 import com.example.Brewplan.Service.ProductionPlanService;
 import jakarta.validation.Valid;
@@ -25,8 +24,13 @@ public class EnergyConsumptionController {
     private ProductionPlanService productionPlanService;
 
     @GetMapping
-    public String listAll(Model model) {
-        List<EnergyConsumption> energyConsumptions = energyConsumptionService.getAllEnergyConsumptions();
+    public String listAll(@RequestParam(required = false) String query, Model model) {
+        List<EnergyConsumption> energyConsumptions;
+        if (query != null && !query.isEmpty()) {
+            energyConsumptions = energyConsumptionService.searchByProductName(query);
+        } else {
+            energyConsumptions = energyConsumptionService.getAllEnergyConsumptions();
+        }
         model.addAttribute("energyConsumptions", energyConsumptions);
         return "energy-consumptions/list";
     }
@@ -73,5 +77,11 @@ public class EnergyConsumptionController {
     public String deleteEnergyConsumption(@PathVariable("id") Long id) {
         energyConsumptionService.deleteEnergyConsumption(id);
         return "redirect:/energy-consumptions";
+    }
+
+    @GetMapping("/data")
+    @ResponseBody
+    public List<EnergyConsumption> getEnergyConsumptionData() {
+        return energyConsumptionService.getAllEnergyConsumptions();
     }
 }

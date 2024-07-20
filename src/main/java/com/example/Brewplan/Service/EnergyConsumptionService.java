@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class EnergyConsumptionService {
@@ -28,5 +29,12 @@ public class EnergyConsumptionService {
 
     public void deleteEnergyConsumption(Long id) {
         energyConsumptionRepository.deleteById(id);
+    }
+
+    public List<EnergyConsumption> searchByProductName(String query) {
+        return energyConsumptionRepository.findAll()
+                .stream()
+                .filter(ec -> ec.getProductName().toLowerCase().contains(query.toLowerCase()))
+                .collect(Collectors.toList());
     }
 }

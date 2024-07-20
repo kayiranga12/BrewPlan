@@ -29,4 +29,8 @@ public class DailyStockService {
     public void deleteDailyStock(Long id) {
         dailyStockRepository.deleteById(id);
     }
+
+    public List<DailyStock> searchByProductName(String query) {
+        return dailyStockRepository.findByProductNameContainingIgnoreCase(query);
+    }
 }

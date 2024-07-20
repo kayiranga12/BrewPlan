@@ -424,102 +424,106 @@
     </nav>
 </main>
     <!-- End Navbar -->
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
-        <div class="container-fluid py-4">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card mb-4">
-                        <div class="card-header pb-0">
-                            <div class="d-flex justify-content-between">
-                                <h6>Energy Consumption List</h6>
-                                <div>
-                                    <a th:href="@{/energy-consumptions/add}" class="btn btn-primary">Add Energy Consumption</a>
-                                    <button id="exportCSV" class="btn btn-secondary">Export CSV</button>
-                                    <button id="exportPDF" class="btn btn-secondary">Export PDF</button>
-                                </div>
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <div class="d-flex justify-content-between">
+                            <h6>Energy Consumption List</h6>
+                            <div>
+                                <a th:href="@{/energy-consumptions/add}" class="btn btn-primary">Add Energy Consumption</a>
+                                <button id="exportCSV" class="btn btn-secondary">Export CSV</button>
+                                <button id="exportPDF" class="btn btn-secondary">Export PDF</button>
                             </div>
                         </div>
-                        <div class="card-body px-0 pt-0 pb-2">
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center mb-0" id="energyConsumptionTable">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product Name</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Record Date</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Energy Used (kWh)</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Production Plan</th>
-                                        <th class="text-secondary opacity-7"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="ec : ${energyConsumptions}">
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm" th:text="${ec.id}">ID</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0" th:text="${ec.productName}">Product Name</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0" th:text="${#dates.format(ec.recordDate, 'yyyy-MM-dd HH:mm')}">Record Date</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0" th:text="${ec.energyUsed}">Energy Used (kWh)</p>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0" th:text="${ec.productionPlan.productName}">Production Plan</p>
-                                        </td>
-                                        <td class="align-middle">
-                                            <a th:href="@{/energy-consumption/edit/{id}(id=${ec.id})}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a th:href="@{/energy-consumption/delete/{id}(id=${ec.id})}" class="text-secondary font-weight-bold text-xs ms-3" data-toggle="tooltip" data-original-title="Delete">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="pagination-wrapper">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination justify-content-end">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+                        <form th:action="@{/energy-consumptions/search}" method="get" class="d-flex align-items-center mt-3">
+                            <input type="text" name="query" class="form-control me-2" placeholder="Search by product name">
+                            <button type="submit" class="btn btn-outline-primary">Search</button>
+                        </form>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card mb-4">
-                        <div class="card-header pb-0">
-                            <h6>Energy Consumption Overview</h6>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0" id="energyConsumptionTable">
+                                <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product Name</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Record Date</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Energy Used (kWh)</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Production Plan</th>
+                                    <th class="text-secondary opacity-7"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="ec : ${energyConsumptions}">
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm" th:text="${ec.id}">ID</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs font-weight-bold mb-0" th:text="${ec.productName}">Product Name</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs font-weight-bold mb-0" th:text="${#temporals.format(ec.recordDate, 'yyyy-MM-dd HH:mm')}">Record Date</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs font-weight-bold mb-0" th:text="${ec.energyUsed}">Energy Used (kWh)</p>
+                                    </td>
+                                    <td>
+                                        <p class="text-xs font-weight-bold mb-0" th:text="${ec.productionPlan.productName}">Production Plan</p>
+                                    </td>
+                                    <td class="align-middle">
+                                        <a th:href="@{/energy-consumptions/edit/{id}(id=${ec.id})}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a th:href="@{/energy-consumptions/delete/{id}(id=${ec.id})}" class="text-secondary font-weight-bold text-xs ms-3" data-toggle="tooltip" data-original-title="Delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="card-body px-0 pt-0 pb-2">
-                            <canvas id="energyConsumptionChart"></canvas>
+                        <div class="pagination-wrapper">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-end">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h6>Energy Consumption Overview</h6>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <canvas id="energyConsumptionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
-    <footer class="footer pt-3  ">
+<footer class="footer pt-3  ">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">
                 <div class="col-lg-6 mb-lg-0 mb-4">
@@ -616,6 +620,41 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('/energy-consumptions/data')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(item => item.productName);
+                const energyUsed = data.map(item => item.energyUsed);
+
+                var ctx = document.getElementById('energyConsumptionChart').getContext('2d');
+                var energyConsumptionChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Energy Used (kWh)',
+                            data: energyUsed,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+    });
+</script>
+
 <script>
     // Change Sidebar Color
     function sidebarColor(element) {

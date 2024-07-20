@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/inventory")
@@ -20,8 +21,22 @@ public class InventoryController {
     private InventoryService inventoryService;
 
     @GetMapping
-    public String listAll(Model model) {
+    public String listAll(@RequestParam(required = false) String filter, Model model) {
         List<Inventory> inventories = inventoryService.getAllInventories();
+
+        if ("lowStock".equals(filter)) {
+            inventories = inventories.stream().filter(inv -> inv.getQuantity() < 10).collect(Collectors.toList());
+        } else if ("expired".equals(filter)) {
+            inventories = inventories.stream().filter(inv -> inv.getLastUpdated().isBefore(LocalDateTime.now().minusMonths(6))).collect(Collectors.toList());
+        }
+
+        model.addAttribute("inventories", inventories);
+        return "inventory/list";
+    }
+
+    @GetMapping("/search")
+    public String search(@RequestParam("query") String query, Model model) {
+        List<Inventory> inventories = inventoryService.searchByProductName(query);
         model.addAttribute("inventories", inventories);
         return "inventory/list";
     }
@@ -65,5 +80,11 @@ public class InventoryController {
     public String deleteInventory(@PathVariable("id") Long id) {
         inventoryService.deleteInventory(id);
         return "redirect:/inventory";
+    }
+
+    @GetMapping("/data")
+    @ResponseBody
+    public List<Inventory> getInventoryData() {
+        return inventoryService.getAllInventories();
     }
 }

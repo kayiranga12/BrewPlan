@@ -427,7 +427,7 @@
       </div>
     </div>
   </nav>
-
+</main>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <div class="container-fluid py-4">
       <div class="row mb-4">
@@ -539,7 +539,7 @@
           <div class="card mb-4">
             <div class="card-header pb-0">
               <h6>Production Plans</h6>
-              <a href="/production-plans/add" class="btn btn-primary">Add Production Plan</a>
+              <a th:href="@{/production-plans/add}" class="btn btn-primary">Add Production Plan</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -552,9 +552,6 @@
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">End Date</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Planned Quantity</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actual Quantity</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Shift Timing</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Daily Target</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Planned Downtime</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                     <th class="text-secondary opacity-7"></th>
                   </tr>
@@ -582,15 +579,6 @@
                     </td>
                     <td>
                       <p class="text-xs font-weight-bold mb-0" th:text="${plan.actualQuantity}">Actual Quantity</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0" th:text="${plan.shiftTiming}">Shift Timing</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0" th:text="${plan.dailyTarget}">Daily Target</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0" th:text="${plan.plannedDowntime}">Planned Downtime</p>
                     </td>
                     <td>
                       <p class="text-xs font-weight-bold mb-0" th:text="${plan.status}">Status</p>
@@ -639,7 +627,7 @@
       </div>
     </div>
   </footer>
-</main>
+
 <div class="fixed-plugin">
   <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
     <i class="fa fa-cog py-2"> </i>
@@ -709,23 +697,194 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlHjW5z2NV/6fiyzCprsk/Rg7ygoOBhbVGd5oVbb73FPpxmCQ9N+BfWI3Fe" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgEPvWB51cAT+6M9E0C6KnN4VBmVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-      events: [
-        /* JSON data will be loaded here via Thymeleaf */
-        /* Example static event */
-        {
-          title: 'Example Event',
-          start: '2023-07-09T10:30:00',
-          end: '2023-07-09T12:30:00'
-        }
-      ]
-    });
-    calendar.render();
+    // Fetching data from the backend
+    fetch('/production-plans/data')
+            .then(response => response.json())
+            .then(data => {
+              const labels = data.map(plan => new Date(plan.startDate).toLocaleDateString());
+              const plannedProduction = data.map(plan => plan.plannedQuantity);
+              const actualProduction = data.map(plan => plan.actualQuantity);
+
+              // Production Trends Chart
+              var ctxProductionTrends = document.getElementById('productionTrendsChart').getContext('2d');
+              var productionTrendsChart = new Chart(ctxProductionTrends, {
+                type: 'line',
+                data: {
+                  labels: labels,
+                  datasets: [{
+                    label: 'Planned Production',
+                    data: plannedProduction,
+                    borderColor: '#f96332',
+                    backgroundColor: 'rgba(249, 99, 50, 0.2)',
+                    fill: true
+                  }, {
+                    label: 'Actual Production',
+                    data: actualProduction,
+                    borderColor: '#1f8ef1',
+                    backgroundColor: 'rgba(31, 142, 241, 0.2)',
+                    fill: true
+                  }]
+                },
+                options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: {
+                      display: true,
+                      position: 'top'
+                    },
+                    tooltip: {
+                      callbacks: {
+                        label: function (context) {
+                          var label = context.dataset.label || '';
+                          if (label) {
+                            label += ': ';
+                          }
+                          label += context.raw;
+                          return label;
+                        }
+                      }
+                    }
+                  },
+                  interaction: {
+                    intersect: false,
+                    mode: 'index'
+                  },
+                  scales: {
+                    y: {
+                      grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false
+                      },
+                      ticks: {
+                        display: true,
+                        padding: 10,
+                        color: '#b2b9bf',
+                        font: {
+                          size: 12,
+                          family: "Open Sans",
+                          style: 'normal',
+                          lineHeight: 2
+                        }
+                      }
+                    },
+                    x: {
+                      grid: {
+                        drawBorder: false,
+                        display: false,
+                        drawOnChartArea: false,
+                        drawTicks: false
+                      },
+                      ticks: {
+                        display: true,
+                        padding: 20,
+                        color: '#b2b9bf',
+                        font: {
+                          size: 12,
+                          family: "Open Sans",
+                          style: 'normal',
+                          lineHeight: 2
+                        }
+                      }
+                    }
+                  }
+                }
+              });
+
+              // Resource Usage Chart
+              var ctxResourceUsage = document.getElementById('resourceUsageChart').getContext('2d');
+              var resourceUsageChart = new Chart(ctxResourceUsage, {
+                type: 'bar',
+                data: {
+                  labels: labels,
+                  datasets: [{
+                    label: 'Raw Materials',
+                    data: data.map(plan => plan.dailyTarget),
+                    backgroundColor: '#f96332',
+                    borderColor: '#f96332',
+                    borderWidth: 1
+                  }, {
+                    label: 'Labor Hours',
+                    data: data.map(plan => plan.plannedDowntime.split(' ')[0]),
+                    backgroundColor: '#1f8ef1',
+                    borderColor: '#1f8ef1',
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: {
+                      display: true,
+                      position: 'top'
+                    },
+                    tooltip: {
+                      callbacks: {
+                        label: function (context) {
+                          var label = context.dataset.label || '';
+                          if (label) {
+                            label += ': ';
+                          }
+                          label += context.raw;
+                          return label;
+                        }
+                      }
+                    }
+                  },
+                  interaction: {
+                    intersect: false,
+                    mode: 'index'
+                  },
+                  scales: {
+                    y: {
+                      grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false
+                      },
+                      ticks: {
+                        display: true,
+                        padding: 10,
+                        color: '#b2b9bf',
+                        font: {
+                          size: 12,
+                          family: "Open Sans",
+                          style: 'normal',
+                          lineHeight: 2
+                        }
+                      }
+                    },
+                    x: {
+                      grid: {
+                        drawBorder: false,
+                        display: false,
+                        drawOnChartArea: false,
+                        drawTicks: false
+                      },
+                      ticks: {
+                        display: true,
+                        padding: 20,
+                        color: '#b2b9bf',
+                        font: {
+                          size: 12,
+                          family: "Open Sans",
+                          style: 'normal',
+                          lineHeight: 2
+                        }
+                      }
+                    }
+                  }
+                }
+              });
+            });
   });
 </script>
 <script>
@@ -772,193 +931,6 @@
 </script>
 
 <!-- Initialize Charts -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Production Trends Chart
-    var ctxProductionTrends = document.getElementById('productionTrendsChart').getContext('2d');
-    var productionTrendsChart = new Chart(ctxProductionTrends, {
-      type: 'line',
-      data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        datasets: [{
-          label: 'Planned Production',
-          data: [1200, 1900, 3000, 5000, 2300, 4100],
-          borderColor: '#f96332',
-          backgroundColor: 'rgba(249, 99, 50, 0.2)',
-          fill: true
-        }, {
-          label: 'Actual Production',
-          data: [1000, 1700, 2800, 4500, 2200, 4000],
-          borderColor: '#1f8ef1',
-          backgroundColor: 'rgba(31, 142, 241, 0.2)',
-          fill: true
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: true,
-            position: 'top'
-          },
-          tooltip: {
-            callbacks: {
-              label: function (context) {
-                var label = context.dataset.label || '';
-                if (label) {
-                  label += ': ';
-                }
-                label += context.raw;
-                return label;
-              }
-            }
-          }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index'
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false
-            },
-            ticks: {
-              display: true,
-              padding: 10,
-              color: '#b2b9bf',
-              font: {
-                size: 12,
-                family: "Open Sans",
-                style: 'normal',
-                lineHeight: 2
-              }
-            }
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false
-            },
-            ticks: {
-              display: true,
-              padding: 20,
-              color: '#b2b9bf',
-              font: {
-                size: 12,
-                family: "Open Sans",
-                style: 'normal',
-                lineHeight: 2
-              }
-            }
-          }
-        }
-      }
-    });
-
-    // Resource Usage Chart
-    var ctxResourceUsage = document.getElementById('resourceUsageChart').getContext('2d');
-    var resourceUsageChart = new Chart
-  var win = navigator.platform.indexOf('Win') > -1;
-  if (win && document.querySelector('#sidenav-scrollbar')) {
-    var options = {
-      damping: '0.5'
-    }
-    Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-  }
-    var resourceUsageChart = new Chart(ctxResourceUsage, {
-      type: 'bar',
-      data: {
-        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
-        datasets: [{
-          label: 'Raw Materials',
-          data: [300, 400, 350, 450, 500],
-          backgroundColor: '#f96332',
-          borderColor: '#f96332',
-          borderWidth: 1
-        }, {
-          label: 'Labor Hours',
-          data: [100, 150, 120, 180, 160],
-          backgroundColor: '#1f8ef1',
-          borderColor: '#1f8ef1',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: true,
-            position: 'top'
-          },
-          tooltip: {
-            callbacks: {
-              label: function (context) {
-                var label = context.dataset.label || '';
-                if (label) {
-                  label += ': ';
-                }
-                label += context.raw;
-                return label;
-              }
-            }
-          }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index'
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false
-            },
-            ticks: {
-              display: true,
-              padding: 10,
-              color: '#b2b9bf',
-              font: {
-                size: 12,
-                family: "Open Sans",
-                style: 'normal',
-                lineHeight: 2
-              }
-            }
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false
-            },
-            ticks: {
-              display: true,
-              padding: 20,
-              color: '#b2b9bf',
-              font: {
-                size: 12,
-                family: "Open Sans",
-                style: 'normal',
-                lineHeight: 2
-              }
-            }
-          }
-        }
-      }
-    });
-  });
-</script>
 
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>

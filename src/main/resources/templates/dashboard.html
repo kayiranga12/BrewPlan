@@ -306,6 +306,7 @@
         </ul>
     </div>
 </aside>
+
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar
@@ -425,542 +426,313 @@
         </div>
     </nav>
     <!-- End Navbar -->
-<!--    &lt;!&ndash; Overview Section &ndash;&gt;-->
-<!--    <div class="container-fluid py-4">-->
-<!--        <div class="row mt-4">-->
-<!--            <div class="col-lg-7 mb-lg-0 mb-4">-->
-<!--                <div class="card z-index-2 h-95">-->
-<!--                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">-->
-<!--                        <h6 class="text-capitalize">Demand Forecasting Overview</h6>-->
-<!--                        <div class="btn-group">-->
-<!--                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                                <i class="fa fa-download"></i>-->
-<!--                            </button>-->
-<!--                            <ul class="dropdown-menu">-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('demandForecastChart', 'png')">PNG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('demandForecastChart', 'jpeg')">JPEG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('demandForecastChart', 'webp')">WEBP</a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="card-body p-3">-->
-<!--                        <div class="chart">-->
-<!--                            <canvas id="demandForecastChart" class="chart-canvas" height="300"></canvas>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-lg-5 mb-lg-0 mb-4">-->
-<!--                <div class="card z-index-2 h-95">-->
-<!--                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">-->
-<!--                        <h6 class="text-capitalize">Production Plan Overview</h6>-->
-<!--                        <div class="btn-group">-->
-<!--                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                                <i class="fa fa-download"></i>-->
-<!--                            </button>-->
-<!--                            <ul class="dropdown-menu">-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('productionPlanChart', 'png')">PNG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('productionPlanChart', 'jpeg')">JPEG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('productionPlanChart', 'webp')">WEBP</a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="card-body p-3">-->
-<!--                        <div class="chart">-->
-<!--                            <canvas id="productionPlanChart" class="chart-canvas" height="300"></canvas>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="row mt-4">-->
-<!--            <div class="col-lg-12">-->
-<!--                <div class="card z-index-2 h-100">-->
-<!--                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">-->
-<!--                        <h6 class="text-capitalize">Production Schedule</h6>-->
-<!--                        <div class="btn-group">-->
-<!--                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                                <i class="fa fa-download"></i>-->
-<!--                            </button>-->
-<!--                            <ul class="dropdown-menu">-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('productionScheduleChart', 'png')">PNG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('productionScheduleChart', 'jpeg')">JPEG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('productionScheduleChart', 'webp')">WEBP</a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="card-body p-3">-->
-<!--                        <div class="chart">-->
-<!--                            <canvas id="productionScheduleChart" class="chart-canvas" height="100"></canvas>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="row mt-4">-->
-<!--            <div class="col-lg-7 mb-lg-0 mb-4">-->
-<!--                <div class="card z-index-2 h-95">-->
-<!--                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">-->
-<!--                        <h6 class="text-capitalize">Resource Allocation</h6>-->
-<!--                        <div class="btn-group">-->
-<!--                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                                <i class="fa fa-download"></i>-->
-<!--                            </button>-->
-<!--                            <ul class="dropdown-menu">-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationChart', 'png')">PNG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationChart', 'jpeg')">JPEG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationChart', 'webp')">WEBP</a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="card-body p-3">-->
-<!--                        <div class="chart">-->
-<!--                            <canvas id="resourceAllocationChart" class="chart-canvas" height="300"></canvas>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-lg-5 mb-lg-0 mb-4">-->
-<!--                <div class="card z-index-2 h-95">-->
-<!--                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">-->
-<!--                        <h6 class="text-capitalize">Inventory Levels</h6>-->
-<!--                        <div class="btn-group">-->
-<!--                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                                <i class="fa fa-download"></i>-->
-<!--                            </button>-->
-<!--                            <ul class="dropdown-menu">-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('inventoryChart', 'png')">PNG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('inventoryChart', 'jpeg')">JPEG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('inventoryChart', 'webp')">WEBP</a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="card-body p-3">-->
-<!--                        <div class="chart">-->
-<!--                            <canvas id="inventoryChart" class="chart-canvas" height="300"></canvas>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; Quality Control Metrics Chart &ndash;&gt;-->
-<!--        <div class="row mt-4">-->
-<!--            <div class="col-lg-6 mb-lg-0 mb-4">-->
-<!--                <div class="card z-index-2 h-100">-->
-<!--                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">-->
-<!--                        <h6 class="text-capitalize">Quality Control Metrics</h6>-->
-<!--                        <div class="btn-group">-->
-<!--                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                                <i class="fa fa-download"></i>-->
-<!--                            </button>-->
-<!--                            <ul class="dropdown-menu">-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('qualityControlChart', 'png')">PNG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('qualityControlChart', 'jpeg')">JPEG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('qualityControlChart', 'webp')">WEBP</a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="card-body p-3">-->
-<!--                        <div class="chart">-->
-<!--                            <canvas id="qualityControlChart" class="chart-canvas" height="300"></canvas>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+</main>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+        <div class="container-fluid py-4">
+            <!-- KPI Section -->
+            <div class="row">
+                <div class="col-lg-3 col-sm-6 mb-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <div class="d-flex">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Production</p>
+                                    <h5 class="font-weight-bolder" th:text="${totalProduction}">1,200</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <div class="d-flex">
+                                <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
+                                    <i class="ni ni-chart-bar-32 text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Efficiency Rate</p>
+                                    <h5 class="font-weight-bolder" th:text="${efficiencyRate}">85%</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <div class="d-flex">
+                                <div class="icon icon-shape bg-gradient-danger shadow text-center border-radius-md">
+                                    <i class="ni ni-chart-pie-35 text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Defect Rate</p>
+                                    <h5 class="font-weight-bolder" th:text="${defectRate}">5%</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <div class="d-flex">
+                                <div class="icon icon-shape bg-gradient-warning shadow text-center border-radius-md">
+                                    <i class="ni ni-bell-55 text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pending Orders</p>
+                                    <h5 class="font-weight-bolder" th:text="${pendingOrders}">42</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<!--        <div class="row mt-4">-->
-<!--            <div class="col-lg-7 mb-lg-0 mb-4">-->
-<!--                <div class="card z-index-2 h-95">-->
-<!--                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">-->
-<!--                        <h6 class="text-capitalize">Supplier Management</h6>-->
-<!--                        <div class="btn-group">-->
-<!--                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                                <i class="fa fa-download"></i>-->
-<!--                            </button>-->
-<!--                            <ul class="dropdown-menu">-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('supplierManagementChart', 'png')">PNG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('supplierManagementChart', 'jpeg')">JPEG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('supplierManagementChart', 'webp')">WEBP</a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="card-body p-3">-->
-<!--                        <div class="chart">-->
-<!--                            <canvas id="supplierManagementChart" class="chart-canvas" height="300"></canvas>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-lg-5 mb-lg-0 mb-4">-->
-<!--                <div class="card z-index-2 h-95">-->
-<!--                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">-->
-<!--                        <h6 class="text-capitalize">Energy Consumption Overview</h6>-->
-<!--                        <div class="btn-group">-->
-<!--                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                                <i class="fa fa-download"></i>-->
-<!--                            </button>-->
-<!--                            <ul class="dropdown-menu">-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionOverviewChart', 'png')">PNG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionOverviewChart', 'jpeg')">JPEG</a></li>-->
-<!--                                <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionOverviewChart', 'webp')">WEBP</a></li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="card-body p-3">-->
-<!--                        <div class="chart">-->
-<!--                            <canvas id="energyConsumptionOverviewChart" class="chart-canvas" height="300"></canvas>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; End Overview Section &ndash;&gt;-->
-    <!-- Overview Section -->
-    <div class="container-fluid py-4">
-        <!-- KPIs Section -->
-        <div class="row">
-            <div class="col-lg-3 col-sm-6 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="d-flex">
-                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+            <!-- Production Plan Overview Chart -->
+            <div class="row mt-4">
+                <div class="col-lg-7 mb-lg-0 mb-4">
+                    <div class="card z-index-2 h-100">
+                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
+                            <h6 class="text-capitalize">Production Plan Overview</h6>
+                            <div class="btn-group">
+                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-download"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('productionPlanChart', 'png')">PNG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('productionPlanChart', 'jpeg')">JPEG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('productionPlanChart', 'webp')">WEBP</a></li>
+                                </ul>
                             </div>
-                            <div class="ms-3">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Production</p>
-                                <h5 class="font-weight-bolder">
-                                    1,200
-                                </h5>
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="chart">
+                                <canvas id="productionPlanChart" class="chart-canvas" height="300"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="d-flex">
-                            <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
-                                <i class="ni ni-chart-bar-32 text-lg opacity-10" aria-hidden="true"></i>
-                            </div>
-                            <div class="ms-3">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Efficiency Rate</p>
-                                <h5 class="font-weight-bolder">
-                                    85%
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="d-flex">
-                            <div class="icon icon-shape bg-gradient-danger shadow text-center border-radius-md">
-                                <i class="ni ni-chart-pie-35 text-lg opacity-10" aria-hidden="true"></i>
-                            </div>
-                            <div class="ms-3">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Defect Rate</p>
-                                <h5 class="font-weight-bolder">
-                                    5%
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="d-flex">
-                            <div class="icon icon-shape bg-gradient-warning shadow text-center border-radius-md">
-                                <i class="ni ni-bell-55 text-lg opacity-10" aria-hidden="true"></i>
-                            </div>
-                            <div class="ms-3">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Pending Orders</p>
-                                <h5 class="font-weight-bolder">
-                                    42
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Demand Forecasting Chart -->
-        <div class="row mt-4">
-            <div class="col-lg-7 mb-lg-0 mb-4">
-                <div class="card z-index-2 h-95">
-                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                        <h6 class="text-capitalize">Demand Forecasting Overview</h6>
-                        <div class="btn-group">
-                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-download"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" onclick="downloadChart('demandForecastChart', 'png')">PNG</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="downloadChart('demandForecastChart', 'jpeg')">JPEG</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="downloadChart('demandForecastChart', 'webp')">WEBP</a></li>
+                <!-- Recent Activities -->
+                <div class="col-lg-5 mb-lg-0 mb-4">
+                    <div class="card z-index-2 h-100">
+                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
+                            <h6 class="text-capitalize">Recent Activities</h6>
+                            <div class="btn-group">
+                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-download"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('recentActivitiesChart', 'png')">PNG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('recentActivitiesChart', 'jpeg')">JPEG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('recentActivitiesChart', 'webp')">WEBP</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    New production plan created for P72
+                                    <span class="badge bg-primary rounded-pill">2 mins ago</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Quality check failed for T-K. 33cl
+                                    <span class="badge bg-danger rounded-pill">15 mins ago</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Energy consumption exceeded for Mu Lite 50cl
+                                    <span class="badge bg-warning rounded-pill">30 mins ago</span>
+                                </li>
+                                <!-- Add more recent activities here -->
                             </ul>
                         </div>
                     </div>
-                    <div class="card-body p-3">
-                        <div class="chart">
-                            <canvas id="demandForecastChart" class="chart-canvas" height="300"></canvas>
+                </div>
+            </div>
+
+            <!-- Production Schedule Chart -->
+            <div class="row mt-4">
+                <div class="col-lg-12 mb-lg-0 mb-4">
+                    <div class="card z-index-2 h-100">
+                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
+                            <h6 class="text-capitalize">Production Schedule</h6>
+                            <div class="btn-group">
+                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-download"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('productionScheduleChart', 'png')">PNG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('productionScheduleChart', 'jpeg')">JPEG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('productionScheduleChart', 'webp')">WEBP</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="chart">
+                                <canvas id="productionScheduleChart" class="chart-canvas" height="300"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Production Plan Chart -->
-            <div class="col-lg-5 mb-lg-0 mb-4">
-                <div class="card z-index-2 h-95">
-                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                        <h6 class="text-capitalize">Production Plan Overview</h6>
-                        <div class="btn-group">
-                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-download"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" onclick="downloadChart('productionPlanChart', 'png')">PNG</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="downloadChart('productionPlanChart', 'jpeg')">JPEG</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="downloadChart('productionPlanChart', 'webp')">WEBP</a></li>
-                            </ul>
+            <!-- Resource Allocation Chart -->
+            <div class="row mt-4">
+                <div class="col-lg-7 mb-lg-0 mb-4">
+                    <div class="card z-index-2 h-100">
+                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
+                            <h6 class="text-capitalize">Resource Allocation</h6>
+                            <div class="btn-group">
+                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-download"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationChart', 'png')">PNG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationChart', 'jpeg')">JPEG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationChart', 'webp')">WEBP</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body p-3">
-                        <div class="chart">
-                            <canvas id="productionPlanChart" class="chart-canvas" height="300"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Production Schedule Chart -->
-        <div class="row mt-4">
-            <div class="col-lg-12">
-                <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                        <h6 class="text-capitalize">Production Schedule</h6>
-                        <div class="btn-group">
-                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-download"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" onclick="downloadChart('productionScheduleChart', 'png')">PNG</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="downloadChart('productionScheduleChart', 'jpeg')">JPEG</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="downloadChart('productionScheduleChart', 'webp')">WEBP</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-body p-3">
-                        <div class="chart">
-                            <canvas id="productionScheduleChart" class="chart-canvas" height="100"></canvas>
+                        <div class="card-body p-3">
+                            <div class="chart">
+                                <canvas id="resourceAllocationChart" class="chart-canvas" height="300"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Resource Allocation Chart -->
-        <div class="row mt-4">
-            <div class="col-lg-7 mb-lg-0 mb-4">
-                <div class="card z-index-2 h-95">
-                    <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                        <h6 class="text-capitalize">Resource Allocation</h6>
-                        <div class="btn-group">
-                            <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-download"></i>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationChart', 'png')">PNG</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationChart', 'jpeg')">JPEG</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationChart', 'webp')">WEBP</a></li>
-                            </ul>
+                <!-- Inventory Levels Chart -->
+                <div class="col-lg-5 mb-lg-0 mb-4">
+                    <div class="card z-index-2 h-100">
+                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
+                            <h6 class="text-capitalize">Inventory Levels</h6>
+                            <div class="btn-group">
+                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-download"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('inventoryChart', 'png')">PNG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('inventoryChart', 'jpeg')">JPEG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('inventoryChart', 'webp')">WEBP</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body p-3">
-                        <div class="chart">
-                            <canvas id="resourceAllocationChart" class="chart-canvas" height="300"></canvas>
+                        <div class="card-body p-3">
+                            <div class="chart">
+                                <canvas id="inventoryChart" class="chart-canvas" height="300"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Inventory Levels Chart -->
-        <div class="col-lg-5 mb-lg-0 mb-4">
-            <div class="card z-index-2 h-95">
-                <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                    <h6 class="text-capitalize">Inventory Levels</h6>
-                    <div class="btn-group">
-                        <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-download"></i>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('inventoryChart', 'png')">PNG</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('inventoryChart', 'jpeg')">JPEG</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('inventoryChart', 'webp')">WEBP</a></li>
-                        </ul>
+            <!-- Quality Control Metrics Chart -->
+            <div class="row mt-4">
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                    <div class="card z-index-2 h-100">
+                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
+                            <h6 class="text-capitalize">Quality Control Metrics</h6>
+                            <div class="btn-group">
+                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-download"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('qualityControlChart', 'png')">PNG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('qualityControlChart', 'jpeg')">JPEG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('qualityControlChart', 'webp')">WEBP</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="chart">
+                                <canvas id="qualityControlChart" class="chart-canvas" height="300"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card-body p-3">
-                    <div class="chart">
-                        <canvas id="inventoryChart" class="chart-canvas" height="300"></canvas>
+
+                <!-- Supplier Management Chart -->
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                    <div class="card z-index-2 h-100">
+                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
+                            <h6 class="text-capitalize">Supplier Management</h6>
+                            <div class="btn-group">
+                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-download"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('supplierManagementChart', 'png')">PNG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('supplierManagementChart', 'jpeg')">JPEG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('supplierManagementChart', 'webp')">WEBP</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="chart">
+                                <canvas id="supplierManagementChart" class="chart-canvas" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Energy Consumption Overview Chart -->
+            <div class="row mt-4">
+                <div class="col-lg-7 mb-lg-0 mb-4">
+                    <div class="card z-index-2 h-100">
+                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
+                            <h6 class="text-capitalize">Energy Consumption Overview</h6>
+                            <div class="btn-group">
+                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-download"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionOverviewChart', 'png')">PNG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionOverviewChart', 'jpeg')">JPEG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionOverviewChart', 'webp')">WEBP</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+                            <div class="chart">
+                                <canvas id="energyConsumptionOverviewChart" class="chart-canvas" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tasks/Calendar View -->
+                <div class="col-lg-5 mb-lg-0 mb-4">
+                    <div class="card z-index-2 h-100">
+                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
+                            <h6 class="text-capitalize">Upcoming Tasks</h6>
+                            <div class="btn-group">
+                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-download"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('tasksChart', 'png')">PNG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('tasksChart', 'jpeg')">JPEG</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('tasksChart', 'webp')">WEBP</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+                            <div id="calendar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Quality Control Metrics Chart -->
-    <div class="row mt-4">
-        <div class="col-lg-6 mb-lg-0 mb-4">
-            <div class="card z-index-2 h-100">
-                <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                    <h6 class="text-capitalize">Quality Control Metrics</h6>
-                    <div class="btn-group">
-                        <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-download"></i>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('qualityControlChart', 'png')">PNG</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('qualityControlChart', 'jpeg')">JPEG</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('qualityControlChart', 'webp')">WEBP</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-body p-3">
-                    <div class="chart">
-                        <canvas id="qualityControlChart" class="chart-canvas" height="300"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Supplier Management Chart -->
-        <div class="col-lg-6 mb-lg-0 mb-4">
-            <div class="card z-index-2 h-100">
-                <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                    <h6 class="text-capitalize">Supplier Management</h6>
-                    <div class="btn-group">
-                        <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-download"></i>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('supplierManagementChart', 'png')">PNG</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('supplierManagementChart', 'jpeg')">JPEG</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('supplierManagementChart', 'webp')">WEBP</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-body p-3">
-                    <div class="chart">
-                        <canvas id="supplierManagementChart" class="chart-canvas" height="300"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Energy Consumption Overview Chart -->
-    <div class="row mt-4">
-        <div class="col-lg-7 mb-lg-0 mb-4">
-            <div class="card z-index-2 h-95">
-                <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                    <h6 class="text-capitalize">Energy Consumption Overview</h6>
-                    <div class="btn-group">
-                        <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-download"></i>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionOverviewChart', 'png')">PNG</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionOverviewChart', 'jpeg')">JPEG</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionOverviewChart', 'webp')">WEBP</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-body p-3">
-                    <div class="chart">
-                        <canvas id="energyConsumptionOverviewChart" class="chart-canvas" height="300"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Recent Activities/Notifications -->
-        <div class="col-lg-5 mb-lg-0 mb-4">
-            <div class="card z-index-2 h-95">
-                <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                    <h6 class="text-capitalize">Recent Activities</h6>
-                    <div class="btn-group">
-                        <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-download"></i>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('recentActivitiesChart', 'png')">PNG</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('recentActivitiesChart', 'jpeg')">JPEG</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('recentActivitiesChart', 'webp')">WEBP</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-body p-3">
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            New production plan created for P72
-                            <span class="badge bg-primary rounded-pill">2 mins ago</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Quality check failed for T-K. 33cl
-                            <span class="badge bg-danger rounded-pill">15 mins ago</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Energy consumption exceeded for Mu Lite 50cl
-                            <span class="badge bg-warning rounded-pill">30 mins ago</span>
-                        </li>
-                        <!-- Add more recent activities here -->
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tasks/Calendar View -->
-    <div class="row mt-4">
-        <div class="col-lg-12 mb-lg-0 mb-4">
-            <div class="card z-index-2 h-100">
-                <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                    <h6 class="text-capitalize">Upcoming Tasks</h6>
-                    <div class="btn-group">
-                        <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-download"></i>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('tasksChart', 'png')">PNG</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('tasksChart', 'jpeg')">JPEG</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="downloadChart('tasksChart', 'webp')">WEBP</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card-body p-3">
-                    <div id="calendar"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- End Overview Section -->
+    </main>
 
 
-
-
-
-                            <footer class="footer pt-3  ">
+    <footer class="footer pt-3  ">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-lg-between">
                 <div class="col-lg-6 mb-lg-0 mb-4">
@@ -983,7 +755,6 @@
             </div>
         </div>
     </footer>
-</main>
 <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
         <i class="fa fa-cog py-2"> </i>
@@ -1054,35 +825,6 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.7/dist/html2canvas.min.js"></script>
 <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css' rel='stylesheet' />
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js'></script>
-<script th:inline="javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            events: [
-                {
-                    title: 'Task 1',
-                    start: '2024-07-20',
-                    end: '2024-07-22'
-                },
-                {
-                    title: 'Task 2',
-                    start: '2024-07-23',
-                    end: '2024-07-25'
-                },
-                // Add more tasks/events here
-            ],
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            }
-        });
-
-        calendar.render();
-    });
-</script>
 
 <script th:inline="javascript">
     function downloadChart(chartId, format) {
@@ -1107,221 +849,407 @@
         });
     }
 </script>
+    <script th:inline="javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
 
-
-<script th:inline="javascript">
-    /*<![CDATA[*/
-    var productionSchedules = /*[[${productionSchedules}]]*/ [];
-
-    var taskLabels = productionSchedules.map(schedule => schedule.productionPlan.productName);
-    var scheduledStartTimes = productionSchedules.map(schedule => new Date(schedule.scheduledStart).getTime());
-    var scheduledEndTimes = productionSchedules.map(schedule => new Date(schedule.scheduledEnd).getTime());
-    var actualStartTimes = productionSchedules.map(schedule => new Date(schedule.actualStart).getTime());
-    var actualEndTimes = productionSchedules.map(schedule => new Date(schedule.actualEnd).getTime());
-
-    var ctx = document.getElementById('productionScheduleChart').getContext('2d');
-    var productionScheduleChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: taskLabels,
-            datasets: [
-                {
-                    label: 'Scheduled Start',
-                    data: scheduledStartTimes,
-                    backgroundColor: 'rgba(75, 192, 192, 0.4)', // Lighter shade of cyan
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Scheduled End',
-                    data: scheduledEndTimes,
-                    backgroundColor: 'rgba(54, 162, 235, 0.4)', // Lighter shade of blue
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Actual Start',
-                    data: actualStartTimes,
-                    backgroundColor: 'rgba(75, 192, 192, 0.8)', // Darker shade of cyan
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Actual End',
-                    data: actualEndTimes,
-                    backgroundColor: 'rgba(54, 162, 235, 0.8)', // Darker shade of blue
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    {
+                        title: 'Task 1',
+                        start: '2024-07-20',
+                        end: '2024-07-22'
+                    },
+                    {
+                        title: 'Task 2',
+                        start: '2024-07-23',
+                        end: '2024-07-25'
+                    },
+                    // Add more tasks/events here
+                ],
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 }
-            ]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                x: {
-                    stacked: false,
-                    title: {
-                        display: true,
-                        text: 'Tasks'
+            });
+
+            calendar.render();
+        });
+
+        function downloadChart(chartId, format) {
+            const chart = document.getElementById(chartId);
+            const link = document.createElement('a');
+
+            html2canvas(chart).then(canvas => {
+                if (format === 'jpeg' || format === 'webp') {
+                    const tempCanvas = document.createElement('canvas');
+                    const context = tempCanvas.getContext('2d');
+                    tempCanvas.width = canvas.width;
+                    tempCanvas.height = canvas.height;
+                    context.fillStyle = '#fff'; // Set the background to white
+                    context.fillRect(0, 0, canvas.width, canvas.height);
+                    context.drawImage(canvas, 0, 0);
+                    link.href = tempCanvas.toDataURL(`image/${format}`);
+                } else {
+                    link.href = canvas.toDataURL(`image/${format}`);
+                }
+                link.download = `${chartId}.${format}`;
+                link.click();
+            });
+        }
+
+        /*<![CDATA[*/
+        var productionSchedules = /*[[${productionSchedules}]]*/ [];
+        var taskLabels = productionSchedules.map(schedule => schedule.productionPlan.productName);
+        var scheduledStartTimes = productionSchedules.map(schedule => new Date(schedule.scheduledStart).getTime());
+        var scheduledEndTimes = productionSchedules.map(schedule => new Date(schedule.scheduledEnd).getTime());
+        var actualStartTimes = productionSchedules.map(schedule => new Date(schedule.actualStart).getTime());
+        var actualEndTimes = productionSchedules.map(schedule => new Date(schedule.actualEnd).getTime());
+
+        var ctx = document.getElementById('productionScheduleChart').getContext('2d');
+        var productionScheduleChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: taskLabels,
+                datasets: [
+                    {
+                        label: 'Scheduled Start',
+                        data: scheduledStartTimes,
+                        backgroundColor: 'rgba(75, 192, 192, 0.4)', // Lighter shade of cyan
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Scheduled End',
+                        data: scheduledEndTimes,
+                        backgroundColor: 'rgba(54, 162, 235, 0.4)', // Lighter shade of blue
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Actual Start',
+                        data: actualStartTimes,
+                        backgroundColor: 'rgba(75, 192, 192, 0.8)', // Darker shade of cyan
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Actual End',
+                        data: actualEndTimes,
+                        backgroundColor: 'rgba(54, 162, 235, 0.8)', // Darker shade of blue
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
                     }
-                },
-                y: {
-                    stacked: false,
-                    type: 'linear',
-                    ticks: {
-                        callback: function(value) {
-                            var date = new Date(value);
-                            return date.toLocaleDateString(); // Only show the date part
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        stacked: false,
+                        title: {
+                            display: true,
+                            text: 'Tasks'
                         }
                     },
-                    title: {
-                        display: true,
-                        text: 'Dates'
+                    y: {
+                        stacked: false,
+                        type: 'linear',
+                        ticks: {
+                            callback: function(value) {
+                                var date = new Date(value);
+                                return date.toLocaleDateString(); // Only show the date part
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Dates'
+                        }
                     }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top',
                 },
-                tooltip: {
-                    callbacks: {
-                        label: function(tooltipItem) {
-                            var date = new Date(tooltipItem.raw);
-                            return tooltipItem.dataset.label + ': ' + date.toLocaleDateString(); // Only show the date part
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                var date = new Date(tooltipItem.raw);
+                                return tooltipItem.dataset.label + ': ' + date.toLocaleDateString(); // Only show the date part
+                            }
                         }
                     }
                 }
             }
-        }
-    });
+        });
 
-    // Resource Allocation Chart
-    var resourceAllocations = /*[[${resourceAllocations}]]*/ [];
-    var resourceTaskLabels = resourceAllocations.map(ra => ra.productionPlan.productName);
-    var resourceNames = resourceAllocations.map(ra => ra.resourceName);
+        // Resource Allocation Chart
+        var resourceAllocations = /*[[${resourceAllocations}]]*/ [];
+        var resourceTaskLabels = resourceAllocations.map(ra => ra.productionPlan.productName);
+        var resourceNames = resourceAllocations.map(ra => ra.resourceName);
 
-    var resourceCounts = {};
-    resourceAllocations.forEach(ra => {
-        if (!resourceCounts[ra.resourceName]) {
-            resourceCounts[ra.resourceName] = 0;
-        }
-        resourceCounts[ra.resourceName] += ra.allocatedQuantity;
-    });
-
-    var resourceLabels = Object.keys(resourceCounts);
-    var resourceData = Object.values(resourceCounts);
-
-    var ctxResource = document.getElementById('resourceAllocationChart').getContext('2d');
-    var resourceAllocationChart = new Chart(ctxResource, {
-        type: 'bar',
-        data: {
-            labels: resourceLabels,
-            datasets: [{
-                label: 'Allocated Quantity',
-                data: resourceData,
-                backgroundColor: 'rgba(75, 192, 192, 0.4)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                x: {
-                    stacked: false,
-                    title: {
-                        display: true,
-                        text: 'Resources'
-                    }
-                },
-                y: {
-                    stacked: false,
-                    title: {
-                        display: true,
-                        text: 'Allocated Quantity'
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top',
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(tooltipItem) {
-                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
-                        }
-                    }
-                }
+        var resourceCounts = {};
+        resourceAllocations.forEach(ra => {
+            if (!resourceCounts[ra.resourceName]) {
+                resourceCounts[ra.resourceName] = 0;
             }
-        }
-    });
-    // Production Plan Chart
-    var productionPlans = /*[[${productionPlans}]]*/ [];
-    var planLabels = productionPlans.map(plan => plan.productName);
-    var plannedQuantities = productionPlans.map(plan => plan.plannedQuantity);
-    var actualQuantities = productionPlans.map(plan => plan.actualQuantity);
+            resourceCounts[ra.resourceName] += ra.allocatedQuantity;
+        });
 
-    var ctxPlan = document.getElementById('productionPlanChart').getContext('2d');
-    var productionPlanChart = new Chart(ctxPlan, {
-        type: 'bar',
-        data: {
-            labels: planLabels,
-            datasets: [
-                {
-                    label: 'Planned Quantity',
-                    data: plannedQuantities,
+        var resourceLabels = Object.keys(resourceCounts);
+        var resourceData = Object.values(resourceCounts);
+
+        var ctxResource = document.getElementById('resourceAllocationChart').getContext('2d');
+        var resourceAllocationChart = new Chart(ctxResource, {
+            type: 'bar',
+            data: {
+                labels: resourceLabels,
+                datasets: [{
+                    label: 'Allocated Quantity',
+                    data: resourceData,
                     backgroundColor: 'rgba(75, 192, 192, 0.4)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
-                },
-                {
-                    label: 'Actual Quantity',
-                    data: actualQuantities,
-                    backgroundColor: 'rgba(54, 162, 235, 0.4)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                x: {
-                    stacked: false,
-                    title: {
-                        display: true,
-                        text: 'Products'
-                    }
-                },
-                y: {
-                    stacked: false,
-                    title: {
-                        display: true,
-                        text: 'Quantity'
-                    }
-                }
+                }]
             },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top',
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        stacked: false,
+                        title: {
+                            display: true,
+                            text: 'Resources'
+                        }
+                    },
+                    y: {
+                        stacked: false,
+                        title: {
+                            display: true,
+                            text: 'Allocated Quantity'
+                        }
+                    }
                 },
-                tooltip: {
-                    callbacks: {
-                        label: function(tooltipItem) {
-                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+                            }
                         }
                     }
                 }
             }
-        }
-    });
-    /*]]>*/
-</script>
+        });
+
+        // Production Plan Chart
+        var productionPlans = /*[[${productionPlans}]]*/ [];
+        var planLabels = productionPlans.map(plan => plan.productName);
+        var plannedQuantities = productionPlans.map(plan => plan.plannedQuantity);
+        var actualQuantities = productionPlans.map(plan => plan.actualQuantity);
+
+        var ctxPlan = document.getElementById('productionPlanChart').getContext('2d');
+        var productionPlanChart = new Chart(ctxPlan, {
+            type: 'bar',
+            data: {
+                labels: planLabels,
+                datasets: [
+                    {
+                        label: 'Planned Quantity',
+                        data: plannedQuantities,
+                        backgroundColor: 'rgba(75, 192, 192, 0.4)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Actual Quantity',
+                        data: actualQuantities,
+                        backgroundColor: 'rgba(54, 162, 235, 0.4)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        stacked: false,
+                        title: {
+                            display: true,
+                            text: 'Products'
+                        }
+                    },
+                    y: {
+                        stacked: false,
+                        title: {
+                            display: true,
+                            text: 'Quantity'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Quality Control Metrics Chart
+        var qualityControlMetrics = /*[[${qualityControlMetrics}]]*/ [];
+        var qcStatusCounts = {
+            PASS: 0,
+            FAIL: 0
+        };
+
+        qualityControlMetrics.forEach(qc => {
+            qcStatusCounts[qc.status]++;
+        });
+
+        var ctxQC = document.getElementById('qualityControlChart').getContext('2d');
+        new Chart(ctxQC, {
+            type: 'pie',
+            data: {
+                labels: Object.keys(qcStatusCounts),
+                datasets: [{
+                    data: Object.values(qcStatusCounts),
+                    backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+                    borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    }
+                }
+            }
+        });
+
+        // Energy Consumption Chart
+        var energyConsumptionData = /*[[${energyConsumptionData}]]*/ [];
+        var dates = energyConsumptionData.map(entry => entry.date);
+        var consumptionValues = energyConsumptionData.map(entry => entry.energyUsed);
+
+        var ctxEnergy = document.getElementById('energyConsumptionOverviewChart').getContext('2d');
+        var energyConsumptionChart = new Chart(ctxEnergy, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [{
+                    label: 'Energy Consumption (kWh)',
+                    data: consumptionValues,
+                    fill: false,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day',
+                            tooltipFormat: 'll'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Energy Used (kWh)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    }
+                }
+            }
+        });
+
+        // Supplier Management Chart
+        var supplierData = /*[[${supplierData}]]*/ [];
+        var supplierNames = supplierData.map(supplier => supplier.name);
+        var suppliedQuantities = supplierData.map(supplier => supplier.suppliedQuantity);
+
+        var ctxSupplier = document.getElementById('supplierManagementChart').getContext('2d');
+        new Chart(ctxSupplier, {
+            type: 'bar',
+            data: {
+                labels: supplierNames,
+                datasets: [{
+                    label: 'Supplied Quantity',
+                    data: suppliedQuantities,
+                    backgroundColor: 'rgba(75, 192, 192, 0.4)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        stacked: false,
+                        title: {
+                            display: true,
+                            text: 'Suppliers'
+                        }
+                    },
+                    y: {
+                        stacked: false,
+                        title: {
+                            display: true,
+                            text: 'Quantity'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        /*]]>*/
+    </script>
+
+
 
 <script th:inline="javascript">
     /*<![CDATA[*/
