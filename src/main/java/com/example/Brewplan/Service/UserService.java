@@ -17,7 +17,7 @@ public class UserService {
 
     @PostConstruct
     public void init() {
-        if (!userRepository.findByUsername("admin").isPresent()) {
+        if (!userRepository.findByUsername("kayiranga").isPresent()) {
             User admin = new User();
             admin.setUsername("kayiranga");
             admin.setEmail("kayiranga420@gmail.com");
@@ -36,7 +36,9 @@ public class UserService {
     }
 
     public void saveUser(User user) {
-        userRepository.save(user);
+        if (userRepository.findByEmail(user.getEmail()).isEmpty()) {
+            userRepository.save(user);
+        }
     }
 
     public void deleteUser(Long id) {
@@ -48,9 +50,9 @@ public class UserService {
     }
 
     public User authenticate(String email, String password) {
-        Optional<User> user = userRepository.findByEmail(email);
-        if (user.isPresent() && user.get().getPassword().equals(password)) {
-            return user.get();
+        List<User> users = userRepository.findAllByEmail(email);
+        if (users.size() == 1 && users.get(0).getPassword().equals(password)) {
+            return users.get(0);
         }
         return null;
     }

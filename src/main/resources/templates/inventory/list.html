@@ -29,7 +29,7 @@
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html " target="_blank">
+        <a class="navbar-brand m-0" th:href="@{/dashboard} " target="_blank">
             <img src="/img/bralirwa-plc-logo-11B0913D9B-seeklogo.com.png" class="navbar-brand-img h-100" alt="main_logo">
             <!--            <span class="ms-1 font-weight-bold">BrewPlan</span>-->
         </a>
@@ -491,6 +491,17 @@
                         </div>
                     </div>
                 </div>
+                <!-- Add Charts Section -->
+                <div class="card mt-4">
+                    <div class="card-header pb-0">
+                        <h6>Inventory Analysis</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart">
+                            <canvas id="inventoryChart" class="chart-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- End Overview Section -->
 
@@ -500,6 +511,8 @@
                         <div class="card-header pb-0">
                             <h6>Inventory</h6>
                             <a th:href="@{/inventory/add}" class="btn btn-primary">Add Inventory</a>
+                            <button class="btn btn-secondary" id="exportCSV">Export CSV</button>
+                            <button class="btn btn-secondary" id="exportPDF">Export PDF</button>
                             <form th:action="@{/inventory/search}" method="get" class="d-flex align-items-center mt-3">
                                 <input type="text" name="query" class="form-control me-2" placeholder="Search by product name">
                                 <button type="submit" class="btn btn-outline-primary">Search</button>
@@ -571,17 +584,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Add Charts Section -->
-                    <div class="card mt-4">
-                        <div class="card-header pb-0">
-                            <h6>Inventory Analysis</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="chart">
-                                <canvas id="inventoryChart" class="chart-canvas"></canvas>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -681,14 +684,72 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlHjW5z2NV/6fiyzCprsk/Rg7ygoOBhbVGd5oVbb73FPpxmCQ9N+BfWI3Fe" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgEPvWB51cAT+6M9E0C6KnN4VBmVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>
-    function filterInventory() {
-        const filter = document.getElementById('filter').value;
-        window.location.href = `/inventory?filter=${filter}`;
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.18/jspdf.plugin.autotable.min.js"></script>
+
+<script th:inline="javascript">
+    // Function to export table data to CSV
+    function exportTableToCSV(filename) {
+        var csv = [];
+        var rows = document.querySelectorAll("#inventoryTable tr");
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = [], cols = rows[i].querySelectorAll("td, th");
+
+            for (var j = 0; j < cols.length; j++)
+                row.push(cols[j].innerText);
+
+            csv.push(row.join(","));
+        }
+
+        // Download CSV
+        downloadCSV(csv.join("\n"), filename);
     }
 
+    function downloadCSV(csv, filename) {
+        var csvFile;
+        var downloadLink;
+
+        csvFile = new Blob([csv], { type: "text/csv" });
+
+        downloadLink = document.createElement("a");
+        downloadLink.download = filename;
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+        downloadLink.style.display = "none";
+
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+    }
+
+    // Function to export table data to PDF
+    function exportTableToPDF() {
+        const { jsPDF } = window.jspdf;
+
+        var doc = new jsPDF('p', 'pt', 'a4');
+        doc.autoTable({
+            html: '#inventoryTable',
+            startY: 20,
+            styles: {
+                fontSize: 8,
+                cellPadding: 3
+            }
+        });
+        doc.save('inventory.pdf');
+    }
+
+    document.getElementById("exportCSV").addEventListener("click", function () {
+        var filename = 'inventory.csv';
+        exportTableToCSV(filename);
+    });
+
+    document.getElementById("exportPDF").addEventListener("click", function () {
+        exportTableToPDF();
+    });
+</script>
+<script th:inline="javascript">
     document.addEventListener('DOMContentLoaded', function () {
-        fetch('/inventory/data')
+        fetch('/inventory-levels/data')
             .then(response => response.json())
             .then(data => {
                 const labels = data.map(item => item.productName);
@@ -709,7 +770,6 @@
                     },
                     options: {
                         responsive: true,
-                        maintainAspectRatio: false,
                         scales: {
                             y: {
                                 beginAtZero: true

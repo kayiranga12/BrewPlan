@@ -82,9 +82,8 @@ public class InventoryController {
         return "redirect:/inventory";
     }
 
-    @GetMapping("/data")
-    @ResponseBody
-    public List<Inventory> getInventoryData() {
+    @GetMapping("/inventory-levels/data")
+    public List<Inventory> getInventoryLevels() {
         return inventoryService.getAllInventories();
     }
 }

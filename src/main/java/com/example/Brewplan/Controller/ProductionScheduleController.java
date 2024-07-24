@@ -67,9 +67,7 @@ public class ProductionScheduleController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteProductionSchedule(@PathVariable("id") Long id, Model model) {
-        ProductionSchedule productionSchedule = productionScheduleService.getProductionScheduleById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid production schedule Id:" + id));
+    public String deleteProductionSchedule(@PathVariable("id") Long id) {
         productionScheduleService.deleteProductionSchedule(id);
         return "redirect:/production-schedule";
     }
@@ -79,5 +77,4 @@ public class ProductionScheduleController {
     public List<ProductionSchedule> getProductionScheduleData() {
         return productionScheduleService.getAllProductionSchedules();
     }
-
 }

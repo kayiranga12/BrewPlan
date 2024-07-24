@@ -37,4 +37,8 @@ public class InventoryService {
                 .filter(inventory -> inventory.getProductName().toLowerCase().contains(query.toLowerCase()))
                 .collect(Collectors.toList());
     }
+
+    public List<Inventory> getAllInventory() {
+        return inventoryRepository.findAll();
+    }
 }

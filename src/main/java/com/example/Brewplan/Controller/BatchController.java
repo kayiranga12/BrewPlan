@@ -71,4 +71,10 @@ public class BatchController {
         batchService.deleteBatch(id);
         return "redirect:/batches";
     }
+    @GetMapping("/data")
+    @ResponseBody
+    public List<Batch> getBatchData() {
+        return batchService.getAllBatches();
+    }
+
 }

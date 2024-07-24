@@ -11,8 +11,7 @@ import java.util.List;
 @RequestMapping("/api/forecast")
 public class DemandForecastController {
 
-    @Autowired
-    private DemandForecastService demandForecastService;
+    @Autowired    private DemandForecastService demandForecastService;
 
     @PostMapping
     public List<DemandForecast> addForecasts(@RequestBody List<DemandForecast> demandForecasts) {

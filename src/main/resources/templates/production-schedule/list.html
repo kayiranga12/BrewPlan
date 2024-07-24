@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="utf-8" />
@@ -18,16 +18,71 @@
     <link href="/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
-    <!-- Nepcha Analytics (nepcha.com) -->
-    <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
-    <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+    <link href='https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        .gantt-container, .calendar-container {
+            height: 400px;
+            margin: 20px 0;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .table th {
+            font-size: 0.75rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-bottom: 1px solid #e3e6f0;
+        }
+
+        .table td {
+            font-size: 0.875rem;
+            color: #5a5c69;
+            font-weight: 400;
+            border-top: 1px solid #e3e6f0;
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-warning {
+            background-color: #f6c23e;
+            border-color: #f6c23e;
+        }
+
+        .btn-danger {
+            background-color: #e74a3b;
+            border-color: #e74a3b;
+        }
+
+        .btn-warning:hover {
+            background-color: #f4b619;
+            border-color: #f4b619;
+        }
+
+        .btn-danger:hover {
+            background-color: #e02d1b;
+            border-color: #e02d1b;
+        }
+
+        .table .fas {
+            font-size: 1rem;
+        }
+    </style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html " target="_blank">
+        <a class="navbar-brand m-0" th:href="@{/dashboard} " target="_blank">
             <img src="/img/bralirwa-plc-logo-11B0913D9B-seeklogo.com.png" class="navbar-brand-img h-100" alt="main_logo">
             <!--            <span class="ms-1 font-weight-bold">BrewPlan</span>-->
         </a>
@@ -276,31 +331,10 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Sign In</span>
+                    <span class="nav-link-text ms-1">Logout</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link " th:href="@{/signup}">
-                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>spaceship</title>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1720.000000, -592.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                    <g transform="translate(1716.000000, 291.000000)">
-                                        <g transform="translate(4.000000, 301.000000)">
-                                            <path class="color-background" d="M39.3,0.706666667 C38.9660984,0.370464027 38.5048767,0.192278529 38.0316667,0.216666667 C14.6516667,1.43666667 6.015,22.2633333 5.93166667,22.4733333 C5.68236407,23.0926189 5.82664679,23.8009159 6.29833333,24.2733333 L15.7266667,33.7016667 C16.2013871,34.1756798 16.9140329,34.3188658 17.535,34.065 C17.7433333,33.98 38.4583333,25.2466667 39.7816667,1.97666667 C39.8087196,1.50414529 39.6335979,1.04240574 39.3,0.706666667 Z M25.69,19.0233333 C24.7367525,19.9768687 23.3029475,20.2622391 22.0572426,19.7463614 C20.8115377,19.2304837 19.9992882,18.0149658 19.9992882,16.6666667 C19.9992882,15.3183676 20.8115377,14.1028496 22.0572426,13.5869719 C23.3029475,13.0710943 24.7367525,13.3564646 25.69,14.31 C26.9912731,15.6116662 26.9912731,17.7216672 25.69,19.0233333 L25.69,19.0233333 Z"></path>
-                                            <path class="color-background opacity-6" d="M1.855,31.4066667 C3.05106558,30.2024182 4.79973884,29.7296005 6.43969145,30.1670277 C8.07964407,30.6044549 9.36054508,31.8853559 9.7979723,33.5253085 C10.2353995,35.1652612 9.76258177,36.9139344 8.55833333,38.11 C6.70666667,39.9616667 0,40 0,40 C0,40 0,33.2566667 1.855,31.4066667 Z"></path>
-                                            <path class="color-background opacity-6" d="M17.2616667,3.90166667 C12.4943643,3.07192755 7.62174065,4.61673894 4.20333333,8.04166667 C3.31200265,8.94126033 2.53706177,9.94913142 1.89666667,11.0416667 C1.5109569,11.6966059 1.61721591,12.5295394 2.155,13.0666667 L5.47,16.3833333 C8.55036617,11.4946947 12.5559074,7.25476565 17.2616667,3.90166667 L17.2616667,3.90166667 Z"></path>
-                                            <path class="color-background opacity-6" d="M36.0983333,22.7383333 C36.9280725,27.5056357 35.3832611,32.3782594 31.9583333,35.7966667 C31.0587397,36.6879974 30.0508686,37.4629382 28.9583333,38.1033333 C28.3033941,38.4890431 27.4704606,38.3827841 26.9333333,37.845 L23.6166667,34.53 C28.5053053,31.4496338 32.7452344,27.4440926 36.0983333,22.7383333 L36.0983333,22.7383333 Z"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                    <span class="nav-link-text ms-1">Sign Up</span>
-                </a>
-            </li>
+
         </ul>
     </div>
 </aside>
@@ -324,9 +358,9 @@
                 </div>
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+                        <a href="/User/login" class="nav-link text-body font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
-                            <span class="d-sm-inline d-none">Sign In</span>
+                            <span class="d-sm-inline d-none">Logout</span>
                         </a>
                     </li>
                     <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -421,156 +455,159 @@
         </div>
     </nav>
     <!-- End Navbar -->
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+        <div class="container-fluid py-4">
+            <div class="row mb-4">
+                <div class="col-lg-4 mb-lg-0 mb-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <div class="d-flex">
+                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                    <i class="ni ni-calendar-grid-58 text-lg opacity-10"></i>
+                                </div>
+                                <div class="d-flex flex-column ms-2">
+                                    <h6 class="mb-0 text-sm">On-Time Completion Rate</h6>
+                                    <span class="text-xs" id="onTimeCompletionRate">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-lg-0 mb-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <div class="d-flex">
+                                <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
+                                    <i class="ni ni-time-alarm text-lg opacity-10"></i>
+                                </div>
+                                <div class="d-flex flex-column ms-2">
+                                    <h6 class="mb-0 text-sm">Average Production Cycle Time</h6>
+                                    <span class="text-xs" id="avgProductionCycleTime">0 hours</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-lg-0 mb-4">
+                    <div class="card">
+                        <div class="card-body p-3">
+                            <div class="d-flex">
+                                <div class="icon icon-shape bg-gradient-danger shadow text-center border-radius-md">
+                                    <i class="ni ni-settings-gear-65 text-lg opacity-10"></i>
+                                </div>
+                                <div class="d-flex flex-column ms-2">
+                                    <h6 class="mb-0 text-sm">Downtime Percentage</h6>
+                                    <span class="text-xs" id="downtimePercentage">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <h6>Gantt Chart</h6>
+                        </div>
+                        <div class="card-body p-3">
+                            <div id="ganttChart" class="gantt-container"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <h6>Calendar View</h6>
+                        </div>
+                        <div class="card-body p-3">
+                            <div id="calendarView" class="calendar-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Production Schedules Table -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mb-4">
+                        <div class="card-header pb-0">
+                            <h6>Production Schedules</h6>
+                            <div class="d-flex justify-content-between">
+                                <a th:href="@{/production-schedule/add}" class="btn btn-primary">Add New Schedule</a>
+                                <button id="exportCSV" class="btn btn-secondary">Export CSV</button>
+                                <button id="exportPDF" class="btn btn-secondary">Export PDF</button>
+                                <div class="input-group w-50">
+                                    <input type="text" class="form-control" placeholder="Search schedules..." id="scheduleSearch">
+                                    <button class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pt-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Schedule ID</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Scheduled Start</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Scheduled End</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actual Start</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actual End</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Production Plan</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="scheduleTableBody">
+                                    <tr th:each="schedule : ${productionSchedules}">
+                                        <td th:text="${schedule.scheduleId}">1</td>
+                                        <td th:text="${#temporals.format(schedule.scheduledStart, 'yyyy-MM-dd HH:mm')}">2024-07-25 08:00:00</td>
+                                        <td th:text="${#temporals.format(schedule.scheduledEnd, 'yyyy-MM-dd HH:mm')}">2024-07-25 18:00:00</td>
+                                        <td th:text="${#temporals.format(schedule.actualStart, 'yyyy-MM-dd HH:mm')}">2024-07-25 08:00:00</td>
+                                        <td th:text="${#temporals.format(schedule.actualEnd, 'yyyy-MM-dd HH:mm')}">2024-07-25 18:00:00</td>
+                                        <td th:text="${schedule.productionPlan.productName}">P72</td>
+                                        <td>
+                                            <a th:href="@{/production-schedule/edit/{id}(id=${schedule.scheduleId})}" class="btn btn-sm btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a th:href="@{/production-schedule/delete/{id}(id=${schedule.scheduleId})}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this schedule?');">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!--    <footer class="footer pt-3  ">-->
+<!--            <div class="container-fluid">-->
+<!--                <div class="row align-items-center justify-content-lg-between">-->
+<!--                    <div class="col-lg-6 mb-lg-0 mb-4">-->
+<!--                        <div class="copyright text-center text-sm text-muted text-lg-start">-->
+<!--                            © <script>-->
+<!--                            document.write(new Date().getFullYear())-->
+<!--                        </script>-->
+<!--                            <a class="font-weight-bold" target="_blank">Creative Kayiranga</a>-->
+<!--                            for a better web.-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-6">-->
+<!--                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">-->
+<!--                            <li class="nav-item">-->
+<!--                                <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Kayiranga</a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </footer>-->
 </main>
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-    <div class="container-fluid py-4">
-        <div class="row mb-4">
-            <div class="col-lg-6 mb-lg-0 mb-4">
-                <div class="card">
-                    <div class="card-header pb-0">
-                        <h6>Gantt Chart</h6>
-                    </div>
-                    <div class="card-body p-3">
-                        <div id="ganttChart" style="height: 300px;"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-lg-0 mb-4">
-                <div class="card">
-                    <div class="card-header pb-0">
-                        <h6>Calendar View</h6>
-                    </div>
-                    <div class="card-body p-3">
-                        <div id="calendarView" style="height: 300px;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row mb-4">
-            <div class="col-lg-4 mb-lg-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="d-flex">
-                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                <i class="ni ni-calendar-grid-58 text-lg opacity-10"></i>
-                            </div>
-                            <div class="d-flex flex-column ms-2">
-                                <h6 class="mb-0 text-sm">On-Time Completion Rate</h6>
-                                <span class="text-xs" id="onTimeCompletionRate">0%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mb-lg-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="d-flex">
-                            <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
-                                <i class="ni ni-time-alarm text-lg opacity-10"></i>
-                            </div>
-                            <div class="d-flex flex-column ms-2">
-                                <h6 class="mb-0 text-sm">Average Production Cycle Time</h6>
-                                <span class="text-xs" id="avgProductionCycleTime">0 hours</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mb-lg-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="d-flex">
-                            <div class="icon icon-shape bg-gradient-danger shadow text-center border-radius-md">
-                                <i class="ni ni-settings-gear-65 text-lg opacity-10"></i>
-                            </div>
-                            <div class="d-flex flex-column ms-2">
-                                <h6 class="mb-0 text-sm">Downtime Percentage</h6>
-                                <span class="text-xs" id="downtimePercentage">0%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Production Schedules Table -->
-        <div class="row">
-            <div class="col-12">
-                <div class="card mb-4">
-                    <div class="card-header pb-0">
-                        <h6>Production Schedules</h6>
-                        <div class="d-flex justify-content-between">
-                            <a th:href="@{/production-schedule/add}" class="btn btn-primary">Add New Schedule</a>
-                            <div class="input-group w-50">
-                                <input type="text" class="form-control" placeholder="Search schedules..." id="scheduleSearch">
-                                <button class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-0">
-                            <table class="table align-items-center mb-0">
-                                <thead>
-                                <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Schedule ID</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Scheduled Start</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Scheduled End</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actual Start</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actual End</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Production Plan</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
-                                </tr>
-                                </thead>
-                                <tbody id="scheduleTableBody">
-                                <tr th:each="schedule : ${productionSchedules}">
-                                    <td th:text="${schedule.scheduleId}">1</td>
-                                    <td th:text="${#temporals.format(schedule.scheduledStart, 'yyyy-MM-dd HH:mm')}">2024-07-25 08:00:00</td>
-                                    <td th:text="${#temporals.format(schedule.scheduledEnd, 'yyyy-MM-dd HH:mm')}">2024-07-25 18:00:00</td>
-                                    <td th:text="${#temporals.format(schedule.actualStart, 'yyyy-MM-dd HH:mm')}">2024-07-25 08:00:00</td>
-                                    <td th:text="${#temporals.format(schedule.actualEnd, 'yyyy-MM-dd HH:mm')}">2024-07-25 18:00:00</td>
-                                    <td th:text="${schedule.productionPlan.productName}">P72</td>
-                                    <td>
-                                        <a th:href="@{/production-schedule/edit/{id}(id=${schedule.scheduleId})}" class="btn btn-sm btn-warning">Edit</a>
-                                        <a th:href="@{/production-schedule/delete/{id}(id=${schedule.scheduleId})}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this schedule?');">Delete</a>
-                                    </td>
-                                </tr>
-                                </tbody>
-
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
-    <footer class="footer pt-3  ">
-            <div class="container-fluid">
-                <div class="row align-items-center justify-content-lg-between">
-                    <div class="col-lg-6 mb-lg-0 mb-4">
-                        <div class="copyright text-center text-sm text-muted text-lg-start">
-                            © <script>
-                            document.write(new Date().getFullYear())
-                        </script>,
-                            made with <i class="fa fa-heart"></i> by
-                            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Kayiranga</a>
-                            for a better web.
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Kayiranga</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
     <div class="fixed-plugin">
         <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
             <i class="fa fa-cog py-2"> </i>
@@ -640,6 +677,149 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlHjW5z2NV/6fiyzCprsk/Rg7ygoOBhbVGd5oVbb73FPpxmCQ9N+BfWI3Fe" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgEPvWB51cAT+6M9E0C6KnN4VBmVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.18/jspdf.plugin.autotable.min.js"></script>
+
+<script th:inline="javascript">
+    // Function to export table data to CSV
+    function exportTableToCSV(filename) {
+        var csv = [];
+        var rows = document.querySelectorAll("#productionScheduleTable tr");
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = [], cols = rows[i].querySelectorAll("td, th");
+
+            for (var j = 0; j < cols.length; j++)
+                row.push(cols[j].innerText);
+
+            csv.push(row.join(","));
+        }
+
+        // Download CSV
+        downloadCSV(csv.join("\n"), filename);
+    }
+
+    function downloadCSV(csv, filename) {
+        var csvFile;
+        var downloadLink;
+
+        csvFile = new Blob([csv], { type: "text/csv" });
+
+        downloadLink = document.createElement("a");
+        downloadLink.download = filename;
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+        downloadLink.style.display = "none";
+
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+    }
+
+    // Function to export table data to PDF
+    function exportTableToPDF() {
+        const { jsPDF } = window.jspdf;
+
+        var doc = new jsPDF('p', 'pt', 'a4');
+        doc.autoTable({
+            html: '#productionScheduleTable',
+            startY: 20,
+            styles: {
+                fontSize: 8,
+                cellPadding: 3
+            }
+        });
+        doc.save('production_schedules.pdf');
+    }
+
+    document.getElementById("exportCSV").addEventListener("click", function () {
+        var filename = 'production_schedules.csv';
+        exportTableToCSV(filename);
+    });
+
+    document.getElementById("exportPDF").addEventListener("click", function () {
+        exportTableToPDF();
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Fetching data from the backend
+        fetch('/production-schedule/data')
+            .then(response => response.json())
+            .then(data => {
+                const schedules = data.map(schedule => ({
+                    id: schedule.scheduleId,
+                    text: schedule.productionPlan.productName,
+                    start_date: new Date(schedule.scheduledStart),
+                    end_date: new Date(schedule.scheduledEnd)
+                }));
+
+                // Gantt Chart
+                gantt.config.columns = [
+                    {name: "text", label: "Product Name", tree: true, width: '*'},
+                    {name: "start_date", label: "Start Date", align: "center"},
+                    {name: "end_date", label: "End Date", align: "center"}
+                ];
+                gantt.init("ganttChart");
+                gantt.parse({data: schedules});
+
+                // Calendar View
+                const calendarEl = document.getElementById('calendarView');
+                const calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    events: data.map(schedule => ({
+                        title: schedule.productionPlan.productName,
+                        start: schedule.scheduledStart,
+                        end: schedule.scheduledEnd
+                    }))
+                });
+                calendar.render();
+
+                // KPIs
+                const completedSchedules = data.filter(schedule => schedule.actualEnd != null);
+                const onTimeCompletionRate = (completedSchedules.length / data.length) * 100;
+                const avgProductionCycleTime = completedSchedules.reduce((sum, schedule) => {
+                    const start = new Date(schedule.actualStart).getTime();
+                    const end = new Date(schedule.actualEnd).getTime();
+                    return sum + ((end - start) / (1000 * 60 * 60)); // Convert to hours
+                }, 0) / completedSchedules.length;
+
+                const downtimePercentage = data.reduce((sum, schedule) => {
+                    const plannedDuration = new Date(schedule.scheduledEnd).getTime() - new Date(schedule.scheduledStart).getTime();
+                    const actualDuration = new Date(schedule.actualEnd).getTime() - new Date(schedule.actualStart).getTime();
+                    return sum + ((plannedDuration - actualDuration) / plannedDuration) * 100;
+                }, 0) / data.length;
+
+                document.getElementById('onTimeCompletionRate').innerText = `${onTimeCompletionRate.toFixed(2)}%`;
+                document.getElementById('avgProductionCycleTime').innerText = `${avgProductionCycleTime.toFixed(2)} hours`;
+                document.getElementById('downtimePercentage').innerText = `${downtimePercentage.toFixed(2)}%`;
+            });
+    });
+
+    function downloadChart(chartId, format) {
+        const chart = document.getElementById(chartId);
+        const link = document.createElement('a');
+
+        html2canvas(chart).then(canvas => {
+            if (format === 'jpeg' || format === 'webp') {
+                const tempCanvas = document.createElement('canvas');
+                const context = tempCanvas.getContext('2d');
+                tempCanvas.width = canvas.width;
+                tempCanvas.height = canvas.height;
+                context.fillStyle = '#fff'; // Set the background to white
+                context.fillRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(canvas, 0, 0);
+                link.href = tempCanvas.toDataURL(`image/${format}`);
+            } else {
+                link.href = canvas.toDataURL(`image/${format}`);
+            }
+            link.download = `${chartId}.${format}`;
+            link.click();
+        });
+    }
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Fetching data from the backend

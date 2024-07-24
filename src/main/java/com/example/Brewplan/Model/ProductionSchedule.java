@@ -22,7 +22,16 @@ public class ProductionSchedule {
     private LocalDateTime actualStart;
     private LocalDateTime actualEnd;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     @ManyToOne
     @JoinColumn(name = "plan_id", nullable = false)
     private ProductionPlan productionPlan;
+
+    public enum Status {
+        PLANNED,
+        IN_PROGRESS,
+        COMPLETED
+    }
 }

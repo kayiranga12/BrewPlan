@@ -24,4 +24,5 @@ public class ResourceAllocation {
     private int allocatedQuantity;
     private String resourceType; // New field for resource type
     private String resourceStatus; // New field for resource status
+    private int resourceCapacity;
 }

@@ -32,7 +32,7 @@ public class UserController {
     public String listAllUsers(Model model) {
         List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
-        return "User/profile"; // Ensure your profile page is set to display the user list as well
+        return "User/list"; // Ensure your profile page is set to display the user list as well
     }
 
     @GetMapping("/signup")
@@ -68,6 +68,12 @@ public class UserController {
             return "redirect:/User/profile"; // Admins go to profile page to manage users
         }
         return "redirect:/dashboard"; // Non-admin users go to dashboard or another appropriate page
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/User/login";
     }
 
     @GetMapping("/edit/{id}")

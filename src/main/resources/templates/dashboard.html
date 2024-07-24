@@ -29,7 +29,7 @@
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html " target="_blank">
+        <a class="navbar-brand m-0" th:href="@{/dashboard}" target="_blank">
             <img src="/img/bralirwa-plc-logo-11B0913D9B-seeklogo.com.png" class="navbar-brand-img h-100" alt="main_logo">
             <!--            <span class="ms-1 font-weight-bold">BrewPlan</span>-->
         </a>
@@ -241,7 +241,7 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link " th:href="@{/profile}">
+                <a class="nav-link " th:href="@{/User/profile}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>customer-support</title>
@@ -262,7 +262,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " th:href="@{/login}">
+                <a class="nav-link " th:href="@{/User/User/login}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>document</title>
@@ -278,32 +278,24 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Sign In</span>
+                    <span class="nav-link-text ms-1">Logout</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link " th:href="@{/signup}">
-                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>spaceship</title>
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1720.000000, -592.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                    <g transform="translate(1716.000000, 291.000000)">
-                                        <g transform="translate(4.000000, 301.000000)">
-                                            <path class="color-background" d="M39.3,0.706666667 C38.9660984,0.370464027 38.5048767,0.192278529 38.0316667,0.216666667 C14.6516667,1.43666667 6.015,22.2633333 5.93166667,22.4733333 C5.68236407,23.0926189 5.82664679,23.8009159 6.29833333,24.2733333 L15.7266667,33.7016667 C16.2013871,34.1756798 16.9140329,34.3188658 17.535,34.065 C17.7433333,33.98 38.4583333,25.2466667 39.7816667,1.97666667 C39.8087196,1.50414529 39.6335979,1.04240574 39.3,0.706666667 Z M25.69,19.0233333 C24.7367525,19.9768687 23.3029475,20.2622391 22.0572426,19.7463614 C20.8115377,19.2304837 19.9992882,18.0149658 19.9992882,16.6666667 C19.9992882,15.3183676 20.8115377,14.1028496 22.0572426,13.5869719 C23.3029475,13.0710943 24.7367525,13.3564646 25.69,14.31 C26.9912731,15.6116662 26.9912731,17.7216672 25.69,19.0233333 L25.69,19.0233333 Z"></path>
-                                            <path class="color-background opacity-6" d="M1.855,31.4066667 C3.05106558,30.2024182 4.79973884,29.7296005 6.43969145,30.1670277 C8.07964407,30.6044549 9.36054508,31.8853559 9.7979723,33.5253085 C10.2353995,35.1652612 9.76258177,36.9139344 8.55833333,38.11 C6.70666667,39.9616667 0,40 0,40 C0,40 0,33.2566667 1.855,31.4066667 Z"></path>
-                                            <path class="color-background opacity-6" d="M17.2616667,3.90166667 C12.4943643,3.07192755 7.62174065,4.61673894 4.20333333,8.04166667 C3.31200265,8.94126033 2.53706177,9.94913142 1.89666667,11.0416667 C1.5109569,11.6966059 1.61721591,12.5295394 2.155,13.0666667 L5.47,16.3833333 C8.55036617,11.4946947 12.5559074,7.25476565 17.2616667,3.90166667 L17.2616667,3.90166667 Z"></path>
-                                            <path class="color-background opacity-6" d="M36.0983333,22.7383333 C36.9280725,27.5056357 35.3832611,32.3782594 31.9583333,35.7966667 C31.0587397,36.6879974 30.0508686,37.4629382 28.9583333,38.1033333 C28.3033941,38.4890431 27.4704606,38.3827841 26.9333333,37.845 L23.6166667,34.53 C28.5053053,31.4496338 32.7452344,27.4440926 36.0983333,22.7383333 L36.0983333,22.7383333 Z"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                    </div>
-                    <span class="nav-link-text ms-1">Sign Up</span>
-                </a>
-            </li>
+
         </ul>
+    </div>
+    <div class="sidenav-footer mx-3 ">
+        <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
+            <div class="full-background" style="background-image: url('/img/pexels-isabella-mendes-107313-338711.jpg')"></div>
+            <div class="card-body text-start p-3 w-100">
+                <div class="icon icon-shape icon-sm bg-white shadow text-center mb-3 d-flex align-items-center justify-content-center border-radius-md">
+                    <i class="ni ni-diamond text-dark text-gradient text-lg top-0" aria-hidden="true" id="sidenavCardIcon"></i>
+                </div>
+                <div class="docs-info">
+                    <h6 class="text-white up mb-0">Bralirwa</h6>
+                </div>
+            </div>
+        </div>
     </div>
 </aside>
 
@@ -328,9 +320,9 @@
                 </div>
                 <ul class="navbar-nav justify-content-end">
                     <li class="nav-item d-flex align-items-center">
-                        <a href="/login" class="nav-link text-body font-weight-bold px-0">
+                        <a href="/User/login" class="nav-link text-body font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
-                            <span class="d-sm-inline d-none">Sign In</span>
+                            <span class="d-sm-inline d-none">Logout</span>
                         </a>
                     </li>
 
@@ -426,7 +418,6 @@
         </div>
     </nav>
     <!-- End Navbar -->
-</main>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
         <div class="container-fluid py-4">
             <!-- KPI Section -->
@@ -436,11 +427,11 @@
                         <div class="card-body p-3">
                             <div class="d-flex">
                                 <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                    <i class="ni ni-calendar-grid-58 text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                                 <div class="ms-3">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Production</p>
-                                    <h5 class="font-weight-bolder" th:text="${totalProduction}">1,200</h5>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Schedule Adherence</p>
+                                    <h5 class="font-weight-bolder" th:text="${scheduleAdherence}">90%</h5>
                                 </div>
                             </div>
                         </div>
@@ -451,11 +442,11 @@
                         <div class="card-body p-3">
                             <div class="d-flex">
                                 <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
-                                    <i class="ni ni-chart-bar-32 text-lg opacity-10" aria-hidden="true"></i>
+                                    <i class="ni ni-single-copy-04 text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                                 <div class="ms-3">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Efficiency Rate</p>
-                                    <h5 class="font-weight-bolder" th:text="${efficiencyRate}">85%</h5>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Resource Utilization</p>
+                                    <h5 class="font-weight-bolder" th:text="${resourceUtilization}">75%</h5>
                                 </div>
                             </div>
                         </div>
@@ -466,11 +457,11 @@
                         <div class="card-body p-3">
                             <div class="d-flex">
                                 <div class="icon icon-shape bg-gradient-danger shadow text-center border-radius-md">
-                                    <i class="ni ni-chart-pie-35 text-lg opacity-10" aria-hidden="true"></i>
+                                    <i class="ni ni-settings text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                                 <div class="ms-3">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Defect Rate</p>
-                                    <h5 class="font-weight-bolder" th:text="${defectRate}">5%</h5>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Production Plans</p>
+                                    <h5 class="font-weight-bolder" th:text="${totalProductionPlans}">50</h5>
                                 </div>
                             </div>
                         </div>
@@ -480,18 +471,19 @@
                     <div class="card">
                         <div class="card-body p-3">
                             <div class="d-flex">
-                                <div class="icon icon-shape bg-gradient-warning shadow text-center border-radius-md">
-                                    <i class="ni ni-bell-55 text-lg opacity-10" aria-hidden="true"></i>
+                                <div class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
+                                    <i class="ni ni-check-bold text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                                 <div class="ms-3">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pending Orders</p>
-                                    <h5 class="font-weight-bolder" th:text="${pendingOrders}">42</h5>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Completed Batches</p>
+                                    <h5 class="font-weight-bolder" th:text="${completedBatches}">100</h5>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <!-- Production Plan Overview Chart -->
             <div class="row mt-4">
@@ -535,176 +527,66 @@
                             </div>
                         </div>
                         <div class="card-body p-3">
-                            <ul class="list-group">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    New production plan created for P72
-                                    <span class="badge bg-primary rounded-pill">2 mins ago</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Quality check failed for T-K. 33cl
-                                    <span class="badge bg-danger rounded-pill">15 mins ago</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Energy consumption exceeded for Mu Lite 50cl
-                                    <span class="badge bg-warning rounded-pill">30 mins ago</span>
-                                </li>
-                                <!-- Add more recent activities here -->
+                            <ul class="list-group" id="recentActivitiesList">
+                                <!-- Recent activities will be populated here by JavaScript -->
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Production Schedule Chart -->
-            <div class="row mt-4">
-                <div class="col-lg-12 mb-lg-0 mb-4">
-                    <div class="card z-index-2 h-100">
-                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                            <h6 class="text-capitalize">Production Schedule</h6>
-                            <div class="btn-group">
-                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-download"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('productionScheduleChart', 'png')">PNG</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('productionScheduleChart', 'jpeg')">JPEG</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('productionScheduleChart', 'webp')">WEBP</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-body p-3">
-                            <div class="chart">
-                                <canvas id="productionScheduleChart" class="chart-canvas" height="300"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Resource Allocation Chart -->
+                <!-- Resource Allocation Chart -->
             <div class="row mt-4">
                 <div class="col-lg-7 mb-lg-0 mb-4">
-                    <div class="card z-index-2 h-100">
-                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                            <h6 class="text-capitalize">Resource Allocation</h6>
-                            <div class="btn-group">
-                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-download"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationChart', 'png')">PNG</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationChart', 'jpeg')">JPEG</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('resourceAllocationChart', 'webp')">WEBP</a></li>
-                                </ul>
+
+                <!-- New Charts Section -->
+                <div class="row mt-4">
+                    <!-- Production Schedule Timeline Chart -->
+                    <div class="col-lg-6 mb-lg-0 mb-4">
+                        <div class="card z-index-2 h-100">
+                            <div class="card-header pb-0 pt-3 bg-transparent">
+                                <h6 class="text-capitalize">Production Schedule Timeline</h6>
+                            </div>
+                            <div class="card-body p-3">
+                                <div class="chart">
+                                    <canvas id="productionScheduleTimelineChart" class="chart-canvas" height="300"></canvas>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-body p-3">
-                            <div class="chart">
-                                <canvas id="resourceAllocationChart" class="chart-canvas" height="300"></canvas>
+                    </div>
+
+                    <!-- Production Plan vs. Actual Production Chart -->
+                    <div class="col-lg-6 mb-lg-0 mb-4">
+                        <div class="card z-index-2 h-100">
+                            <div class="card-header pb-0 pt-3 bg-transparent">
+                                <h6 class="text-capitalize">Production Plan vs. Actual Production</h6>
+                            </div>
+                            <div class="card-body p-3">
+                                <div class="chart">
+                                    <canvas id="productionPlanVsActualChart" class="chart-canvas" height="300"></canvas>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Inventory Levels Chart -->
-                <div class="col-lg-5 mb-lg-0 mb-4">
-                    <div class="card z-index-2 h-100">
-                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                            <h6 class="text-capitalize">Inventory Levels</h6>
-                            <div class="btn-group">
-                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-download"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('inventoryChart', 'png')">PNG</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('inventoryChart', 'jpeg')">JPEG</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('inventoryChart', 'webp')">WEBP</a></li>
-                                </ul>
+                <!-- Resource Allocation Chart -->
+                <div class="row mt-4">
+                    <div class="col-lg-12 mb-lg-0 mb-4">
+                        <div class="card z-index-2 h-100">
+                            <div class="card-header pb-0 pt-3 bg-transparent">
+                                <h6 class="text-capitalize">Resource Allocation</h6>
                             </div>
-                        </div>
-                        <div class="card-body p-3">
-                            <div class="chart">
-                                <canvas id="inventoryChart" class="chart-canvas" height="300"></canvas>
+                            <div class="card-body p-3">
+                                <div class="chart">
+                                    <canvas id="resourceAllocationChart" class="chart-canvas" height="300"></canvas>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-
-            <!-- Quality Control Metrics Chart -->
-            <div class="row mt-4">
-                <div class="col-lg-6 mb-lg-0 mb-4">
-                    <div class="card z-index-2 h-100">
-                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                            <h6 class="text-capitalize">Quality Control Metrics</h6>
-                            <div class="btn-group">
-                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-download"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('qualityControlChart', 'png')">PNG</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('qualityControlChart', 'jpeg')">JPEG</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('qualityControlChart', 'webp')">WEBP</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-body p-3">
-                            <div class="chart">
-                                <canvas id="qualityControlChart" class="chart-canvas" height="300"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Supplier Management Chart -->
-                <div class="col-lg-6 mb-lg-0 mb-4">
-                    <div class="card z-index-2 h-100">
-                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                            <h6 class="text-capitalize">Supplier Management</h6>
-                            <div class="btn-group">
-                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-download"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('supplierManagementChart', 'png')">PNG</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('supplierManagementChart', 'jpeg')">JPEG</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('supplierManagementChart', 'webp')">WEBP</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-body p-3">
-                            <div class="chart">
-                                <canvas id="supplierManagementChart" class="chart-canvas" height="300"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Energy Consumption Overview Chart -->
-            <div class="row mt-4">
-                <div class="col-lg-7 mb-lg-0 mb-4">
-                    <div class="card z-index-2 h-100">
-                        <div class="card-header pb-0 pt-3 bg-transparent d-flex justify-content-between">
-                            <h6 class="text-capitalize">Energy Consumption Overview</h6>
-                            <div class="btn-group">
-                                <button class="btn btn-icon btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-download"></i>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionOverviewChart', 'png')">PNG</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionOverviewChart', 'jpeg')">JPEG</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="downloadChart('energyConsumptionOverviewChart', 'webp')">WEBP</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-body p-3">
-                            <div class="chart">
-                                <canvas id="energyConsumptionOverviewChart" class="chart-canvas" height="300"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Tasks/Calendar View -->
                 <div class="col-lg-5 mb-lg-0 mb-4">
@@ -755,6 +637,7 @@
             </div>
         </div>
     </footer>
+</main>
 <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
         <i class="fa fa-cog py-2"> </i>
@@ -852,22 +735,25 @@
     <script th:inline="javascript">
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
-
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
-                events: [
-                    {
-                        title: 'Task 1',
-                        start: '2024-07-20',
-                        end: '2024-07-22'
-                    },
-                    {
-                        title: 'Task 2',
-                        start: '2024-07-23',
-                        end: '2024-07-25'
-                    },
-                    // Add more tasks/events here
-                ],
+                events: function(fetchInfo, successCallback, failureCallback) {
+                    fetch('/production-schedule/data')
+                        .then(response => response.json())
+                        .then(data => {
+                            const events = data.map(schedule => ({
+                                title: schedule.productionPlan.productName,
+                                start: schedule.scheduledStart,
+                                end: schedule.scheduledEnd,
+                                color: schedule.status === 'PLANNED' ? '#00bfff' : (schedule.status === 'IN_PROGRESS' ? '#ffa500' : '#32cd32')
+                            }));
+                            successCallback(events);
+                        })
+                        .catch(error => {
+                            console.error('Error fetching production schedules:', error);
+                            failureCallback(error);
+                        });
+                },
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
@@ -877,6 +763,7 @@
 
             calendar.render();
         });
+
 
         function downloadChart(chartId, format) {
             const chart = document.getElementById(chartId);
@@ -899,92 +786,6 @@
                 link.click();
             });
         }
-
-        /*<![CDATA[*/
-        var productionSchedules = /*[[${productionSchedules}]]*/ [];
-        var taskLabels = productionSchedules.map(schedule => schedule.productionPlan.productName);
-        var scheduledStartTimes = productionSchedules.map(schedule => new Date(schedule.scheduledStart).getTime());
-        var scheduledEndTimes = productionSchedules.map(schedule => new Date(schedule.scheduledEnd).getTime());
-        var actualStartTimes = productionSchedules.map(schedule => new Date(schedule.actualStart).getTime());
-        var actualEndTimes = productionSchedules.map(schedule => new Date(schedule.actualEnd).getTime());
-
-        var ctx = document.getElementById('productionScheduleChart').getContext('2d');
-        var productionScheduleChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: taskLabels,
-                datasets: [
-                    {
-                        label: 'Scheduled Start',
-                        data: scheduledStartTimes,
-                        backgroundColor: 'rgba(75, 192, 192, 0.4)', // Lighter shade of cyan
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Scheduled End',
-                        data: scheduledEndTimes,
-                        backgroundColor: 'rgba(54, 162, 235, 0.4)', // Lighter shade of blue
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Actual Start',
-                        data: actualStartTimes,
-                        backgroundColor: 'rgba(75, 192, 192, 0.8)', // Darker shade of cyan
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Actual End',
-                        data: actualEndTimes,
-                        backgroundColor: 'rgba(54, 162, 235, 0.8)', // Darker shade of blue
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: {
-                        stacked: false,
-                        title: {
-                            display: true,
-                            text: 'Tasks'
-                        }
-                    },
-                    y: {
-                        stacked: false,
-                        type: 'linear',
-                        ticks: {
-                            callback: function(value) {
-                                var date = new Date(value);
-                                return date.toLocaleDateString(); // Only show the date part
-                            }
-                        },
-                        title: {
-                            display: true,
-                            text: 'Dates'
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                var date = new Date(tooltipItem.raw);
-                                return tooltipItem.dataset.label + ': ' + date.toLocaleDateString(); // Only show the date part
-                            }
-                        }
-                    }
-                }
-            }
-        });
 
         // Resource Allocation Chart
         var resourceAllocations = /*[[${resourceAllocations}]]*/ [];
@@ -1145,111 +946,8 @@
             }
         });
 
-        // Energy Consumption Chart
-        var energyConsumptionData = /*[[${energyConsumptionData}]]*/ [];
-        var dates = energyConsumptionData.map(entry => entry.date);
-        var consumptionValues = energyConsumptionData.map(entry => entry.energyUsed);
-
-        var ctxEnergy = document.getElementById('energyConsumptionOverviewChart').getContext('2d');
-        var energyConsumptionChart = new Chart(ctxEnergy, {
-            type: 'line',
-            data: {
-                labels: dates,
-                datasets: [{
-                    label: 'Energy Consumption (kWh)',
-                    data: consumptionValues,
-                    fill: false,
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    tension: 0.1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: {
-                        type: 'time',
-                        time: {
-                            unit: 'day',
-                            tooltipFormat: 'll'
-                        },
-                        title: {
-                            display: true,
-                            text: 'Date'
-                        }
-                    },
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Energy Used (kWh)'
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                    }
-                }
-            }
-        });
-
-        // Supplier Management Chart
-        var supplierData = /*[[${supplierData}]]*/ [];
-        var supplierNames = supplierData.map(supplier => supplier.name);
-        var suppliedQuantities = supplierData.map(supplier => supplier.suppliedQuantity);
-
-        var ctxSupplier = document.getElementById('supplierManagementChart').getContext('2d');
-        new Chart(ctxSupplier, {
-            type: 'bar',
-            data: {
-                labels: supplierNames,
-                datasets: [{
-                    label: 'Supplied Quantity',
-                    data: suppliedQuantities,
-                    backgroundColor: 'rgba(75, 192, 192, 0.4)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: {
-                        stacked: false,
-                        title: {
-                            display: true,
-                            text: 'Suppliers'
-                        }
-                    },
-                    y: {
-                        stacked: false,
-                        title: {
-                            display: true,
-                            text: 'Quantity'
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
         /*]]>*/
     </script>
-
-
 
 <script th:inline="javascript">
     /*<![CDATA[*/
@@ -1336,764 +1034,213 @@
     /*]]>*/
 </script>
 
-<!--<script th:inline="javascript">-->
-<!--    var productionScheduleData = [-->
-<!--        { task: "Task 1", startDate: "2024-07-01", endDate: "2024-07-05" },-->
-<!--        { task: "Task 2", startDate: "2024-07-03", endDate: "2024-07-10" },-->
-<!--        { task: "Task 3", startDate: "2024-07-08", endDate: "2024-07-12" }-->
-<!--    ];-->
+<script th:inline="javascript">
+    var productionSchedules = /*[[${productionSchedules}]]*/ [];
 
-<!--    var labels = productionScheduleData.map(data => data.task);-->
-<!--    var startDates = productionScheduleData.map(data => new Date(data.startDate).getTime());-->
-<!--    var endDates = productionScheduleData.map(data => new Date(data.endDate).getTime());-->
+    // Prepare data for Production Schedule Timeline Chart
+    var timelineLabels = productionSchedules.map(schedule => schedule.productionPlan.productName);
+    var scheduledStartTimes = productionSchedules.map(schedule => new Date(schedule.scheduledStart).getTime());
+    var scheduledEndTimes = productionSchedules.map(schedule => new Date(schedule.scheduledEnd).getTime());
+    var actualStartTimes = productionSchedules.map(schedule => new Date(schedule.actualStart).getTime());
+    var actualEndTimes = productionSchedules.map(schedule => new Date(schedule.actualEnd).getTime());
 
-<!--    var ctx = document.getElementById('productionScheduleChart').getContext('2d');-->
-<!--    var productionScheduleChart = new Chart(ctx, {-->
-<!--        type: 'bar',-->
-<!--        data: {-->
-<!--            labels: labels,-->
-<!--            datasets: [-->
-<!--                {-->
-<!--                    label: 'Start Date',-->
-<!--                    data: startDates,-->
-<!--                    backgroundColor: 'rgba(54, 162, 235, 0.2)',-->
-<!--                    borderColor: 'rgba(54, 162, 235, 1)',-->
-<!--                    borderWidth: 1-->
-<!--                },-->
-<!--                {-->
-<!--                    label: 'End Date',-->
-<!--                    data: endDates,-->
-<!--                    backgroundColor: 'rgba(75, 192, 192, 0.2)',-->
-<!--                    borderColor: 'rgba(75, 192, 192, 1)',-->
-<!--                    borderWidth: 1-->
-<!--                }-->
-<!--            ]-->
-<!--        },-->
-<!--        options: {-->
-<!--            responsive: true,-->
-<!--            scales: {-->
-<!--                x: {-->
-<!--                    stacked: true,-->
-<!--                    title: {-->
-<!--                        display: true,-->
-<!--                        text: 'Tasks'-->
-<!--                    }-->
-<!--                },-->
-<!--                y: {-->
-<!--                    stacked: true,-->
-<!--                    type: 'time',-->
-<!--                    time: {-->
-<!--                        unit: 'day',-->
-<!--                        tooltipFormat: 'll'-->
-<!--                    },-->
-<!--                    title: {-->
-<!--                        display: true,-->
-<!--                        text: 'Dates'-->
-<!--                    }-->
-<!--                }-->
-<!--            },-->
-<!--            plugins: {-->
-<!--                legend: {-->
-<!--                    display: true,-->
-<!--                    position: 'top',-->
-<!--                }-->
-<!--            }-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
+    // Production Schedule Timeline Chart
+    var ctxTimeline = document.getElementById('productionScheduleTimelineChart').getContext('2d');
+    var productionScheduleTimelineChart = new Chart(ctxTimeline, {
+        type: 'bar',
+        data: {
+            labels: timelineLabels,
+            datasets: [
+                {
+                    label: 'Scheduled Start',
+                    data: scheduledStartTimes,
+                    backgroundColor: 'rgba(75, 192, 192, 0.4)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Scheduled End',
+                    data: scheduledEndTimes,
+                    backgroundColor: 'rgba(54, 162, 235, 0.4)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Actual Start',
+                    data: actualStartTimes,
+                    backgroundColor: 'rgba(75, 192, 192, 0.8)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Actual End',
+                    data: actualEndTimes,
+                    backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    stacked: false,
+                    title: {
+                        display: true,
+                        text: 'Tasks'
+                    }
+                },
+                y: {
+                    stacked: false,
+                    type: 'linear',
+                    ticks: {
+                        callback: function(value) {
+                            var date = new Date(value);
+                            return date.toLocaleDateString();
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Dates'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            var date = new Date(tooltipItem.raw);
+                            return tooltipItem.dataset.label + ': ' + date.toLocaleDateString();
+                        }
+                    }
+                }
+            }
+        }
+    });
 
-<!--<script th:inline="javascript">-->
-<!--    var energyTypeCounts = /*[[${energyTypeCounts}]]*/ {};-->
-<!--    var energyTypeLabels = Object.keys(energyTypeCounts);-->
-<!--    var energyTypeData = Object.values(energyTypeCounts);-->
+    // Prepare data for Production Plan vs. Actual Production Chart
+    var planLabels = productionSchedules.map(schedule => schedule.productionPlan.productName);
+    var plannedQuantities = productionSchedules.map(schedule => schedule.productionPlan.plannedQuantity);
+    var actualQuantities = productionSchedules.map(schedule => schedule.productionPlan.actualQuantity);
 
-<!--    var ctx = document.getElementById('energyTypeChart').getContext('2d');-->
-<!--    var energyTypeChart = new Chart(ctx, {-->
-<!--        type: 'pie',-->
-<!--        data: {-->
-<!--            labels: energyTypeLabels,-->
-<!--            datasets: [{-->
-<!--                label: 'Energy Consumption',-->
-<!--                data: energyTypeData,-->
-<!--                backgroundColor: [-->
-<!--                    'rgba(75, 192, 192, 0.2)',-->
-<!--                    'rgba(255, 206, 86, 0.2)',-->
-<!--                    'rgba(54, 162, 235, 0.2)'-->
-<!--                ],-->
-<!--                borderColor: [-->
-<!--                    'rgba(75, 192, 192, 1)',-->
-<!--                    'rgba(255, 206, 86, 1)',-->
-<!--                    'rgba(54, 162, 235, 1)'-->
-<!--                ],-->
-<!--                borderWidth: 1-->
-<!--            }]-->
-<!--        },-->
-<!--        options: {-->
-<!--            responsive: true,-->
-<!--            plugins: {-->
-<!--                legend: {-->
-<!--                    display: true,-->
-<!--                    position: 'top',-->
-<!--                }-->
-<!--            }-->
-<!--        }-->
-<!--    });-->
+    // Production Plan vs. Actual Production Chart
+    var ctxPlanVsActual = document.getElementById('productionPlanVsActualChart').getContext('2d');
+    var productionPlanVsActualChart = new Chart(ctxPlanVsActual, {
+        type: 'bar',
+        data: {
+            labels: planLabels,
+            datasets: [
+                {
+                    label: 'Planned Quantity',
+                    data: plannedQuantities,
+                    backgroundColor: 'rgba(153, 102, 255, 0.4)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Actual Quantity',
+                    data: actualQuantities,
+                    backgroundColor: 'rgba(255, 159, 64, 0.4)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    stacked: false,
+                    title: {
+                        display: true,
+                        text: 'Products'
+                    }
+                },
+                y: {
+                    stacked: false,
+                    title: {
+                        display: true,
+                        text: 'Quantity'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+                        }
+                    }
+                }
+            }
+        }
+    });
 
-<!--    var energyConsumptionData = /*[[${energyConsumptionData}]]*/ [];-->
-<!--    var dates = energyConsumptionData.map(entry => entry.date);-->
-<!--    var consumptionValues = energyConsumptionData.map(entry => entry.value);-->
+    // Prepare data for Resource Allocation Chart
+    var resourceLabels = productionSchedules.map(schedule => schedule.productionPlan.productName);
+    var allocatedResources = productionSchedules.map(schedule => schedule.productionPlan.allocatedResources);
 
-<!--    // Line Chart for Energy Consumption Over Time-->
-<!--    var ctxLine = document.getElementById('energyConsumptionLineChart').getContext('2d');-->
-<!--    var energyConsumptionLineChart = new Chart(ctxLine, {-->
-<!--        type: 'line',-->
-<!--        data: {-->
-<!--            labels: dates,-->
-<!--            datasets: [{-->
-<!--                label: 'Energy Consumption Over Time',-->
-<!--                data: consumptionValues,-->
-<!--                fill: false,-->
-<!--                borderColor: 'rgba(75, 192, 192, 1)',-->
-<!--                tension: 0.1-->
-<!--            }]-->
-<!--        },-->
-<!--        options: {-->
-<!--            responsive: true,-->
-<!--            plugins: {-->
-<!--                legend: {-->
-<!--                    display: true,-->
-<!--                    position: 'top',-->
-<!--                }-->
-<!--            }-->
-<!--        }-->
-<!--    });-->
+    // Resource Allocation Chart
+    var ctxResource = document.getElementById('resourceAllocationChart').getContext('2d');
+    var resourceAllocationChart = new Chart(ctxResource, {
+        type: 'bar',
+        data: {
+            labels: resourceLabels,
+            datasets: [
+                {
+                    label: 'Allocated Resources',
+                    data: allocatedResources,
+                    backgroundColor: 'rgba(255, 99, 132, 0.4)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    stacked: false,
+                    title: {
+                        display: true,
+                        text: 'Products'
+                    }
+                },
+                y: {
+                    stacked: false,
+                    title: {
+                        display: true,
+                        text: 'Resources'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
 
-<!--    // Area Chart for Energy Consumption Over Time-->
-<!--    var ctxArea = document.getElementById('energyConsumptionAreaChart').getContext('2d');-->
-<!--    var energyConsumptionAreaChart = new Chart(ctxArea, {-->
-<!--        type: 'line',-->
-<!--        data: {-->
-<!--            labels: dates,-->
-<!--            datasets: [{-->
-<!--                label: 'Energy Consumption Over Time',-->
-<!--                data: consumptionValues,-->
-<!--                fill: true,-->
-<!--                backgroundColor: 'rgba(75, 192, 192, 0.2)',-->
-<!--                borderColor: 'rgba(75, 192, 192, 1)',-->
-<!--                tension: 0.1-->
-<!--            }]-->
-<!--        },-->
-<!--        options: {-->
-<!--            responsive: true,-->
-<!--            plugins: {-->
-<!--                legend: {-->
-<!--                    display: true,-->
-<!--                    position: 'top',-->
-<!--                }-->
-<!--            }-->
-<!--        }-->
-<!--    });-->
 
-<!--</script>-->
-<!--<script th:inline="javascript">-->
-<!--    var energyConsumptionByTask = /*[[${energyConsumptionByTask}]]*/ {};-->
-<!--    var taskLabels = Object.keys(energyConsumptionByTask);-->
-<!--    var energyTypes = Array.from(new Set(Object.values(energyConsumptionByTask).flatMap(task => Object.keys(task))));-->
-
-<!--    var colors = {-->
-<!--        DIESEL: 'rgba(255, 99, 132, 0.2)', // Red-->
-<!--        GAS: 'rgba(54, 162, 235, 0.2)', // Blue-->
-<!--        ELECTRICITY: 'rgba(75, 192, 192, 0.2)' // Green-->
-<!--    };-->
-
-<!--    var borderColors = {-->
-<!--        DIESEL: 'rgba(255, 99, 132, 1)', // Red-->
-<!--        GAS: 'rgba(54, 162, 235, 1)', // Blue-->
-<!--        ELECTRICITY: 'rgba(75, 192, 192, 1)' // Green-->
-<!--    };-->
-
-<!--    var datasetForStackedBar = energyTypes.map(type => ({-->
-<!--        label: type,-->
-<!--        data: taskLabels.map(task => energyConsumptionByTask[task][type] || 0),-->
-<!--        backgroundColor: colors[type],-->
-<!--        borderColor: borderColors[type],-->
-<!--        borderWidth: 1-->
-<!--    }));-->
-
-<!--    var ctxBar = document.getElementById('energyConsumptionByTaskChart').getContext('2d');-->
-<!--    var energyConsumptionByTaskChart = new Chart(ctxBar, {-->
-<!--        type: 'bar',-->
-<!--        data: {-->
-<!--            labels: taskLabels,-->
-<!--            datasets: datasetForStackedBar-->
-<!--        },-->
-<!--        options: {-->
-<!--            responsive: true,-->
-<!--            plugins: {-->
-<!--                legend: {-->
-<!--                    display: true,-->
-<!--                    position: 'top',-->
-<!--                }-->
-<!--            },-->
-<!--            scales: {-->
-<!--                x: {-->
-<!--                    stacked: true-->
-<!--                },-->
-<!--                y: {-->
-<!--                    stacked: true-->
-<!--                }-->
-<!--            }-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
-
-<!--<script src="https://unpkg.com/frappe-gantt@0.5.0/dist/frappe-gantt.min.js"></script>-->
-<!--<script th:inline="javascript">-->
-<!--        var schedules = /*[[${schedules}]]*/ [];-->
-<!--        var ganttData = schedules.map(schedule => ({-->
-<!--            id: schedule.scheduleId,-->
-<!--            name: schedule.task.taskName,-->
-<!--            start: schedule.scheduledStart,-->
-<!--            end: schedule.scheduledEnd,-->
-<!--            actualStart: schedule.actualStart,-->
-<!--            actualEnd: schedule.actualEnd-->
-<!--        }));-->
-
-<!--        var gantt = new Gantt("#ganttChart", ganttData, {-->
-<!--            view_mode: 'Week',-->
-<!--            custom_popup_html: function(task) {-->
-<!--                return `-->
-<!--                    <div class="details-container">-->
-<!--                        <h5>${task.name}</h5>-->
-<!--                        <p>Scheduled Start: ${task.start}</p>-->
-<!--                        <p>Scheduled End: ${task.end}</p>-->
-<!--                        <p>Actual Start: ${task.actualStart}</p>-->
-<!--                        <p>Actual End: ${task.actualEnd}</p>-->
-<!--                    </div>-->
-<!--                `;-->
-<!--            }-->
-<!--        });-->
-<!--    </script>-->
-
-<!--&lt;!&ndash;resourceUtilizationChart&ndash;&gt;-->
-
-<!--<script th:inline="javascript">-->
-<!--    var schedules = /*[[${schedules}]]*/ [];-->
-<!--    console.log("Schedules:", schedules); // Debugging line to verify data-->
-
-<!--    var taskLabels = schedules.map(schedule => schedule.task.taskName);-->
-<!--    var scheduledStartTimes = schedules.map(schedule => new Date(schedule.scheduledStart).getTime());-->
-<!--    var scheduledEndTimes = schedules.map(schedule => new Date(schedule.scheduledEnd).getTime());-->
-<!--    var actualStartTimes = schedules.map(schedule => new Date(schedule.actualStart).getTime());-->
-<!--    var actualEndTimes = schedules.map(schedule => new Date(schedule.actualEnd).getTime());-->
-
-<!--    // Combine all timestamps to find the minimum and maximum-->
-<!--    var allTimestamps = scheduledStartTimes.concat(scheduledEndTimes, actualStartTimes, actualEndTimes);-->
-<!--    var minTimestamp = Math.min(...allTimestamps);-->
-<!--    var maxTimestamp = Math.max(...allTimestamps);-->
-
-<!--    var ctx = document.getElementById('resourceUtilizationChart').getContext('2d');-->
-<!--    new Chart(ctx, {-->
-<!--        type: 'bar',-->
-<!--        data: {-->
-<!--            labels: taskLabels,-->
-<!--            datasets: [-->
-<!--                {-->
-<!--                    label: 'Scheduled Start',-->
-<!--                    data: scheduledStartTimes,-->
-<!--                    backgroundColor: 'rgba(75, 192, 192, 0.4)', // Lighter shade of cyan-->
-<!--                    borderColor: 'rgba(75, 192, 192, 1)',-->
-<!--                    borderWidth: 1-->
-<!--                },-->
-<!--                {-->
-<!--                    label: 'Scheduled End',-->
-<!--                    data: scheduledEndTimes,-->
-<!--                    backgroundColor: 'rgba(54, 162, 235, 0.4)', // Lighter shade of blue-->
-<!--                    borderColor: 'rgba(54, 162, 235, 1)',-->
-<!--                    borderWidth: 1-->
-<!--                },-->
-<!--                {-->
-<!--                    label: 'Actual Start',-->
-<!--                    data: actualStartTimes,-->
-<!--                    backgroundColor: 'rgba(75, 192, 192, 0.8)', // Darker shade of cyan-->
-<!--                    borderColor: 'rgba(75, 192, 192, 1)',-->
-<!--                    borderWidth: 1-->
-<!--                },-->
-<!--                {-->
-<!--                    label: 'Actual End',-->
-<!--                    data: actualEndTimes,-->
-<!--                    backgroundColor: 'rgba(54, 162, 235, 0.8)', // Darker shade of blue-->
-<!--                    borderColor: 'rgba(54, 162, 235, 1)',-->
-<!--                    borderWidth: 1-->
-<!--                }-->
-<!--            ]-->
-<!--        },-->
-<!--        options: {-->
-<!--            responsive: true,-->
-<!--            scales: {-->
-<!--                x: {-->
-<!--                    stacked: false,-->
-<!--                    title: {-->
-<!--                        display: true,-->
-<!--                        text: 'Tasks'-->
-<!--                    }-->
-<!--                },-->
-<!--                y: {-->
-<!--                    stacked: false,-->
-<!--                    type: 'linear',-->
-<!--                    min: minTimestamp,-->
-<!--                    max: maxTimestamp,-->
-<!--                    ticks: {-->
-<!--                        callback: function(value) {-->
-<!--                            var date = new Date(value);-->
-<!--                            return date.toLocaleDateString(); // Only show the date part-->
-<!--                        }-->
-<!--                    },-->
-<!--                    title: {-->
-<!--                        display: true,-->
-<!--                        text: 'Dates'-->
-<!--                    }-->
-<!--                }-->
-<!--            },-->
-<!--            plugins: {-->
-<!--                legend: {-->
-<!--                    display: true,-->
-<!--                    position: 'top',-->
-<!--                },-->
-<!--                tooltip: {-->
-<!--                    callbacks: {-->
-<!--                        label: function(tooltipItem) {-->
-<!--                            var date = new Date(tooltipItem.raw);-->
-<!--                            return tooltipItem.dataset.label + ': ' + date.toLocaleDateString(); // Only show the date part-->
-<!--                        }-->
-<!--                    }-->
-<!--                }-->
-<!--            }-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
-
-<!--&lt;!&ndash;scheduleAdherenceChart&ndash;&gt;-->
-
-<!--<script th:inline="javascript">-->
-<!--var schedules = /*[[${schedules}]]*/ [];-->
-<!--var onTimeTasks = schedules.filter(schedule => schedule.actualEnd <= schedule.scheduledEnd).length;-->
-<!--var delayedTasks = schedules.length - onTimeTasks;-->
-
-<!--var ctx = document.getElementById('scheduleAdherenceChart').getContext('2d');-->
-<!--new Chart(ctx, {-->
-<!--    type: 'pie',-->
-<!--    data: {-->
-<!--        labels: ['On Time', 'Delayed'],-->
-<!--        datasets: [{-->
-<!--            data: [onTimeTasks, delayedTasks],-->
-<!--            backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],-->
-<!--            borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],-->
-<!--            borderWidth: 1-->
-<!--        }]-->
-<!--    },-->
-<!--    options: {-->
-<!--        responsive: true,-->
-<!--        plugins: {-->
-<!--            legend: {-->
-<!--                display: true,-->
-<!--                position: 'top',-->
-<!--            }-->
-<!--        }-->
-<!--    }-->
-<!--});-->
-<!--</script>-->
-
-<!--<script th:inline="javascript">-->
-<!--    var rawMaterials = /*[[${rawMaterials}]]*/ [];-->
-<!--    console.log("Raw Materials:", rawMaterials); // Debugging line to verify data-->
-
-<!--    var materialNames = rawMaterials.map(material => material.materialName);-->
-<!--    var currentStocks = rawMaterials.map(material => material.currentStock);-->
-<!--    var minimumStockLevels = rawMaterials.map(material => material.minimumStockLevel);-->
-
-<!--    // Assign colors based on stock levels-->
-<!--    var colors = currentStocks.map((stock, index) =>-->
-<!--        stock < minimumStockLevels[index] ? 'rgba(255, 99, 132, 0.7)' : 'rgba(75, 192, 192, 0.7)'-->
-<!--    );-->
-<!--    var borderColors = currentStocks.map((stock, index) =>-->
-<!--        stock < minimumStockLevels[index] ? 'rgba(255, 99, 132, 1)' : 'rgba(75, 192, 192, 1)'-->
-<!--    );-->
-
-<!--    var ctx = document.getElementById('rawMaterialsChart').getContext('2d');-->
-<!--    new Chart(ctx, {-->
-<!--        type: 'bar',-->
-<!--        data: {-->
-<!--            labels: materialNames,-->
-<!--            datasets: [-->
-<!--                {-->
-<!--                    label: 'Current Stock',-->
-<!--                    data: currentStocks,-->
-<!--                    backgroundColor: colors,-->
-<!--                    borderColor: borderColors,-->
-<!--                    borderWidth: 1-->
-<!--                },-->
-<!--                {-->
-<!--                    label: 'Minimum Stock Level',-->
-<!--                    data: minimumStockLevels,-->
-<!--                    backgroundColor: 'rgba(54, 162, 235, 0.2)',-->
-<!--                    borderColor: 'rgba(54, 162, 235, 1)',-->
-<!--                    borderWidth: 1,-->
-<!--                    type: 'line' // Adding a line chart to visualize minimum stock level-->
-<!--                }-->
-<!--            ]-->
-<!--        },-->
-<!--        options: {-->
-<!--            responsive: true,-->
-<!--            scales: {-->
-<!--                x: {-->
-<!--                    stacked: false,-->
-<!--                    title: {-->
-<!--                        display: true,-->
-<!--                        text: 'Raw Materials'-->
-<!--                    }-->
-<!--                },-->
-<!--                y: {-->
-<!--                    stacked: false,-->
-<!--                    beginAtZero: true,-->
-<!--                    title: {-->
-<!--                        display: true,-->
-<!--                        text: 'Stock Levels'-->
-<!--                    }-->
-<!--                }-->
-<!--            },-->
-<!--            plugins: {-->
-<!--                legend: {-->
-<!--                    display: true,-->
-<!--                    position: 'top',-->
-<!--                },-->
-<!--                tooltip: {-->
-<!--                    callbacks: {-->
-<!--                        label: function(tooltipItem) {-->
-<!--                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw;-->
-<!--                        }-->
-<!--                    }-->
-<!--                }-->
-<!--            }-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
-
-<!--<script th:inline="javascript">-->
-<!--    var tasks = /*[[${tasks}]]*/ [];-->
-<!--    var statusCounts = {-->
-<!--        PENDING: 0,-->
-<!--        COMPLETE: 0,-->
-<!--        ONGOING: 0-->
-<!--    };-->
-
-<!--    tasks.forEach(task => {-->
-<!--        statusCounts[task.status]++;-->
-<!--    });-->
-
-<!--    var ctxStatus = document.getElementById('taskStatusChart').getContext('2d');-->
-<!--    new Chart(ctxStatus, {-->
-<!--        type: 'pie',-->
-<!--        data: {-->
-<!--            labels: Object.keys(statusCounts),-->
-<!--            datasets: [{-->
-<!--                data: Object.values(statusCounts),-->
-<!--                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)'],-->
-<!--                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],-->
-<!--                borderWidth: 1-->
-<!--            }]-->
-<!--        },-->
-<!--        options: {-->
-<!--            responsive: true,-->
-<!--            plugins: {-->
-<!--                legend: {-->
-<!--                    display: true,-->
-<!--                    position: 'top',-->
-<!--                }-->
-<!--            }-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
-
-<!--<script th:inline="javascript">-->
-<!--    var priorityCounts = {-->
-<!--        LOW: 0,-->
-<!--        MEDIUM: 0,-->
-<!--        HIGH: 0-->
-<!--    };-->
-
-<!--    tasks.forEach(task => {-->
-<!--        priorityCounts[task.priority]++;-->
-<!--    });-->
-
-<!--    var ctxPriority = document.getElementById('taskPriorityChart').getContext('2d');-->
-<!--    new Chart(ctxPriority, {-->
-<!--        type: 'pie',-->
-<!--        data: {-->
-<!--            labels: Object.keys(priorityCounts),-->
-<!--            datasets: [{-->
-<!--                data: Object.values(priorityCounts),-->
-<!--                backgroundColor: ['rgba(255, 206, 86, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)'],-->
-<!--                borderColor: ['rgba(255, 206, 86, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],-->
-<!--                borderWidth: 1-->
-<!--            }]-->
-<!--        },-->
-<!--        options: {-->
-<!--            responsive: true,-->
-<!--            plugins: {-->
-<!--                legend: {-->
-<!--                    display: true,-->
-<!--                    position: 'top',-->
-<!--                }-->
-<!--            }-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
-
-<!--<script th:inline="javascript">-->
-<!--    var priorityStatusCounts = {-->
-<!--        LOW: { PENDING: 0, COMPLETE: 0, ONGOING: 0 },-->
-<!--        MEDIUM: { PENDING: 0, COMPLETE: 0, ONGOING: 0 },-->
-<!--        HIGH: { PENDING: 0, COMPLETE: 0, ONGOING: 0 }-->
-<!--    };-->
-
-<!--    tasks.forEach(task => {-->
-<!--        priorityStatusCounts[task.priority][task.status]++;-->
-<!--    });-->
-
-<!--    var ctxStatusByPriority = document.getElementById('taskStatusByPriorityChart').getContext('2d');-->
-<!--    new Chart(ctxStatusByPriority, {-->
-<!--        type: 'bar',-->
-<!--        data: {-->
-<!--            labels: Object.keys(priorityStatusCounts),-->
-<!--            datasets: [{-->
-<!--                label: 'Pending',-->
-<!--                data: Object.values(priorityStatusCounts).map(status => status.PENDING),-->
-<!--                backgroundColor: 'rgba(255, 99, 132, 0.2)',-->
-<!--                borderColor: 'rgba(255, 99, 132, 1)',-->
-<!--                borderWidth: 1-->
-<!--            }, {-->
-<!--                label: 'Complete',-->
-<!--                data: Object.values(priorityStatusCounts).map(status => status.COMPLETE),-->
-<!--                backgroundColor: 'rgba(54, 162, 235, 0.2)',-->
-<!--                borderColor: 'rgba(54, 162, 235, 1)',-->
-<!--                borderWidth: 1-->
-<!--            }, {-->
-<!--                label: 'Ongoing',-->
-<!--                data: Object.values(priorityStatusCounts).map(status => status.ONGOING),-->
-<!--                backgroundColor: 'rgba(75, 192, 192, 0.2)',-->
-<!--                borderColor: 'rgba(75, 192, 192, 1)',-->
-<!--                borderWidth: 1-->
-<!--            }]-->
-<!--        },-->
-<!--        options: {-->
-<!--            responsive: true,-->
-<!--            scales: {-->
-<!--                x: {-->
-<!--                    stacked: true,-->
-<!--                    title: {-->
-<!--                        display: true,-->
-<!--                        text: 'Priority Levels'-->
-<!--                    }-->
-<!--                },-->
-<!--                y: {-->
-<!--                    stacked: true,-->
-<!--                    title: {-->
-<!--                        display: true,-->
-<!--                        text: 'Number of Tasks'-->
-<!--                    }-->
-<!--                }-->
-<!--            },-->
-<!--            plugins: {-->
-<!--                legend: {-->
-<!--                    display: true,-->
-<!--                    position: 'top',-->
-<!--                }-->
-<!--            }-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
-
-<!--<script th:inline="javascript">-->
-<!--    var resourceAllocations = /*[[${resourceAllocations}]]*/ [];-->
-<!--    console.log("Resource Allocations:", resourceAllocations); // Debugging line to verify data-->
-
-<!--    var taskLabels = resourceAllocations.map(ra => ra.task.taskName);-->
-<!--    var materialNames = resourceAllocations.map(ra => ra.rawMaterials.materialName);-->
-
-<!--    // Count the number of times each material is allocated to each task-->
-<!--    var taskMaterialCounts = {};-->
-<!--    resourceAllocations.forEach(ra => {-->
-<!--        if (!taskMaterialCounts[ra.task.taskName]) {-->
-<!--            taskMaterialCounts[ra.task.taskName] = {};-->
-<!--        }-->
-<!--        if (!taskMaterialCounts[ra.task.taskName][ra.rawMaterials.materialName]) {-->
-<!--            taskMaterialCounts[ra.task.taskName][ra.rawMaterials.materialName] = 0;-->
-<!--        }-->
-<!--        taskMaterialCounts[ra.task.taskName][ra.rawMaterials.materialName]++;-->
-<!--    });-->
-
-<!--    var materialNamesSet = new Set(materialNames);-->
-<!--    var materialNamesArray = Array.from(materialNamesSet);-->
-
-<!--    // Define a set of colors-->
-<!--    var colors = [-->
-<!--        'rgba(75, 192, 192, 0.2)',-->
-<!--        'rgba(255, 99, 132, 0.2)',-->
-<!--        'rgba(54, 162, 235, 0.2)',-->
-<!--        'rgba(255, 206, 86, 0.2)',-->
-<!--        'rgba(153, 102, 255, 0.2)',-->
-<!--        'rgba(255, 159, 64, 0.2)',-->
-<!--        'rgba(199, 199, 199, 0.2)',-->
-<!--        'rgba(83, 102, 255, 0.2)',-->
-<!--        'rgba(163, 102, 255, 0.2)',-->
-<!--        'rgba(255, 102, 102, 0.2)'-->
-<!--    ];-->
-
-<!--    var borderColors = [-->
-<!--        'rgba(75, 192, 192, 1)',-->
-<!--        'rgba(255, 99, 132, 1)',-->
-<!--        'rgba(54, 162, 235, 1)',-->
-<!--        'rgba(255, 206, 86, 1)',-->
-<!--        'rgba(153, 102, 255, 1)',-->
-<!--        'rgba(255, 159, 64, 1)',-->
-<!--        'rgba(199, 199, 199, 1)',-->
-<!--        'rgba(83, 102, 255, 1)',-->
-<!--        'rgba(163, 102, 255, 1)',-->
-<!--        'rgba(255, 102, 102, 1)'-->
-<!--    ];-->
-
-<!--    // Generate datasets with different colors for each material type-->
-<!--    var datasets = materialNamesArray.map((materialName, index) => ({-->
-<!--        label: materialName,-->
-<!--        data: taskLabels.map(taskName => taskMaterialCounts[taskName] ? taskMaterialCounts[taskName][materialName] || 0 : 0),-->
-<!--        backgroundColor: colors[index % colors.length],-->
-<!--        borderColor: borderColors[index % borderColors.length],-->
-<!--        borderWidth: 1-->
-<!--    }));-->
-
-<!--    var ctx = document.getElementById('resourceAllocationByTaskChart').getContext('2d');-->
-<!--    new Chart(ctx, {-->
-<!--        type: 'bar',-->
-<!--        data: {-->
-<!--            labels: taskLabels,-->
-<!--            datasets: datasets-->
-<!--        },-->
-<!--        options: {-->
-<!--            responsive: true,-->
-<!--            scales: {-->
-<!--                x: {-->
-<!--                    stacked: true,-->
-<!--                    title: {-->
-<!--                        display: true,-->
-<!--                        text: 'Tasks'-->
-<!--                    }-->
-<!--                },-->
-<!--                y: {-->
-<!--                    stacked: true,-->
-<!--                    title: {-->
-<!--                        display: true,-->
-<!--                        text: 'Number of Allocations'-->
-<!--                    }-->
-<!--                }-->
-<!--            },-->
-<!--            plugins: {-->
-<!--                legend: {-->
-<!--                    display: true,-->
-<!--                    position: 'top',-->
-<!--                }-->
-<!--            }-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
-
-<!--<script th:inline="javascript">-->
-<!--    var resourceAllocations = /*[[${resourceAllocations}]]*/ [];-->
-
-<!--    var materialCounts = {};-->
-<!--    resourceAllocations.forEach(ra => {-->
-<!--        if (!materialCounts[ra.rawMaterials.materialName]) {-->
-<!--            materialCounts[ra.rawMaterials.materialName] = 0;-->
-<!--        }-->
-<!--        materialCounts[ra.rawMaterials.materialName]++;-->
-<!--    });-->
-
-<!--    var ctx = document.getElementById('resourceUsageOverviewChart').getContext('2d');-->
-<!--    new Chart(ctx, {-->
-<!--        type: 'pie',-->
-<!--        data: {-->
-<!--            labels: Object.keys(materialCounts),-->
-<!--            datasets: [{-->
-<!--                data: Object.values(materialCounts),-->
-<!--                backgroundColor: [-->
-<!--                    'rgba(75, 192, 192, 0.2)',-->
-<!--                    'rgba(255, 99, 132, 0.2)',-->
-<!--                    'rgba(54, 162, 235, 0.2)',-->
-<!--                    'rgba(255, 206, 86, 0.2)',-->
-<!--                    'rgba(153, 102, 255, 0.2)'-->
-<!--                ],-->
-<!--                borderColor: [-->
-<!--                    'rgba(75, 192, 192, 1)',-->
-<!--                    'rgba(255, 99, 132, 1)',-->
-<!--                    'rgba(54, 162, 235, 1)',-->
-<!--                    'rgba(255, 206, 86, 1)',-->
-<!--                    'rgba(153, 102, 255, 1)'-->
-<!--                ],-->
-<!--                borderWidth: 1-->
-<!--            }]-->
-<!--        },-->
-<!--        options: {-->
-<!--            responsive: true,-->
-<!--            plugins: {-->
-<!--                legend: {-->
-<!--                    display: true,-->
-<!--                    position: 'top',-->
-<!--                }-->
-<!--            }-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
-
-<!--<script th:inline="javascript">-->
-<!--    function downloadChart(chartId, format) {-->
-<!--        const chart = document.getElementById(chartId);-->
-<!--        const link = document.createElement('a');-->
-
-<!--        if (chartId === 'ganttChart') {-->
-<!--            html2canvas(chart).then(canvas => {-->
-<!--                if (format === 'jpeg' || format === 'webp') {-->
-<!--                    const tempCanvas = document.createElement('canvas');-->
-<!--                    const context = tempCanvas.getContext('2d');-->
-<!--                    tempCanvas.width = canvas.width;-->
-<!--                    tempCanvas.height = canvas.height;-->
-<!--                    context.fillStyle = '#fff'; // Set the background to white-->
-<!--                    context.fillRect(0, 0, canvas.width, canvas.height);-->
-<!--                    context.drawImage(canvas, 0, 0);-->
-<!--                    link.href = tempCanvas.toDataURL(`image/${format}`);-->
-<!--                } else {-->
-<!--                    link.href = canvas.toDataURL(`image/${format}`);-->
-<!--                }-->
-<!--                link.download = `${chartId}.${format}`;-->
-<!--                link.click();-->
-<!--            });-->
-<!--        } else {-->
-<!--            if (format === 'jpeg' || format === 'webp') {-->
-<!--                const tempCanvas = document.createElement('canvas');-->
-<!--                const context = tempCanvas.getContext('2d');-->
-<!--                tempCanvas.width = chart.width;-->
-<!--                tempCanvas.height = chart.height;-->
-<!--                context.fillStyle = '#fff'; // Set the background to white-->
-<!--                context.fillRect(0, 0, chart.width, chart.height);-->
-<!--                context.drawImage(chart, 0, 0);-->
-<!--                link.href = tempCanvas.toDataURL(`image/${format}`);-->
-<!--            } else {-->
-<!--                link.href = chart.toDataURL(`image/${format}`);-->
-<!--            }-->
-<!--            link.download = `${chartId}.${format}`;-->
-<!--            link.click();-->
-<!--        }-->
-<!--    }-->
-<!--</script>-->
 <script>
     // Change Sidebar Color
     function sidebarColor(element) {
@@ -2136,7 +1283,28 @@
         }
     }
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('/dashboard/recent-activities')
+            .then(response => response.json())
+            .then(data => {
+                const recentActivitiesList = document.getElementById('recentActivitiesList');
+                recentActivitiesList.innerHTML = '';
 
+                data.forEach(activity => {
+                    const activityElement = document.createElement('li');
+                    activityElement.className = `list-group-item d-flex justify-content-between align-items-center`;
+                    activityElement.innerHTML = `
+                    ${activity.description}
+                    <span class="badge bg-${activity.type} rounded-pill">${new Date(activity.timestamp).toLocaleTimeString()}</span>
+                `;
+                    recentActivitiesList.appendChild(activityElement);
+                });
+            })
+            .catch(error => console.error('Error fetching recent activities:', error));
+    });
+
+</script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
